@@ -1,6 +1,6 @@
 # Voxel4D: Vision-Centric 4D Occupancy Forecasting and Planning via World Models for Autonomous Driving
 
-[![Custom badge](https://img.shields.io/badge/Arxiv-pdf-8A2BE2?logo=arxiv)](https://arxiv.org/abs/2311.17663)
+[![Custom badge](https://img.shields.io/badge/Project-Page-blue)](https://rtennety.github.io/Voxel4D/)
 
 > **Author:** Rohan Tennety
 
