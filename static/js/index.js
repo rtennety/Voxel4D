@@ -57,17 +57,95 @@ $(document).ready(function() {
         return false;
     });
     
-    // Block common image saving keyboard shortcuts
+    // ========== SCREENSHOT PROTECTION ==========
+    
+    // Function to show black overlay
+    function showScreenshotProtection() {
+        var overlay = document.getElementById('screenshot-protection-overlay');
+        if (overlay) {
+            overlay.classList.add('active');
+            // Hide after a short delay when focus returns
+            setTimeout(function() {
+                if (document.hasFocus()) {
+                    overlay.classList.remove('active');
+                }
+            }, 500);
+        }
+    }
+    
+    // Block screenshot keyboard shortcuts
     $(document).on('keydown', function(e) {
+        // Block Windows+Shift+S (Snipping Tool)
+        if ((e.metaKey || e.ctrlKey) && e.shiftKey && (e.key === 'S' || e.key === 's')) {
+            e.preventDefault();
+            e.stopPropagation();
+            showScreenshotProtection();
+            return false;
+        }
+        
+        // Block Print Screen
+        if (e.key === 'PrintScreen' || e.keyCode === 44) {
+            e.preventDefault();
+            e.stopPropagation();
+            showScreenshotProtection();
+            return false;
+        }
+        
+        // Block Alt+Print Screen
+        if (e.altKey && (e.key === 'PrintScreen' || e.keyCode === 44)) {
+            e.preventDefault();
+            e.stopPropagation();
+            showScreenshotProtection();
+            return false;
+        }
+        
+        // Block Windows+Print Screen
+        if ((e.metaKey || e.ctrlKey) && (e.key === 'PrintScreen' || e.keyCode === 44)) {
+            e.preventDefault();
+            e.stopPropagation();
+            showScreenshotProtection();
+            return false;
+        }
+        
         // Block Ctrl+S (Save)
         if (e.ctrlKey && e.key === 's') {
             e.preventDefault();
             return false;
         }
+        
         // Block Ctrl+Shift+I (Inspect - might reveal image URLs)
         if (e.ctrlKey && e.shiftKey && e.key === 'I') {
             e.preventDefault();
             return false;
+        }
+    });
+    
+    // Detect when window loses focus (might indicate screenshot tool)
+    window.addEventListener('blur', function() {
+        showScreenshotProtection();
+    });
+    
+    // Hide overlay when window regains focus
+    window.addEventListener('focus', function() {
+        setTimeout(function() {
+            var overlay = document.getElementById('screenshot-protection-overlay');
+            if (overlay) {
+                overlay.classList.remove('active');
+            }
+        }, 300);
+    });
+    
+    // Detect page visibility changes (tab switching, minimizing)
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            showScreenshotProtection();
+        } else {
+            setTimeout(function() {
+                var overlay = document.getElementById('screenshot-protection-overlay');
+                if (overlay) {
+                    overlay.classList.remove('active');
+                }
+            }, 300);
         }
     });
     
