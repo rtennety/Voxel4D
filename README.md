@@ -1,4 +1,4 @@
-# <img src="assets/figures/icon.png" alt="icon" style="height: 40px; vertical-align: middle;"> Voxel4D: Vision-Centric 4D Occupancy Forecasting and Planning via World Models for Autonomous Driving
+# Voxel4D: Vision-Centric 4D Occupancy Forecasting and Planning via World Models for Autonomous Driving
 
 [![Custom badge](https://img.shields.io/badge/Arxiv-pdf-8A2BE2?logo=arxiv)](https://arxiv.org/abs/2311.17663)
 
@@ -6,7 +6,7 @@
 
 **Voxel4D: Vision-Centric 4D Occupancy Forecasting and Planning via World Models for Autonomous Driving**
 
-## 🎯 Abstract
+## Abstract
 <div style="text-align:center;">
   <img src="assets/figures/teaser.png" alt="pipeline" width="600">
 </div>
@@ -14,7 +14,7 @@
 **4D Occupancy Forecasting and Planning via World Model**. Voxel4D takes observations and trajectories as input, incorporating flexible action conditions for **action-controllable generation**. By leveraging world knowledge and the generative capacity of the world model, I further integrate it with a planner for **continuous forecasting and planning**.
 
 
-## 📝 Getting Started
+## Getting Started
 
 - [Installation](DOCS/INSTALL.MD) 
 
@@ -22,7 +22,7 @@
 
 - [Train and Evaluation](DOCS/TRAIN_EVAL.MD)
 
-## 🎥 Demo of 4D Occupancy and Flow Forecasting
+## Demo of 4D Occupancy and Flow Forecasting
 
 Voxel4D understands how the world evolves by accurately modeling the dynamics of movable objects and the future states of the static environment.
 
@@ -42,7 +42,7 @@ Voxel4D understands how the world evolves by accurately modeling the dynamics of
 </div>
 
 
-## 🚗 Demo of Continuous Forecasting and Planning (E2E Planning)
+## Demo of Continuous Forecasting and Planning (E2E Planning)
 
 Voxel4D plans trajectories through forecasting future occupancy state and selecting optimal trajectory based on a comprehensive occupancy-based cost function.
 
@@ -74,7 +74,7 @@ Voxel4D plans trajectories through forecasting future occupancy state and select
 </div>
 
 
-## 🔖 Citation
+## Citation
 
 If you use Voxel4D in an academic work, please cite my paper:
 
