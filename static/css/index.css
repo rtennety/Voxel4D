@@ -286,21 +286,6 @@ img {
   backdrop-filter: blur(10px);
 }
 
-.password-modal::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, 
-    #ffffff 0%, 
-    #ffffff 25%,
-    transparent 25%,
-    transparent 100%
-  );
-  background-size: 20px 100%;
-}
 
 @keyframes slideIn {
   from {
@@ -440,20 +425,4 @@ img {
   0%, 100% { transform: translateX(0); }
   25% { transform: translateX(-8px); }
   75% { transform: translateX(8px); }
-}
-
-/* Voxel/Pixel decorative elements */
-.password-modal::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 60px;
-  height: 60px;
-  background-image: 
-    linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.1) 40%, rgba(255, 255, 255, 0.1) 60%, transparent 60%),
-    linear-gradient(-45deg, transparent 40%, rgba(255, 255, 255, 0.1) 40%, rgba(255, 255, 255, 0.1) 60%, transparent 60%);
-  background-size: 20px 20px;
-  opacity: 0.5;
-  pointer-events: none;
 }
