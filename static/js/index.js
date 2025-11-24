@@ -1,17 +1,6 @@
 $(document).ready(function() {
     // ========== PASSWORD PROTECTION ==========
     const SITE_PASSWORD = 'autonomous';
-    const AUTH_KEY = 'voxel4d_authenticated';
-    
-    // Check if already authenticated
-    function checkAuthentication() {
-        const authenticated = sessionStorage.getItem(AUTH_KEY);
-        if (authenticated === 'true') {
-            showMainContent();
-            return true;
-        }
-        return false;
-    }
     
     // Show main content and hide password overlay
     function showMainContent() {
@@ -28,7 +17,6 @@ $(document).ready(function() {
         
         if (password === SITE_PASSWORD) {
             // Correct password
-            sessionStorage.setItem(AUTH_KEY, 'true');
             errorDiv.addClass('is-hidden');
             $('#password-input').val('');
             showMainContent();
@@ -58,13 +46,11 @@ $(document).ready(function() {
         }
     });
     
-    // Check authentication on page load
-    if (!checkAuthentication()) {
-        // Focus on password input
-        setTimeout(function() {
-            $('#password-input').focus();
-        }, 100);
-    }
+    // Always show password prompt on page load (no session storage)
+    // Focus on password input
+    setTimeout(function() {
+        $('#password-input').focus();
+    }, 100);
     
     // Check for click events on the navbar burger icon
     $(".navbar-burger").click(function() {
