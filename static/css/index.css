@@ -328,24 +328,13 @@ img {
   font-weight: bold;
   letter-spacing: 2px;
   text-transform: uppercase;
-  text-shadow: 
-    /* 3D depth effect */
-    2px 2px 0px #888,
-    4px 4px 0px #666,
-    6px 6px 0px #444,
-    8px 8px 0px #222,
-    /* Pixelated outline */
-    -1px -1px 0px #000,
-    1px -1px 0px #000,
-    -1px 1px 0px #000,
-    1px 1px 0px #000,
-    /* Glow effect */
-    0 0 10px rgba(255, 255, 255, 0.3);
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
-  transform: perspective(500px) rotateX(5deg);
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
+  font-smooth: never;
+  text-rendering: optimizeSpeed;
 }
 
 .password-header .subtitle {
