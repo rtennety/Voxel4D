@@ -39,7 +39,7 @@ ln -s /path/to/nuscnens/can_bus data/can_bus
 ```
 
 **2. Prepare nuscene.pkl file**
-1) Download the pre-processed [nuscenes_infos_temporal_train_new.pkl](https://drive.google.com/file/d/1rjyqgJAnjg4Iq1MSussm5yhKDPVIlIxe/view?usp=sharing) and [nuscenes_infos_temporal_val_new.pkl](https://drive.google.com/file/d/1UsIaoX6uw2am9FWJBRA5cR40hl8AcL7p/view?usp=sharing)
+1) Download the pre-processed [nuscenes_infos_temporal_train_new.pkl]https://drive.google.com/file/d/1A_EqlKzgdeVdRVb-j8GAETNO7wWhkGJ7/view?usp=sharing) and [nuscenes_infos_temporal_val_new.pkl](https://drive.google.com/file/d/14_7uMAjXPcjyr0E8ZQeCA2rGiSl_ApOb/view?usp=sharing)
 2) Move the ```.pkl``` files into the nuscenes folder:
 ```bash
 mv nuscenes_infos_temporal_train_new.pkl /path/to/nuscenes
@@ -56,7 +56,11 @@ mkdir GMO GMO_lyft MMO MMO_lyft
 ln -s /path/to/save_data/Core Voxel4D/data
 ```
 
-**4. Download the fine-grained occupancy annotations as defined in [nuScenes-Occupancy](https://github.com/JeffWang987/OpenOccupancy/blob/main/docs/prepare_data.md). Then organize the dataset as follows:**
+**4. Download the fine-grained occupancy annotations (nuScenes-Occupancy).**
+
+**Download link:** [nuScenes-Occupancy](https://drive.google.com/file/d/1vLL6bdqSC7WxtvQ6ODTw0pixAZCbPkpq/view?usp=sharing)
+
+Then organize the dataset as follows:
 ```bash
 mv nuScenes-Occupancy-v0.1.7z /path/to/save_data
 cd /path/to/save_data

@@ -1,3 +1,6 @@
+# Voxel4D: Vision-Centric 4D Occupancy Forecasting and Planning via World Models for Autonomous Driving
+# Author: Rohan Tennety
+
 import mmcv
 import torch
 from mmcv.runner import force_fp32, auto_fp16

@@ -1,7 +1,5 @@
 # Installation
 
-The installation step is similar to [BEVFormer](https://github.com/fundamentalvision/BEVFormer/blob/master/docs/install.md).
-For convenience, I list the steps below:
 
 **1. Create a conda virtual environment and activate it.**
 ```shell
@@ -49,7 +47,12 @@ git clone https://github.com/rtennety/Voxel4D.git
 
 cd Voxel4D
 mkdir pretrained
-cd pretrained & wget https://github.com/zhiqi-li/storage/releases/download/v1.0/r101_dcn_fcos3d_pretrain.pth
+cd pretrained
+# Download pretrained model from Google Drive
+# Option 1: Using gdown (install with: pip install gdown)
+gdown 14DgFmhTFcvT7ydHPd6tC-1u9l6GMsPVv -O r101_dcn_fcos3d_pretrain.pth
+# Option 2: Using wget with direct download link
+# wget --no-check-certificate 'https://drive.google.com/uc?export=download&id=14DgFmhTFcvT7ydHPd6tC-1u9l6GMsPVv' -O r101_dcn_fcos3d_pretrain.pth
 
 # Install DCNv3
 cd ../projects/mmdet3d_plugin/bevformer/backbones/ops_dcnv3

@@ -74,21 +74,6 @@ Voxel4D plans trajectories through forecasting future occupancy state and select
 </div>
 
 
-## Acknowledgments
-
-I utilized the following repos during development:
-
-* [ViDAR](https://github.com/OpenDriveLab/ViDAR)
-* [Voxel4D Core](https://github.com/rtennety/Voxel4D-Core)
-* [ST-P3](https://github.com/OpenDriveLab/ST-P3)
-* [UniAD](https://github.com/OpenDriveLab/UniAD)
-
-Thanks for their Awesome open-sourced work!
-
-<!-- ## 📄 License
-
-This project is released under the [Apache 2.0 license](LICENSE).  -->
-
 ## 🔖 Citation
 
 If you use Voxel4D in an academic work, please cite my paper:
