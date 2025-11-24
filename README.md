@@ -26,6 +26,9 @@
 
 
 
+## Related Project: 
+https://github.com/rtennety/Voxel4D-Core
+
 ## Citation
 
 If you use Voxel4D in an academic work, please cite my paper:
