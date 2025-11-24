@@ -21,8 +21,8 @@
 
 - [Train and Evaluation](DOCS/TRAIN_EVAL.MD)
 
-# Demos - on project paage
-
+# Demos - on project page
+## [![Custom badge](https://img.shields.io/badge/Project-Page-blue)](https://rtennety.github.io/Voxel4D/)
 
 
 
