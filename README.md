@@ -1,6 +1,6 @@
 # <img src="assets/figures/icon.png" alt="icon" style="height: 40px; vertical-align: middle;"> Voxel4D: Vision-Centric 4D Occupancy Forecasting and Planning via World Models for Autonomous Driving
 
-[![Custom badge](https://img.shields.io/badge/Arxiv-pdf-8A2BE2?logo=arxiv)](https://arxiv.org/abs/2311.17663) ![GitHub license](https://img.shields.io/badge/License-MIT-red)
+[![Custom badge](https://img.shields.io/badge/Arxiv-pdf-8A2BE2?logo=arxiv)](https://arxiv.org/abs/2311.17663)
 
 > **Author:** Rohan Tennety
 
