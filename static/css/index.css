@@ -321,6 +321,11 @@ img {
   -moz-osx-font-smoothing: unset;
   font-smooth: never;
   text-rendering: optimizeSpeed;
+  transform: scale(1);
+  transform-origin: center;
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+  filter: contrast(1.2) brightness(1.1);
 }
 
 .password-header .subtitle {
