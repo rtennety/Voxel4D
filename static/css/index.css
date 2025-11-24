@@ -14,13 +14,18 @@ body {
 }
 
 .dnerf {
-  font-variant: small-caps;
+  font-variant: normal;
+  font-weight: 600;
 }
 
 
 .teaser .hero-body {
   padding-top: 0;
   padding-bottom: 3rem;
+}
+
+.teaser .hero-body .image-protected {
+  margin-bottom: 1.5rem;
 }
 
 .teaser {
@@ -49,6 +54,8 @@ body {
 
 .publication-title {
     font-family: 'Google Sans', sans-serif;
+    line-height: 1.2;
+    margin-bottom: 1rem;
 }
 
 .publication-authors {
@@ -207,7 +214,29 @@ img {
   width: 100%;
   height: 100%;
   background: transparent;
-  z-index: 10;
-  pointer-events: auto;
+  z-index: 999;
+  pointer-events: auto !important;
   cursor: default;
+}
+
+/* Ensure consistent spacing and alignment */
+.section {
+  padding: 3rem 1.5rem;
+}
+
+.content {
+  margin-top: 1rem;
+}
+
+.title.is-3 {
+  margin-bottom: 1.5rem;
+}
+
+.title.is-4 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.image-protected {
+  margin: 1rem 0;
 }
