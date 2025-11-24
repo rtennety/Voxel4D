@@ -27,7 +27,41 @@
   <script src="./static/js/index.js"></script>
 </head>
 <body>
+  <!-- Password Protection Overlay -->
+  <div id="password-overlay" class="password-overlay">
+    <div class="password-modal">
+      <div class="password-header">
+        <h2 class="title is-3">Protected Content</h2>
+        <p class="subtitle is-6">Please enter the site password to continue</p>
+      </div>
+      <div class="password-body">
+        <div class="field">
+          <div class="control has-icons-left">
+            <input class="input is-large" type="password" id="password-input" placeholder="Enter password" autocomplete="off" autofocus>
+            <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
+          </div>
+        </div>
+        <div id="password-error" class="notification is-danger is-hidden" style="margin-top: 1rem; padding: 0.75rem;">
+          <p style="margin: 0;">Incorrect password. Please try again.</p>
+        </div>
+        <div class="field" style="margin-top: 1.5rem;">
+          <div class="control">
+            <button class="button is-primary is-large is-fullwidth" id="password-submit">
+              <span>Access Site</span>
+              <span class="icon">
+                <i class="fas fa-arrow-right"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <!-- Main Content (hidden until authenticated) -->
+  <div id="main-content" style="display: none;">
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
@@ -290,6 +324,9 @@
     </div>
   </div>
 </footer>
+
+  </div>
+  <!-- End Main Content -->
 
 </body>
 </html>

@@ -1,4 +1,71 @@
 $(document).ready(function() {
+    // ========== PASSWORD PROTECTION ==========
+    const SITE_PASSWORD = 'autonomous';
+    const AUTH_KEY = 'voxel4d_authenticated';
+    
+    // Check if already authenticated
+    function checkAuthentication() {
+        const authenticated = sessionStorage.getItem(AUTH_KEY);
+        if (authenticated === 'true') {
+            showMainContent();
+            return true;
+        }
+        return false;
+    }
+    
+    // Show main content and hide password overlay
+    function showMainContent() {
+        $('#password-overlay').fadeOut(300, function() {
+            $(this).remove();
+        });
+        $('#main-content').fadeIn(300);
+    }
+    
+    // Handle password submission
+    function handlePasswordSubmit() {
+        const password = $('#password-input').val();
+        const errorDiv = $('#password-error');
+        
+        if (password === SITE_PASSWORD) {
+            // Correct password
+            sessionStorage.setItem(AUTH_KEY, 'true');
+            errorDiv.addClass('is-hidden');
+            $('#password-input').val('');
+            showMainContent();
+        } else {
+            // Incorrect password
+            errorDiv.removeClass('is-hidden');
+            $('#password-input').val('');
+            $('#password-input').focus();
+            // Shake animation
+            $('#password-input').addClass('is-danger');
+            setTimeout(function() {
+                $('#password-input').removeClass('is-danger');
+            }, 500);
+        }
+    }
+    
+    // Set up password form handlers
+    $('#password-submit').on('click', function(e) {
+        e.preventDefault();
+        handlePasswordSubmit();
+    });
+    
+    $('#password-input').on('keypress', function(e) {
+        if (e.which === 13) { // Enter key
+            e.preventDefault();
+            handlePasswordSubmit();
+        }
+    });
+    
+    // Check authentication on page load
+    if (!checkAuthentication()) {
+        // Focus on password input
+        setTimeout(function() {
+            $('#password-input').focus();
+        }, 100);
+    }
+    
     // Check for click events on the navbar burger icon
     $(".navbar-burger").click(function() {
       // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
