@@ -248,22 +248,44 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #f5f5f5;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+  background-size: 20px 20px;
   z-index: 999999;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 40px 20px;
 }
 
 .password-modal {
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  max-width: 450px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
   width: 100%;
-  padding: 2.5rem;
+  padding: 3.5rem 3rem;
   animation: slideIn 0.3s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.password-modal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    hsl(204, 86%, 53%) 0%, 
+    hsl(204, 86%, 53%) 25%,
+    transparent 25%,
+    transparent 100%
+  );
+  background-size: 20px 100%;
 }
 
 @keyframes slideIn {
@@ -279,41 +301,70 @@ img {
 
 .password-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .password-header .title {
   color: #363636;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-family: 'Google Sans', sans-serif;
+  font-size: 1.75rem;
 }
 
 .password-header .subtitle {
   color: #7a7a7a;
+  font-size: 0.95rem;
 }
 
 .password-body {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
+}
+
+.password-body .field {
+  margin-bottom: 1.5rem;
 }
 
 .password-body .input {
-  border: 2px solid #e0e0e0;
-  transition: all 0.3s ease;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  background: #fafafa;
 }
 
 .password-body .input:focus {
-  border-color: #667eea;
-  box-shadow: 0 0 0 0.125em rgba(102, 126, 234, 0.25);
+  border-color: hsl(204, 86%, 53%);
+  box-shadow: 0 0 0 0.125em rgba(66, 134, 244, 0.15);
+  background: white;
+}
+
+.password-body .input.is-danger {
+  border-color: #ff3860;
+}
+
+.password-body .control.has-icons-left .icon {
+  color: #7a7a7a;
+  left: 0.75rem;
 }
 
 .password-body .button {
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  transition: all 0.2s ease;
+  background-color: hsl(204, 86%, 53%);
+  border-color: hsl(204, 86%, 53%);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
 }
 
 .password-body .button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+  background-color: hsl(204, 86%, 48%);
+  border-color: hsl(204, 86%, 48%);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(66, 134, 244, 0.3);
 }
 
 .password-body .button:active {
@@ -322,10 +373,29 @@ img {
 
 #password-error {
   animation: shake 0.5s;
+  padding: 0.75rem 1rem;
+  margin-top: 1rem;
+  border-radius: 4px;
 }
 
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-10px); }
-  75% { transform: translateX(10px); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+/* Voxel/Pixel decorative elements */
+.password-modal::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background-image: 
+    linear-gradient(45deg, transparent 40%, rgba(66, 134, 244, 0.05) 40%, rgba(66, 134, 244, 0.05) 60%, transparent 60%),
+    linear-gradient(-45deg, transparent 40%, rgba(66, 134, 244, 0.05) 40%, rgba(66, 134, 244, 0.05) 60%, transparent 60%);
+  background-size: 20px 20px;
+  opacity: 0.5;
+  pointer-events: none;
 }
