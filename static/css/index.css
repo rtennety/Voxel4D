@@ -308,11 +308,12 @@ img {
 .password-header .title {
   color: #ffffff;
   margin-bottom: 1.25rem;
-  font-family: 'Courier New', monospace;
-  font-size: 2rem;
-  font-weight: bold;
-  letter-spacing: 2px;
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  font-size: 1.5rem;
+  font-weight: normal;
+  letter-spacing: 1px;
   text-transform: uppercase;
+  line-height: 1.6;
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
