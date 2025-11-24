@@ -86,7 +86,7 @@
     <div class="hero-body">
       <img src="./static/images/teaser.png" alt="Voxel4D Teaser" style="width: 100%; max-width: 1200px;">
       <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Voxel4D</span> takes observations and trajectories as input, incorporating flexible action conditions for <b>action-controllable generation</b>. By leveraging world knowledge and the generative capacity of the world model, I further integrate it with a planner for <b>continuous forecasting and planning</b>.
+        <span class="dnerf">Voxel4D</span> teaches a self-driving car to predict what the world around it will look like in the next few seconds—based only on cameras—and then uses those predictions to choose the safest path to drive.
       </h2>
     </div>
   </div>
@@ -95,19 +95,35 @@
 
 <section class="section">
   <div class="container is-max-desktop">
+    <!-- Research Question. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Research Question</h2>
+        <div class="content has-text-justified">
+          <p style="font-size: 1.1em; font-weight: 500;">
+            Can we build a unified vision-centric world model that forecasts 4D occupancy conditioned on ego actions, and use that forecast to improve planning in autonomous driving?
+          </p>
+          <p>
+            In simpler terms: Can we teach a self-driving car to predict what the world around it will look like in the next few seconds—based only on cameras—and then use those predictions to choose the safest path to drive?
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Research Question. -->
+
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            World models envision potential future states based on various ego actions. They embed extensive knowledge about the driving environment, facilitating safe and scalable autonomous driving. Most existing methods primarily focus on either data generation or the pretraining paradigms of world models. Unlike the aforementioned prior works, I propose <b>Voxel4D</b>, which adapts a vision-centric 4D forecasting world model to end-to-end planning for autonomous driving.
+            Self-driving cars need to understand not just what's around them right now, but what will happen next. Imagine you're driving and you see a pedestrian near the crosswalk—you need to predict whether they'll step into the road before you decide to slow down or continue. This is the challenge of <b>world modeling</b>: creating a system that can envision different possible futures based on what actions the car might take.
           </p>
           <p>
-            Specifically, I first introduce a semantic and motion-conditional normalization in the memory module, which accumulates semantic and dynamic information from historical BEV embeddings. These BEV features are then conveyed to the world decoder for future occupancy and flow forecasting, considering both geometry and spatiotemporal modeling. Additionally, I propose injecting flexible action conditions, such as velocity, steering angle, trajectory, and commands, into the world model to enable controllable generation and facilitate a broader range of downstream applications.
+            I developed <b>Voxel4D</b>, a system that uses only camera images to predict how the world will change over the next few seconds. The system works in three main steps. First, it converts camera images into a bird's-eye view representation that shows where objects are in 3D space. Second, it uses a memory system that tracks how things have been moving over time, learning patterns like "cars usually stay in lanes" or "pedestrians move toward crosswalks." Third, it can generate different future scenarios based on what the car might do—like "if I turn left, what will the world look like?" or "if I slow down, how will other cars react?"
           </p>
           <p>
-            Furthermore, I explore integrating the generative capabilities of the 4D world model with end-to-end planning, enabling continuous forecasting of future states and the selection of optimal trajectories using an occupancy-based cost function. Extensive experiments on the nuScenes dataset demonstrate that my method can generate plausible and controllable 4D occupancy, opening new avenues for driving world generation and end-to-end planning.
+            The key innovation is that Voxel4D doesn't just predict the future—it uses those predictions to actually plan the car's path. By forecasting what the world will look like for different possible driving actions, the system can choose the safest and most efficient route. I tested this on real-world driving data and showed that Voxel4D can generate realistic predictions and use them to make better driving decisions, opening new possibilities for safer autonomous vehicles.
           </p>
         </div>
       </div>
@@ -121,7 +137,7 @@
         <img src="./static/images/pipeline.png" alt="Voxel4D Pipeline" style="width: 100%; max-width: 1200px;">
         <div class="content has-text-justified">
           <p>
-            <b>Overview of Voxel4D.</b> (a) The <b>history encoder</b> extracts multi-view image features and transforms them into BEV embeddings. (b) The <b>memory queue</b> employs semantic- and motion-conditional normalization to aggregate historical information. (c) The <b>world decoder</b> incorporates action conditions to generate various future occupancies and flows. Integrating the world decoder with an occupancy-based planner enables continuous forecasting and planning.
+            <b>How Voxel4D Works:</b> (a) The <b>history encoder</b> takes images from multiple cameras around the car and converts them into a bird's-eye view that shows where everything is in 3D space. (b) The <b>memory queue</b> keeps track of how objects have been moving over time, learning patterns and building up knowledge about the scene. (c) The <b>world decoder</b> takes different possible actions the car could take (like turning left, speeding up, or slowing down) and generates predictions of what the world will look like in the future. By combining these predictions with a planning system, Voxel4D can continuously forecast future states and choose the best driving path.
           </p>
         </div>
       </div>
@@ -138,7 +154,7 @@
         <h2 class="title is-3">4D Occupancy and Flow Forecasting</h2>
         <div class="content has-text-justified">
           <p>
-            Voxel4D understands how the world evolves by accurately modeling the dynamics of movable objects and the future states of the static environment.
+            Voxel4D predicts how the world will change over time by modeling both moving objects (like cars and pedestrians) and static parts of the environment (like roads and buildings). The "4D" refers to predicting in 3D space (width, height, depth) plus time—showing not just where things are, but where they will be in the future.
           </p>
         </div>
 
@@ -172,7 +188,7 @@
         <h2 class="title is-3">Continuous Forecasting and Planning</h2>
         <div class="content has-text-justified">
           <p>
-            Voxel4D plans trajectories through forecasting future occupancy state and selecting optimal trajectory based on a comprehensive occupancy-based cost function.
+            Voxel4D doesn't just predict the future once—it continuously forecasts what will happen and uses those predictions to plan the car's path. For each possible action the car could take, it predicts what the world will look like, then chooses the path that is safest and most efficient based on avoiding collisions and following traffic rules.
           </p>
         </div>
 
