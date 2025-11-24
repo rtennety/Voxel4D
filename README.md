@@ -21,28 +21,9 @@
 
 - [Train and Evaluation](DOCS/TRAIN_EVAL.MD)
 
-## Demo of 4D Occupancy and Flow Forecasting
-
-Voxel4D understands how the world evolves by accurately modeling the dynamics of movable objects and the future states of the static environment.
-
-### Scene 1 (Lane Change)
-<div style="text-align:center;">
-    <img src="assets/figures/forecasting_1.gif" alt="Local GIF" width="600px" />
-</div>
+# Demos - on project paage
 
 
-## Demo of Continuous Forecasting and Planning (E2E Planning)
-
-Voxel4D plans trajectories through forecasting future occupancy state and selecting optimal trajectory based on a comprehensive occupancy-based cost function.
-
-### Scene 1 (Turn Left to Avoid Stopped Vehicle)
-<div style="text-align:center;">
-    <img src="assets/figures/planning_1.png" width="600px" />
-</div>
-
-<div style="text-align:center;">
-    <img src="assets/figures/planning_1.gif" alt="Local GIF" width="300px" />
-</div>
 
 
 ## Citation
