@@ -308,7 +308,7 @@ img {
 
 .password-header .title {
   color: #363636;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
   font-family: 'Google Sans', sans-serif;
   font-size: 1.75rem;
 }
@@ -316,6 +316,7 @@ img {
 .password-header .subtitle {
   color: #7a7a7a;
   font-size: 0.95rem;
+  margin-top: 0.5rem;
 }
 
 .password-body {
@@ -330,6 +331,7 @@ img {
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 0.75rem 1rem 0.75rem 2.5rem;
+  padding-right: 2.5rem;
   font-size: 1rem;
   transition: all 0.2s ease;
   background: #fafafa;
@@ -345,9 +347,24 @@ img {
   border-color: #ff3860;
 }
 
-.password-body .control.has-icons-left .icon {
+.password-body .control.has-icons-left .icon.is-left {
   color: #7a7a7a;
   left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.password-body .control.has-icons-right .icon.is-right {
+  color: #7a7a7a;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: color 0.2s ease;
+}
+
+.password-body .control.has-icons-right .icon.is-right:hover {
+  color: hsl(204, 86%, 53%);
 }
 
 .password-body .button {

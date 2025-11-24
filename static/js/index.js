@@ -46,6 +46,20 @@ $(document).ready(function() {
         }
     });
     
+    // Password visibility toggle
+    $('#password-toggle').on('click', function() {
+        const input = $('#password-input');
+        const icon = $('#password-toggle-icon');
+        
+        if (input.attr('type') === 'password') {
+            input.attr('type', 'text');
+            icon.removeClass('fa-eye').addClass('fa-eye-slash');
+        } else {
+            input.attr('type', 'password');
+            icon.removeClass('fa-eye-slash').addClass('fa-eye');
+        }
+    });
+    
     // Always show password prompt on page load (no session storage)
     // Focus on password input
     setTimeout(function() {
