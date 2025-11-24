@@ -7,9 +7,7 @@
 **Voxel4D: Vision-Centric 4D Occupancy Forecasting and Planning via World Models for Autonomous Driving**
 
 ## Abstract
-<div style="text-align:center;">
-  <img src="assets/figures/teaser.png" alt="pipeline" width="600">
-</div>
+![teaser](assets/teaser.png)
 
 **4D Occupancy Forecasting and Planning via World Model**. Voxel4D takes observations and trajectories as input, incorporating flexible action conditions for **action-controllable generation**. By leveraging world knowledge and the generative capacity of the world model, I further integrate it with a planner for **continuous forecasting and planning**.
 
