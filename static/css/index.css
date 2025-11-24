@@ -330,7 +330,7 @@ img {
 .password-body .input {
   border: 1px solid #ddd;
   border-radius: 4px;
-  padding: 0.75rem 2.5rem 0.75rem 3.5rem;
+  padding: 0.75rem 2.5rem 0.75rem 3.75rem;
   font-size: 1rem;
   transition: all 0.2s ease;
   background: #fafafa;
@@ -348,7 +348,7 @@ img {
 
 .password-body .control.has-icons-left .icon.is-left {
   color: #7a7a7a;
-  left: 0.75rem;
+  left: 0.6rem;
   height: 100%;
   display: flex;
   align-items: center;
