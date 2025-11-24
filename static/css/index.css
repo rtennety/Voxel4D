@@ -272,10 +272,10 @@ img {
 }
 
 .password-modal {
-  background: #1a1a1a;
+  background: rgba(20, 20, 20, 0.98);
   border: 1px solid #333;
   border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
   max-width: 500px;
   width: 100%;
   padding: 3.5rem 3rem;
@@ -284,7 +284,6 @@ img {
   overflow: hidden;
   z-index: 2;
   backdrop-filter: blur(10px);
-  background: rgba(26, 26, 26, 0.95);
 }
 
 .password-modal::before {
