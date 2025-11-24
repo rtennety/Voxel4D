@@ -350,21 +350,30 @@ img {
 .password-body .control.has-icons-left .icon.is-left {
   color: #7a7a7a;
   left: 0.75rem;
-  top: 50%;
-  transform: translateY(-50%);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   pointer-events: none;
 }
 
 .password-body .control.has-icons-right .icon.is-right {
   color: #7a7a7a;
   right: 0.75rem;
-  top: 50%;
-  transform: translateY(-50%);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: color 0.2s ease;
+  z-index: 10;
 }
 
 .password-body .control.has-icons-right .icon.is-right:hover {
   color: hsl(204, 86%, 53%);
+}
+
+.password-body .control {
+  position: relative;
 }
 
 .password-body .button {

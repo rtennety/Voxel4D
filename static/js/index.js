@@ -47,7 +47,9 @@ $(document).ready(function() {
     });
     
     // Password visibility toggle
-    $('#password-toggle').on('click', function() {
+    $(document).on('click', '#password-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
         const input = $('#password-input');
         const icon = $('#password-toggle-icon');
         
@@ -58,6 +60,15 @@ $(document).ready(function() {
             input.attr('type', 'password');
             icon.removeClass('fa-eye-slash').addClass('fa-eye');
         }
+        return false;
+    });
+    
+    // Also handle click on the icon itself
+    $(document).on('click', '#password-toggle-icon', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $('#password-toggle').click();
+        return false;
     });
     
     // Always show password prompt on page load (no session storage)
