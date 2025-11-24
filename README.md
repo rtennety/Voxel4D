@@ -9,7 +9,6 @@
 **Voxel4D: Vision-Centric 4D Occupancy Forecasting and Planning via World Models for Autonomous Driving - Works inmultiple conditions, rain, snow, night, etc.** 
 
 ## Abstract
-![teaser](assets/figures/1.png)
 
 **4D Occupancy Forecasting and Planning via World Model**. Voxel4D takes observations and trajectories as input, incorporating flexible action conditions for **action-controllable generation**. By leveraging world knowledge and the generative capacity of the world model, I further integrate it with a planner for **continuous forecasting and planning**.
 
@@ -31,16 +30,6 @@ Voxel4D understands how the world evolves by accurately modeling the dynamics of
     <img src="assets/figures/forecasting_1.gif" alt="Local GIF" width="600px" />
 </div>
 
-### Scene 2 (Pedestrian Crossing)
-<div style="text-align:center;">
-    <img src="assets/figures/forecasting_2.gif" alt="Local GIF" width="600px" />
-</div>
-
-### Scene 3 (Vehicle Following)
-<div style="text-align:center;">
-    <img src="assets/figures/forecasting_3.gif" alt="Local GIF" width="600px" />
-</div>
-
 
 ## Demo of Continuous Forecasting and Planning (E2E Planning)
 
@@ -53,24 +42,6 @@ Voxel4D plans trajectories through forecasting future occupancy state and select
 
 <div style="text-align:center;">
     <img src="assets/figures/planning_1.gif" alt="Local GIF" width="300px" />
-</div>
-
-### Scene 2 (Slowing Down to Wait for Crossing Pedestrians)
-<div style="text-align:center;">
-    <img src="assets/figures/planning_2.png" width="600px" />
-</div>
-
-<div style="text-align:center;">
-    <img src="assets/figures/planning_2.gif" alt="Local GIF" width="300px" />
-</div>
-
-### Scene 3 (Turn Right to Avoid Stopped Vehicle)
-<div style="text-align:center;">
-    <img src="assets/figures/planning_3.png" width="600px" />
-</div>
-
-<div style="text-align:center;">
-    <img src="assets/figures/planning_3.gif" alt="Local GIF" width="300px" />
 </div>
 
 
