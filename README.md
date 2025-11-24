@@ -82,7 +82,6 @@ If you use Voxel4D in an academic work, please cite my paper:
 @inproceedings{tennety2024voxel4d,
   author = {Rohan Tennety},
   title = {{Voxel4D: Vision-Centric 4D Occupancy Forecasting and Planning via World Models for Autonomous Driving}},
-  journal={arXiv preprint arXiv:2311.17663},
   year = {2025}
 }
 ```
