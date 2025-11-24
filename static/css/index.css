@@ -155,3 +155,17 @@ body {
 #interpolation-image-wrapper img {
   border-radius: 5px;
 }
+
+pre {
+  overflow-x: auto;
+  white-space: pre;
+  word-wrap: normal;
+}
+
+pre code {
+  display: block;
+  overflow-x: auto;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
