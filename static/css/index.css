@@ -431,20 +431,32 @@ img {
   -moz-osx-font-smoothing: unset;
   font-smooth: never;
   text-rendering: optimizeSpeed;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  vertical-align: middle;
 }
 
-.password-body .button span {
+.password-body .button > span:first-child {
   display: inline-flex;
   align-items: center;
+  line-height: 1;
+  vertical-align: middle;
 }
 
 .password-body .button .icon {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  line-height: 1;
+  vertical-align: middle;
+  height: auto;
+}
+
+.password-body .button .icon i {
+  vertical-align: middle;
+  line-height: 1;
 }
 
 .password-body .button:hover {
