@@ -24,6 +24,9 @@
 # Demos - on project page
 ## [![Custom badge](https://img.shields.io/badge/Project-Page-blue)](https://rtennety.github.io/Voxel4D/)
 
+### Short Demo
+![demo](assets/figures/forecasting_2.gif)
+
 
 
 ## Related Project: 
