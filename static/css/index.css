@@ -290,13 +290,15 @@ img {
 .password-notice {
   position: absolute;
   top: -2.5rem;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   font-family: 'Press Start 2P', 'Courier New', monospace;
   font-size: 0.5rem;
   color: #b0b0b0;
-  text-align: left;
+  text-align: center;
   line-height: 1.4;
-  max-width: 400px;
+  max-width: 500px;
+  width: 100%;
   z-index: 10;
   -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: unset;
