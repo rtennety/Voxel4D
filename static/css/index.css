@@ -441,7 +441,7 @@ img {
 .password-body .button > span:first-child {
   display: flex;
   align-items: center;
-  padding-top: 4px;
+  padding-top: 6px;
 }
 
 .password-body .button .icon {
