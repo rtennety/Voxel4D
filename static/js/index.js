@@ -12,7 +12,7 @@ $(document).ready(function() {
     
     // Handle password submission
     function handlePasswordSubmit() {
-        const password = $('#password-input').val();
+        const password = $('#password-input').val().trim();
         const errorDiv = $('#password-error');
         
         if (password === SITE_PASSWORD) {
