@@ -431,6 +431,20 @@ img {
   -moz-osx-font-smoothing: unset;
   font-smooth: never;
   text-rendering: optimizeSpeed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.password-body .button span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.password-body .button .icon {
+  display: inline-flex;
+  align-items: center;
 }
 
 .password-body .button:hover {
