@@ -172,12 +172,6 @@
           <p>
             The key innovation is that Voxel4D doesn't just predict the future. It uses those predictions to actually plan the car's path. By forecasting what the world will look like for different possible driving actions, the system can choose the safest and most efficient route. I tested this on real-world driving data and showed that Voxel4D can generate realistic predictions and use them to make better driving decisions, opening new possibilities for safer autonomous vehicles.
           </p>
-          <p>
-            What makes Voxel4D special is its ability to understand both the geometry and the motion of everything around the car. Traditional systems might only see where objects are right now, but Voxel4D sees where they're going. It tracks not just cars and pedestrians, but also understands how the entire 3D space around the vehicle will be occupied in the future. This includes predicting both moving objects (like vehicles changing lanes) and static elements (like how the road itself appears from different angles as the car moves).
-          </p>
-          <p>
-            The system is also flexible in how it receives instructions. I can tell it to consider different driving actions, such as specific velocities, steering angles, or even high-level commands like "turn left" or "slow down." This allows the system to explore multiple possible futures before making a decision, similar to how a human driver might think "if I turn here, what could go wrong?" before actually turning.
-          </p>
         </div>
       </div>
     </div>
@@ -193,19 +187,7 @@
         </div>
         <div class="content has-text-justified">
           <p>
-            <b>How Voxel4D Works:</b> The system has three main components that work together to predict the future and plan safe driving paths.
-          </p>
-          <p>
-            <b>(a) History Encoder:</b> The history encoder is like the eyes of the system. It takes images from multiple cameras positioned around the car (typically six cameras that see in all directions) and converts them into what's called a "bird's-eye view" representation. Think of it like looking at a map from above, but instead of just showing roads, it shows where every object is in 3D space. This includes cars, pedestrians, bicycles, and even static objects like traffic signs and buildings. The encoder uses advanced computer vision techniques to understand the geometry of the scene, essentially building a 3D model of the world around the car from 2D camera images.
-          </p>
-          <p>
-            <b>(b) Memory Queue:</b> The memory queue is like the system's memory. It doesn't just look at one moment in time, but keeps track of how things have been moving over the past few seconds. This is crucial because understanding motion helps predict future motion. For example, if a car has been moving to the left for the past two seconds, it's likely to continue moving left. The memory queue accumulates this information using a technique called semantic and motion-conditional normalization, which helps the system focus on the most important features. It learns patterns like "cars usually stay in their lanes" or "pedestrians near crosswalks often cross the street." This accumulated knowledge makes the predictions much more accurate.
-          </p>
-          <p>
-            <b>(c) World Decoder:</b> The world decoder is where the magic happens. It takes the information from the history encoder and memory queue, along with different possible actions the car could take (like turning left, speeding up, or slowing down), and generates predictions of what the world will look like in the future. This is called "action-controllable generation" because the predictions change based on what action you're considering. The decoder models both occupancy (where objects will be) and flow (how they'll move), creating a complete picture of future states. By combining these predictions with a planning system that evaluates safety and efficiency, Voxel4D can continuously forecast future states and choose the best driving path.
-          </p>
-          <p>
-            The entire system works in a loop: it observes the world, predicts what will happen for different actions, chooses the best action, executes it, and then repeats. This continuous cycle allows the car to adapt to changing situations in real-time, making it much safer than systems that only look at the current moment.
+            <b>How Voxel4D Works:</b> (a) The <b>history encoder</b> takes images from multiple cameras around the car and converts them into a bird's-eye view that shows where everything is in 3D space. (b) The <b>memory queue</b> keeps track of how objects have been moving over time, learning patterns and building up knowledge about the scene. (c) The <b>world decoder</b> takes different possible actions the car could take (like turning left, speeding up, or slowing down) and generates predictions of what the world will look like in the future. By combining these predictions with a planning system, Voxel4D can continuously forecast future states and choose the best driving path.
           </p>
         </div>
       </div>
@@ -223,15 +205,6 @@
         <div class="content has-text-justified">
           <p>
             Voxel4D predicts how the world will change over time by modeling both moving objects (like cars and pedestrians) and static parts of the environment (like roads and buildings). The "4D" refers to predicting in 3D space (width, height, depth) plus time, showing not just where things are, but where they will be in the future.
-          </p>
-          <p>
-            <b>Understanding 4D Occupancy:</b> Traditional systems might only detect objects as points or boxes, but Voxel4D understands the full 3D space around the vehicle. It divides the space into small cubes called "voxels" (think of them like 3D pixels) and predicts which voxels will be occupied by objects in the future. This is much more detailed than just knowing "there's a car ahead." The system knows exactly which parts of the 3D space will be filled, including the full shape and size of objects. This level of detail is crucial for safe navigation, especially in complex scenarios like parking lots or intersections where precise spatial understanding matters.
-          </p>
-          <p>
-            <b>Flow Prediction:</b> In addition to predicting where objects will be, Voxel4D also predicts how they'll move. This is called "flow forecasting." For each object, the system predicts its motion vector, which tells you not just where it will be, but the direction and speed it's moving. This is especially important for understanding dynamic scenes. For example, if a pedestrian is walking toward a crosswalk, the flow prediction shows their trajectory, helping the system anticipate when they might enter the road.
-          </p>
-          <p>
-            <b>Why This Matters:</b> By understanding both occupancy and flow, Voxel4D can make much better predictions than systems that only look at current positions. It can anticipate lane changes, predict pedestrian crossings, and understand complex interactions between multiple objects. This comprehensive understanding of future states is what enables safe autonomous driving in real-world scenarios.
           </p>
         </div>
 
@@ -275,18 +248,6 @@
         <div class="content has-text-justified">
           <p>
             Voxel4D doesn't just predict the future once. It continuously forecasts what will happen and uses those predictions to plan the car's path. For each possible action the car could take, it predicts what the world will look like, then chooses the path that is safest and most efficient based on avoiding collisions and following traffic rules.
-          </p>
-          <p>
-            <b>Action-Controllable Generation:</b> One of the key features of Voxel4D is its ability to generate different future scenarios based on different actions. This is called "action-controllable generation." The system can take various inputs to control what kind of future it predicts. For example, I can give it a specific velocity (like "drive at 30 miles per hour") or a steering angle (like "turn 15 degrees to the left"), and it will show me what the world would look like if the car took that action. This flexibility allows the system to explore many possible futures before making a decision, similar to how a human driver might mentally simulate different actions before choosing one.
-          </p>
-          <p>
-            <b>Occupancy-Based Planning:</b> Once the system has predicted multiple possible futures for different actions, it needs to choose the best one. This is where the planning component comes in. The planner uses what's called an "occupancy-based cost function" to evaluate each possible trajectory. This cost function considers several factors: safety (avoiding collisions with predicted future occupancy), efficiency (choosing smooth, fuel-efficient paths), and adherence to traffic rules. By evaluating all possible actions against these criteria, the system selects the optimal path.
-          </p>
-          <p>
-            <b>Continuous Operation:</b> The system doesn't just plan once and execute. Instead, it works in a continuous loop. Every fraction of a second, it observes the current state, predicts futures for different actions, selects the best action, and executes it. Then it immediately starts the process again with the new observations. This continuous operation allows the system to adapt to unexpected changes, like a car suddenly braking ahead or a pedestrian stepping into the road. The predicted future state and selected optimal trajectory are fed back into the world model for the next cycle, creating a seamless integration between perception, prediction, and planning.
-          </p>
-          <p>
-            <b>Real-World Benefits:</b> This approach has significant advantages over traditional planning methods. Because the system understands future occupancy in detail, it can avoid collisions more effectively. It can also handle complex scenarios that would confuse simpler systems, such as navigating through construction zones, handling multiple pedestrians crossing at once, or dealing with vehicles making unexpected lane changes. The continuous nature of the system means it's always ready to adapt, making it much safer for real-world autonomous driving.
           </p>
         </div>
 
