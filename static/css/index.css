@@ -418,14 +418,19 @@ img {
 }
 
 .password-body .button {
-  font-weight: 500;
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  font-weight: normal;
   letter-spacing: 0.3px;
   transition: all 0.2s ease;
   background-color: #ffffff;
   border-color: #ffffff;
   color: #1a1a1a;
   padding: 0.75rem 1.5rem;
-  font-size: 1rem;
+  font-size: 0.7rem;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
+  font-smooth: never;
+  text-rendering: optimizeSpeed;
 }
 
 .password-body .button:hover {
