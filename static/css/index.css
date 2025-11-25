@@ -449,7 +449,7 @@ img {
   align-items: center;
   justify-content: center;
   font-size: 1.1em;
-  padding-top: 4px;
+  padding-top: 0px;
 }
 
 .password-body .button .icon i {
