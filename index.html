@@ -189,9 +189,6 @@
           <p>
             <b>How Voxel4D Works:</b> (a) The <b>history encoder</b> takes images from multiple cameras around the car and converts them into a bird's-eye view that shows where everything is in 3D space. (b) The <b>memory queue</b> keeps track of how objects have been moving over time, learning patterns and building up knowledge about the scene. (c) The <b>world decoder</b> takes different possible actions the car could take (like turning left, speeding up, or slowing down) and generates predictions of what the world will look like in the future. By combining these predictions with a planning system, Voxel4D can continuously forecast future states and choose the best driving path.
           </p>
-          <p>
-            <b>Understanding Bird's-Eye View:</b> A bird's-eye view is like looking at the world from directly above, similar to how you might see a map or a satellite image. Instead of seeing the world from the car's forward-facing perspective (like looking through a windshield), the system transforms the images from multiple cameras positioned around the car into a unified top-down representation. This is crucial because each camera only sees part of the scene from its own angle, but the car needs to understand where everything is relative to itself in a consistent way. By converting all these different camera views into a single bird's-eye view, the system creates a map-like representation where it can see the positions of all objects (cars, pedestrians, roads, buildings) from above, making it much easier to understand spatial relationships, calculate distances, and predict how objects will move relative to the car. Think of it like having a real-time overhead map that shows exactly where everything is around the vehicle, which is essential for safe navigation and future prediction.
-          </p>
         </div>
       </div>
     </div>
