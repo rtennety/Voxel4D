@@ -1,6 +1,6 @@
 $(document).ready(function() {
     // ========== PASSWORD PROTECTION ==========
-    const SITE_PASSWORD = 'autonomous';
+    const SITE_PASSWORD = 'autonomous4d';
     
     // Show main content and hide password overlay
     function showMainContent() {
