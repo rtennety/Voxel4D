@@ -433,25 +433,23 @@ img {
   text-rendering: optimizeSpeed;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
+  gap: 0.5rem;
 }
 
 .password-body .button > span:first-child {
-  flex: 1;
-  text-align: center;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding-top: 2px;
+  padding-top: 4px;
 }
 
 .password-body .button .icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: auto;
   font-size: 1.1em;
+  padding-top: 4px;
 }
 
 .password-body .button .icon i {
