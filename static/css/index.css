@@ -443,6 +443,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 2px;
 }
 
 .password-body .button .icon {
