@@ -237,8 +237,18 @@ img {
   margin-bottom: 1rem;
 }
 
+.title.is-5 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
 .image-protected {
-  margin: 1rem 0;
+  margin: 1rem auto;
+  display: block;
+}
+
+.content.has-text-centered .image-protected {
+  margin: 1.5rem auto;
 }
 
 /* Password Protection Styles */
