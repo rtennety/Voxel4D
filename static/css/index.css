@@ -193,22 +193,10 @@ img {
 }
 
 /* Image container with overlay protection */
-/* Video-style GIF container */
-.gif-video-container {
-  display: inline-block;
-  margin: 1.5rem auto;
-  max-width: 600px;
-  width: 100%;
-}
-
-.gif-video {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+/* Simple image styling to match Drive-OccWorld */
+img {
   display: block;
   margin: 0 auto;
-  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* Ensure consistent spacing and alignment */
