@@ -242,14 +242,6 @@ img {
   margin-bottom: 0.75rem;
 }
 
-.image-protected {
-  margin: 1rem auto;
-  display: block;
-}
-
-.content.has-text-centered .image-protected {
-  margin: 1.5rem auto;
-}
 
 /* Password Protection Styles */
 .password-overlay {
