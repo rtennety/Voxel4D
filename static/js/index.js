@@ -84,6 +84,53 @@ $(document).ready(function() {
       $(".navbar-menu").toggleClass("is-active");
     });
 
+    // ========== GIF FULLSCREEN MODAL ==========
+    
+    // Open fullscreen modal when play button is clicked
+    $(document).on('click', '.play-pause-btn', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const $wrapper = $(this).closest('.gif-video-wrapper');
+        const $gif = $wrapper.find('.gif-as-video');
+        const gifSrc = $gif.attr('src');
+        const gifAlt = $gif.attr('alt');
+        
+        // Create fullscreen modal
+        const $modal = $('<div class="gif-fullscreen-modal">' +
+            '<div class="gif-fullscreen-overlay"></div>' +
+            '<div class="gif-fullscreen-content">' +
+            '<button class="gif-fullscreen-close">×</button>' +
+            '<img src="' + gifSrc + '" alt="' + gifAlt + '" class="gif-fullscreen-img">' +
+            '</div>' +
+            '</div>');
+        
+        $('body').append($modal);
+        $modal.fadeIn(300);
+        
+        // Prevent body scroll when modal is open
+        $('body').css('overflow', 'hidden');
+    });
+    
+    // Close fullscreen modal
+    $(document).on('click', '.gif-fullscreen-close, .gif-fullscreen-overlay', function(e) {
+        e.preventDefault();
+        $('.gif-fullscreen-modal').fadeOut(300, function() {
+            $(this).remove();
+            $('body').css('overflow', '');
+        });
+    });
+    
+    // Close on Escape key
+    $(document).on('keydown', function(e) {
+        if (e.key === 'Escape' && $('.gif-fullscreen-modal').length > 0) {
+            $('.gif-fullscreen-modal').fadeOut(300, function() {
+                $(this).remove();
+                $('body').css('overflow', '');
+            });
+        }
+    });
+
     var options = {
 			slidesToScroll: 1,
 			slidesToShow: 3,
