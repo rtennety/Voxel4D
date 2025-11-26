@@ -1,4 +1,4 @@
-# Voxel4D: Vision-Centric 4D Occupancy Forecasting and Planning via World Models for Autonomous Driving
+# Voxel4D: Vision-Centric 4D Spatial Forecasting and Planning via World Models for Autonomous Driving
 
 ## Info & Videos on Project Website
 
@@ -6,11 +6,11 @@
 
 > **Author:** Rohan Tennety
 
-**Voxel4D: Vision-Centric 4D Occupancy Forecasting and Planning via World Models for Autonomous Driving - Works inmultiple conditions, rain, snow, night, etc.** 
+**Voxel4D: Vision-Centric 4D Spatial Forecasting and Planning via World Models for Autonomous Driving - Works inmultiple conditions, rain, snow, night, etc.** 
 
 ## Abstract
 
-**4D Occupancy Forecasting and Planning via World Model**. Voxel4D takes observations and trajectories as input, incorporating flexible action conditions for **action-controllable generation**. By leveraging world knowledge and the generative capacity of the world model, I further integrate it with a planner for **continuous forecasting and planning**.
+**4D Spatial Forecasting and Planning via World Model**. Voxel4D takes observations and trajectories as input, incorporating flexible action conditions for **action-controllable generation**. By leveraging world knowledge and the generative capacity of the world model, I further integrate it with a planner for **continuous forecasting and planning**.
 
 
 ## Getting Started
@@ -39,7 +39,7 @@ If you use Voxel4D in an academic work, please cite my paper:
 ```bibtext
 @inproceedings{tennety2024voxel4d,
   author = {Rohan Tennety},
-  title = {{Voxel4D: Vision-Centric 4D Occupancy Forecasting and Planning via World Models for Autonomous Driving}},
+  title = {{Voxel4D: Vision-Centric 4D Spatial Forecasting and Planning via World Models for Autonomous Driving}},
   year = {2025}
 }
 ```
