@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Voxel4D: Vision-Centric 4D Spatial Mapping Forecasting and Planning via World Models for Autonomous Driving">
-  <meta name="keywords" content="Voxel4D, 4D Spatial Mapping, Autonomous Driving, World Models, Forecasting, Planning">
+        content="Voxel4D: Vision-Centric 4D Spatial Forecasting and Planning via World Models for Autonomous Driving">
+  <meta name="keywords" content="Voxel4D, 4D Spatial Forecasting, Autonomous Driving, World Models, Forecasting, Planning">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Voxel4D: Vision-Centric 4D Spatial Mapping Forecasting and Planning</title>
+  <title>Voxel4D: Vision-Centric 4D Spatial Forecasting and Planning</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
@@ -94,9 +94,9 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Voxel4D: A Unified Vision-Centric World Model for 4D Spatial Mapping Forecasting and End-to-End Planning in Autonomous Driving</h1>
+          <h1 class="title is-1 publication-title">Voxel4D: A Unified Vision-Centric World Model for 4D Spatial Forecasting and End-to-End Planning in Autonomous Driving</h1>
           <h2 class="subtitle is-4" style="margin-top: 1rem; color: #ccc;">
-            Using vision-centric multi-view cameras, this system predicts future 4D spatial mapping states based on different possible driving actions, enabling real-time forecasting of how the environment will change. These predictions are integrated into an end-to-end planning system that chooses the best driving path based on forecasted spatial mapping, advancing autonomous driving technology.
+            Using vision-centric multi-view cameras, this system predicts future 4D spatial states based on different possible driving actions, enabling real-time forecasting of how the environment will change. These predictions are integrated into an end-to-end planning system that chooses the best driving path based on forecasted spatial information, advancing autonomous driving technology.
           </h2>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
@@ -156,7 +156,7 @@
             <b>The Innovation:</b> The main innovation is the integration of world modeling with end-to-end planning. Most systems separate perception (seeing the world) from planning (deciding what to do). Voxel4D combines them into a unified system where future predictions directly inform planning decisions. This means the system can make more informed choices because it understands not just where objects are now, but where they will be in the future and how different actions will affect those predictions.
           </p>
           <p>
-            Additionally, Voxel4D uses only cameras, making it more affordable than systems that require expensive lidar sensors. It also provides a more detailed understanding of the 3D world by predicting spatial mapping in full 3D space over time, not just detecting objects as boxes. This fine-grained understanding enables safer navigation, especially in complex scenarios like intersections, parking lots, or when dealing with multiple moving objects simultaneously.
+            Additionally, Voxel4D uses only cameras, making it more affordable than systems that require expensive lidar sensors. It also provides a more detailed understanding of the 3D world by predicting spatial states in full 3D space over time, not just detecting objects as boxes. This fine-grained understanding enables safer navigation, especially in complex scenarios like intersections, parking lots, or when dealing with multiple moving objects simultaneously.
           </p>
         </div>
       </div>
@@ -173,7 +173,7 @@
         <h2 class="title is-3">Research Statement</h2>
         <div class="content has-text-justified">
           <p style="font-size: 1.1em; font-weight: 500;">
-            I introduce a unified vision-centric world model framework that addresses the fundamental challenge of action-conditioned future state prediction in autonomous driving. This approach forecasts 4D spatial mapping conditioned on ego-vehicle actions and demonstrates how integrating these forecasts into an end-to-end planning system enables safer and more efficient autonomous navigation.
+            I introduce a unified vision-centric world model framework that addresses the fundamental challenge of action-conditioned future state prediction in autonomous driving. This approach forecasts 4D spatial states conditioned on ego-vehicle actions and demonstrates how integrating these forecasts into an end-to-end planning system enables safer and more efficient autonomous navigation.
           </p>
           <p>
             In simpler terms: This system teaches a self-driving car to predict what the world around it will look like in the next few seconds (based only on cameras) and then uses those predictions to choose the safest path to drive.
@@ -226,7 +226,7 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">4D Spatial Mapping and Flow Forecasting</h2>
+        <h2 class="title is-3">4D Spatial and Flow Forecasting</h2>
         <div class="content has-text-justified">
           <p>
             Voxel4D predicts how the world will change over time by modeling both moving objects (like cars and pedestrians) and static parts of the environment (like roads and buildings). The "4D" refers to predicting in 3D space (width, height, depth) plus time, showing not just where things are, but where they will be in the future.
@@ -324,7 +324,7 @@
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre style="background-color: #1a1a1a; padding: 1rem; border-radius: 5px; overflow-x: auto; color: #ffffff; border: 1px solid #333;"><code style="color: #ffffff;">@article{tennety2024voxel4d,
-      title={Voxel4D: Vision-Centric 4D Spatial Mapping Forecasting and Planning via World Models for Autonomous Driving},
+      title={Voxel4D: Vision-Centric 4D Spatial Forecasting and Planning via World Models for Autonomous Driving},
       author={Tennety, Rohan},
       year={2025}
     }</code></pre>
