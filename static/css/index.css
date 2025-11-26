@@ -24,9 +24,6 @@ body {
   padding-bottom: 3rem;
 }
 
-.teaser .hero-body .image-protected {
-  margin-bottom: 1.5rem;
-}
 
 .teaser {
   font-family: 'Google Sans', sans-serif;
@@ -177,22 +174,6 @@ pre code {
   border: none;
 }
 
-/* Image protection styles */
-img {
-  -webkit-user-drag: none !important;
-  -khtml-user-drag: none !important;
-  -moz-user-drag: none !important;
-  -o-user-drag: none !important;
-  user-drag: none !important;
-  pointer-events: none !important;
-  -webkit-touch-callout: none !important;
-  -webkit-user-select: none !important;
-  -moz-user-select: none !important;
-  -ms-user-select: none !important;
-  user-select: none !important;
-}
-
-/* Image container with overlay protection */
 /* Simple image styling to match Drive-OccWorld */
 img {
   display: block;
