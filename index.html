@@ -207,7 +207,7 @@
               This table shows how well Voxel4D performs compared to other self-driving car systems. The most important metric here is <b>mIoU</b> (mean Intersection over Union), which measures how accurately the system predicts which 3D voxels (tiny 3D cubes of space) will be occupied by objects in the future. Think of it like this: the system divides the space around the car into millions of tiny cubes, and mIoU measures how many of those cubes it correctly predicts will have objects in them. A higher mIoU means better predictions.
             </p>
             <p>
-              The results are excellent: Voxel4D achieves <b>36.3 mIoU</b> on the nuScenes dataset, which is <b>9.5 points higher</b> than the previous best system (26.8). On the Lyft-Level5 dataset, Voxel4D gets <b>39.7 mIoU</b>, which is <b>6.1 points higher</b> than the previous best (33.6). These improvements are significant because in autonomous driving, even small improvements in prediction accuracy can prevent accidents. The table also shows VPQ (Video Panoptic Quality), which measures how well the system tracks objects over time—Voxel4D scores 25.1 on nuScenes and 33.4 on Lyft, both significantly higher than previous methods. These numbers prove that Voxel4D is currently the best system for predicting future 3D space occupancy in self-driving cars.
+              The results are excellent: Voxel4D achieves <b>36.3 mIoU</b> on the nuScenes dataset, which is <b>9.5 points higher</b> than the previous best system (26.8). On the Lyft-Level5 dataset, Voxel4D gets <b>39.7 mIoU</b>, which is <b>6.1 points higher</b> than the previous best (33.6). These improvements are significant because in autonomous driving, even small improvements in prediction accuracy can prevent accidents. The table also shows VPQ (Video Panoptic Quality), which measures how well the system tracks objects over time. Voxel4D scores 25.1 on nuScenes and 33.4 on Lyft, both significantly higher than previous methods. These numbers demonstrate that Voxel4D currently represents the state-of-the-art system for predicting future 3D space occupancy in self-driving cars.
             </p>
           </div>
         </div>
@@ -250,10 +250,10 @@
         
         <!-- Architecture Visualization -->
         <div style="margin-top: 1rem; margin-bottom: 0.5rem;">
-          <img src="./assets/figures/ResearchPaperImages/Voxel4D.png" alt="Voxel4D Architecture" style="width: 100%; max-width: 1200px; display: block;">
+          <img src="./assets/figures/ResearchPaperImages/Voxel4DMain.png" alt="Voxel4D Architecture" style="width: 100%; max-width: 1200px; display: block;">
           <div class="content has-text-justified" style="margin-top: 0.5rem;">
             <p>
-              This diagram shows the complete Voxel4D system architecture. The system works in three main stages: (1) The history encoder takes images from multiple cameras around the car and converts them into a bird's-eye view (like looking at a map from above), (2) The memory queue remembers how objects have been moving over time and learns patterns, and (3) The world decoder predicts what the world will look like in the future based on different actions the car could take. All three components work together as a unified system, which is why Voxel4D performs so well—each part is designed to work perfectly with the others.
+              This diagram shows the complete Voxel4D system architecture. The system operates through three main stages: (1) The history encoder processes images from multiple cameras around the car and converts them into a bird's-eye view representation, (2) The memory queue accumulates temporal information about object movements and learns behavioral patterns, and (3) The world decoder generates predictions of future environmental states based on different possible actions the car could take. All three components function as an integrated system, with each part optimized to work synergistically with the others, which explains Voxel4D's superior performance.
             </p>
           </div>
         </div>
@@ -263,7 +263,7 @@
           <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163220.png" alt="BEV Features Visualization" style="width: 100%; max-width: 1200px;">
           <div class="content has-text-justified" style="margin-top: 1rem;">
             <p>
-              This image shows one of Voxel4D's key innovations: semantic-conditional normalization. On the left, you see the "before" version—the system's view of the world is blurry and it's hard to distinguish between different objects. On the right, after applying the normalization technique, the system can clearly see and identify vehicles (shown in bright colors), pedestrians, and other objects. This improvement is crucial because it helps the system make better predictions about where objects will be in the future. The brighter and clearer the features, the more accurately the system can predict future collisions and plan safe paths.
+              This image demonstrates one of Voxel4D's key innovations: semantic-conditional normalization. The left side shows the "before" version, where the system's view of the world appears blurry and objects are difficult to distinguish. The right side, after applying the normalization technique, shows clear identification of vehicles, pedestrians, and other objects, represented by distinct color coding. This enhancement is crucial because it enables more accurate predictions of future object locations. The improved feature clarity directly translates to better collision prediction and safer path planning capabilities.
             </p>
           </div>
         </div>
@@ -286,7 +286,7 @@
           <img src="./assets/figures/ResearchPaperImages/Abalation/Screenshot 2025-11-26 165847.png" alt="Ablation Study Table 1" style="width: 100%; max-width: 1200px;">
           <div class="content has-text-justified" style="margin-top: 1rem;">
             <p>
-              This table shows an "ablation study"—a scientific way to test which parts of the system are most important. Think of it like testing a recipe: you try making it with and without each ingredient to see which ones matter most. The table shows the system's performance (measured in mIoU) when we add each component one by one. The results are impressive: each component makes the system better, and when all components work together, the system achieves its best performance. This proves that every part of Voxel4D is necessary and contributes to making it the best system available.
+              This table presents an ablation study, which is a systematic experimental approach to determine which components of the system are most critical for performance. The methodology involves testing the system with and without each component to quantify individual contributions. The table displays performance metrics (measured in mIoU) as each component is incrementally added. The results demonstrate that each component contributes meaningfully to system performance, and the full system configuration achieves optimal results. This validates that every component of Voxel4D is essential and contributes to its state-of-the-art performance.
             </p>
           </div>
         </div>
@@ -295,7 +295,7 @@
           <img src="./assets/figures/ResearchPaperImages/Abalation/Screenshot 2025-11-26 165851.png" alt="Ablation Study Table 2" style="width: 100%; max-width: 1200px;">
           <div class="content has-text-justified" style="margin-top: 1rem;">
             <p>
-              This table specifically tests Voxel4D's two key innovations: semantic normalization and action conditioning. The numbers show that both innovations significantly improve the system's accuracy. When we add semantic normalization, the mIoU score increases, meaning the system predicts future voxel occupancy more accurately. When we add action conditioning (the ability to predict different futures for different actions), the system gets even better. These results prove that these innovations are not just theoretical—they actually make the system work much better in practice.
+              This table specifically evaluates Voxel4D's two key innovations: semantic normalization and action conditioning. The quantitative results demonstrate that both innovations significantly improve system accuracy. Adding semantic normalization increases the mIoU score, indicating more accurate prediction of future voxel occupancy. Incorporating action conditioning, which enables prediction of different future states based on different actions, further enhances system performance. These results validate that these innovations provide substantial practical improvements, not just theoretical benefits.
             </p>
           </div>
         </div>
@@ -304,7 +304,7 @@
           <img src="./assets/figures/ResearchPaperImages/Abalation/Screenshot 2025-11-26 165856.png" alt="Ablation Study Table 3" style="width: 100%; max-width: 1200px;">
           <div class="content has-text-justified" style="margin-top: 1rem;">
             <p>
-              This table tests how much historical information the system needs to make good predictions. The results show that using more history (remembering more past frames) improves accuracy, but there's a balance—too much history slows the system down. The optimal configuration uses 2-3 frames of history, which gives excellent accuracy (around 15.1 mIoU) while keeping the system fast enough for real-time driving. These numbers demonstrate that Voxel4D is both accurate and practical for real-world use.
+              This table evaluates how much historical information the system requires for optimal predictions. The results indicate that incorporating more historical frames improves accuracy, but there is a trade-off between accuracy and computational efficiency. The optimal configuration uses 2-3 frames of history, achieving excellent accuracy (approximately 15.1 mIoU) while maintaining real-time performance suitable for autonomous driving applications. These results demonstrate that Voxel4D achieves both high accuracy and practical deployability.
             </p>
           </div>
         </div>
@@ -314,7 +314,7 @@
           <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163340.png" alt="Latency and Performance Table" style="width: 100%; max-width: 1200px;">
           <div class="content has-text-justified" style="margin-top: 1rem;">
             <p>
-              This table shows that Voxel4D is not only accurate but also fast enough for real-world use. "Latency" means how long it takes the system to process information and make a prediction. For self-driving cars, the system needs to be fast—ideally under 500 milliseconds (half a second). The table shows that Voxel4D achieves excellent results: with the best configuration (2 history frames, memory length 3), it takes only about 400 milliseconds while achieving 15.1 mIoU, which is outstanding accuracy. This proves that Voxel4D can run in real-time on actual self-driving cars, making it practical for real-world deployment, not just a research project.
+              This table demonstrates that Voxel4D achieves both high accuracy and real-time performance suitable for practical deployment. Latency refers to the time required for the system to process information and generate predictions. For autonomous driving applications, systems must operate with latency under 500 milliseconds to enable safe real-time decision-making. The table shows that Voxel4D achieves excellent performance with the optimal configuration (2 history frames, memory length 3), processing in approximately 400 milliseconds while maintaining 15.1 mIoU accuracy. This validates that Voxel4D can operate in real-time on actual autonomous vehicles, demonstrating practical deployability beyond research applications.
             </p>
           </div>
         </div>
@@ -324,7 +324,7 @@
           <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163301.png" alt="Semantic Loss Analysis Table" style="width: 100%; max-width: 1200px;">
           <div class="content has-text-justified" style="margin-top: 1rem;">
             <p>
-              When training an AI system, we need to tell it how well it's doing—this is called a "loss function." This table tests different ways of measuring the system's performance during training. The results show that using semantic information (knowing what type of object each voxel contains, like "car" or "pedestrian") significantly improves the system's accuracy. The numbers in the table demonstrate that Voxel4D's approach of using semantic supervision is the best way to train the system, leading to better predictions of both where objects will be (occupancy) and how they'll move (flow). This validates that the semantic normalization innovation is crucial for achieving the excellent results shown in the benchmark tables.
+              During neural network training, a loss function quantifies how well the system is performing. This table compares different loss function formulations for measuring system performance during training. The results demonstrate that incorporating semantic information, which identifies the object type contained in each voxel (such as "car" or "pedestrian"), significantly improves system accuracy. The quantitative results show that Voxel4D's approach of using semantic supervision provides optimal training performance, leading to improved predictions of both object locations (occupancy) and motion patterns (flow). This validates that the semantic normalization innovation is essential for achieving the excellent results demonstrated in the benchmark tables.
             </p>
           </div>
         </div>
@@ -453,7 +453,7 @@
           <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163408.png" alt="Action-Controllable Generation" style="width: 100%; max-width: 1200px;">
           <div class="content has-text-justified" style="margin-top: 1rem;">
             <p>
-              This is one of Voxel4D's most important innovations: the ability to predict different futures based on different actions. The system can answer "what-if" questions: "What if I turn left?" "What if I speed up?" "What if I slow down?" The image shows two examples: steering angle (turning) and velocity (speed). When the system predicts what happens if the car goes fast (high velocity), it shows the car getting dangerously close to pedestrians. When it predicts what happens if the car goes slow (low velocity), it maintains a safe distance. This ability to simulate different futures before taking action is what makes Voxel4D safer than systems that just react to the present moment—it can evaluate the safety of actions before actually doing them.
+              This demonstrates one of Voxel4D's most significant innovations: action-conditioned future prediction, which enables the system to generate different future scenarios based on different possible actions. The system can evaluate hypothetical scenarios such as "What if I turn left?" "What if I accelerate?" or "What if I decelerate?" The image illustrates two examples: steering angle variation and velocity variation. When predicting outcomes for high velocity scenarios, the system identifies that the vehicle would approach dangerously close to pedestrians. For low velocity scenarios, the system predicts that a safe distance would be maintained. This capability to simulate multiple future outcomes before executing actions distinguishes Voxel4D from reactive systems, as it enables safety evaluation of potential actions prior to execution.
             </p>
           </div>
         </div>
@@ -463,7 +463,7 @@
           <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163416.png" alt="Continuous Forecasting and Planning" style="width: 100%; max-width: 1200px;">
           <div class="content has-text-justified" style="margin-top: 1rem;">
             <p>
-              These visualizations show Voxel4D actually planning and driving in real scenarios. The top row shows what the cameras see, and the bottom row shows what Voxel4D predicts will happen and what path it chooses (shown with red arrows). The results are excellent: the system successfully avoids stopped cars by turning around them, handles rainy conditions (which are harder for cameras), and politely slows down to let pedestrians cross before continuing. These examples prove that Voxel4D doesn't just predict the future—it uses those predictions to make smart, safe driving decisions in real-time.
+              These visualizations demonstrate Voxel4D's planning and navigation capabilities in real-world scenarios. The top row displays camera inputs, while the bottom row shows Voxel4D's predicted future states and selected trajectories (indicated by red arrows). The results demonstrate successful performance: the system effectively avoids stopped vehicles through evasive maneuvers, maintains functionality in rainy conditions that challenge camera-based perception, and appropriately yields to pedestrians by decelerating. These examples validate that Voxel4D not only predicts future states but also utilizes those predictions to make intelligent, safe driving decisions in real-time.
             </p>
           </div>
         </div>
@@ -473,7 +473,7 @@
           <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163427.png" alt="Planning Scenarios" style="width: 100%; max-width: 1200px;">
           <div class="content has-text-justified" style="margin-top: 1rem;">
             <p>
-              More examples of Voxel4D successfully planning safe paths in different situations. The system handles complex scenarios like lane changes, navigating intersections, and interacting with pedestrians—all situations that are challenging for self-driving cars. The consistent success across these diverse scenarios proves that Voxel4D's approach of combining future prediction with planning works well in many different real-world situations, not just specific test cases.
+              Additional examples demonstrate Voxel4D's successful planning of safe trajectories across diverse situations. The system effectively handles complex scenarios including lane changes, intersection navigation, and pedestrian interactions, all of which present significant challenges for autonomous driving systems. The consistent performance across these varied scenarios validates that Voxel4D's approach of integrating future prediction with planning generalizes well to diverse real-world conditions beyond specific test cases.
             </p>
           </div>
         </div>
@@ -492,7 +492,7 @@
           <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163455.png" alt="Additional Results 2" style="width: 100%; max-width: 1200px;">
           <div class="content has-text-justified" style="margin-top: 1rem;">
             <p>
-              This table shows how well Voxel4D handles complex situations with many objects moving at once—like busy intersections with multiple cars, pedestrians, and cyclists. The results are impressive: even in these challenging scenarios, Voxel4D maintains high accuracy in predicting where all the objects will be. This proves that the system's innovations (semantic normalization and action-controllable generation) work well even when the situation is complicated, which is exactly what's needed for real-world self-driving cars.
+              This table evaluates Voxel4D's performance in complex multi-object scenarios, such as busy intersections with multiple vehicles, pedestrians, and cyclists. The results demonstrate that even in these challenging conditions, Voxel4D maintains high accuracy in predicting future object locations. This validates that the system's key innovations, including semantic normalization and action-controllable generation, function effectively in complex real-world situations, which is essential for practical autonomous driving applications.
             </p>
           </div>
         </div>
@@ -501,7 +501,7 @@
           <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163504.png" alt="Additional Results 3" style="width: 100%; max-width: 1200px;">
           <div class="content has-text-justified" style="margin-top: 1rem;">
             <p>
-              This evaluation tests Voxel4D's ability to predict fine-grained details—not just "there's a car somewhere," but exactly which tiny 3D voxels will be occupied. The results show significant improvements over previous methods, with Voxel4D achieving much higher accuracy in predicting these detailed spatial states. This level of detail is crucial for safe driving in busy urban environments where you need to know exactly where every object is, not just roughly where they are.
+              This evaluation assesses Voxel4D's capability to predict fine-grained spatial details, moving beyond coarse object detection to precise identification of which specific 3D voxels will be occupied. The results demonstrate significant improvements over previous methods, with Voxel4D achieving substantially higher accuracy in predicting these detailed spatial states. This level of precision is essential for safe navigation in dense urban environments where exact object locations are critical for collision avoidance.
             </p>
           </div>
         </div>
@@ -527,7 +527,7 @@
           <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 164722.png" alt="Additional Analysis 1" style="width: 100%; max-width: 1200px;">
           <div class="content has-text-justified" style="margin-top: 1rem;">
             <p>
-              This analysis tests how well Voxel4D's memory system works—how much it needs to remember from the past to make good predictions. The results show that the memory queue (which stores information about how objects have been moving) significantly improves accuracy. The numbers demonstrate that remembering 2-3 frames of history gives the best results, proving that the memory system is a crucial part of why Voxel4D performs so well.
+              This analysis evaluates the effectiveness of Voxel4D's memory system and determines the optimal amount of historical information required for accurate predictions. The results indicate that the memory queue, which stores temporal information about object movements, significantly improves prediction accuracy. The quantitative data demonstrate that retaining 2-3 frames of history provides optimal performance, validating that the memory system is a critical component contributing to Voxel4D's superior performance.
             </p>
           </div>
         </div>
@@ -536,7 +536,7 @@
           <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 164941.png" alt="Additional Analysis 2" style="width: 100%; max-width: 1200px;">
           <div class="content has-text-justified" style="margin-top: 1rem;">
             <p>
-              This table tests Voxel4D's action-conditioning feature—its ability to predict different futures for different actions. The results show that this feature significantly improves the system's planning quality. The numbers prove that being able to simulate "what if I turn left?" vs "what if I go straight?" makes the system much better at choosing safe paths. This validates one of Voxel4D's key innovations.
+              This table evaluates Voxel4D's action-conditioning capability, which enables prediction of different future states based on different possible actions. The results demonstrate that this feature significantly enhances planning quality. The quantitative evidence shows that the ability to simulate alternative scenarios, such as comparing "what if I turn left?" versus "what if I proceed straight?", substantially improves the system's ability to select safe trajectories. This validates one of Voxel4D's key innovations.
             </p>
           </div>
         </div>
@@ -545,7 +545,7 @@
           <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 165409.png" alt="Additional Analysis 3" style="width: 100%; max-width: 1200px;">
           <div class="content has-text-justified" style="margin-top: 1rem;">
             <p>
-              This breakdown shows Voxel4D's performance for different types of objects: cars, pedestrians, cyclists, and static objects like buildings. The results are excellent across all categories—the system accurately predicts where vehicles will be, where pedestrians will be, and where static objects are. This comprehensive performance across all object types proves that Voxel4D is ready for real-world use, where you need to handle all these different types of objects simultaneously.
+              This analysis breaks down Voxel4D's performance across different object categories: vehicles, pedestrians, cyclists, and static objects such as buildings. The results demonstrate excellent performance across all categories, with the system accurately predicting future locations of vehicles, pedestrians, and static objects. This comprehensive performance across diverse object types validates that Voxel4D is suitable for real-world deployment, where simultaneous handling of multiple object types is essential.
             </p>
           </div>
         </div>
@@ -554,7 +554,7 @@
           <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 165433.png" alt="Additional Analysis 4" style="width: 100%; max-width: 1200px;">
           <div class="content has-text-justified" style="margin-top: 1rem;">
             <p>
-              This analysis compares Voxel4D's planning approach (using detailed 3D occupancy predictions) with simpler methods (using bounding boxes). The results clearly show that Voxel4D's approach is much better—it detects collisions more accurately and chooses safer paths. The numbers prove that using fine-grained 3D information for planning, rather than simplified boxes, significantly improves safety. This validates the key innovation of integrating occupancy forecasting with planning.
+              This analysis compares Voxel4D's planning methodology, which utilizes detailed 3D occupancy predictions, with simpler approaches that rely on bounding box representations. The results clearly demonstrate that Voxel4D's approach is superior, providing more accurate collision detection and safer trajectory selection. The quantitative evidence shows that using fine-grained 3D spatial information for planning, rather than simplified geometric representations, significantly enhances safety. This validates the key innovation of integrating occupancy forecasting with planning.
             </p>
           </div>
         </div>
