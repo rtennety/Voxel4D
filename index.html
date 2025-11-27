@@ -249,9 +249,9 @@
         </div>
         
         <!-- Architecture Visualization -->
-        <div style="margin-top: 2rem;">
-          <img src="./assets/figures/ResearchPaperImages/Voxel4D.png" alt="Voxel4D Architecture" style="width: 100%; max-width: 1200px;">
-          <div class="content has-text-justified" style="margin-top: 1rem;">
+        <div style="margin-top: 1rem; margin-bottom: 0.5rem;">
+          <img src="./assets/figures/ResearchPaperImages/Voxel4D.png" alt="Voxel4D Architecture" style="width: 100%; max-width: 1200px; display: block;">
+          <div class="content has-text-justified" style="margin-top: 0.5rem;">
             <p>
               This diagram shows the complete Voxel4D system architecture. The system works in three main stages: (1) The history encoder takes images from multiple cameras around the car and converts them into a bird's-eye view (like looking at a map from above), (2) The memory queue remembers how objects have been moving over time and learns patterns, and (3) The world decoder predicts what the world will look like in the future based on different actions the car could take. All three components work together as a unified system, which is why Voxel4D performs so well—each part is designed to work perfectly with the others.
             </p>
@@ -477,26 +477,9 @@
             </p>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- Additional Results and Analysis -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Additional Experimental Results</h2>
-        <div class="content has-text-justified">
-          <p>
-            The following figures and tables provide additional insights into the system's performance, including detailed analyses of different components and their contributions to the overall framework.
-          </p>
-        </div>
         
-        <!-- Additional Results Images -->
-        <div style="margin-top: 2rem;">
+        <!-- Additional Results Images (from upload 2 - moved here after upload 3) -->
+        <div style="margin-top: 3rem;">
           <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163443.png" alt="Additional Results 1" style="width: 100%; max-width: 1200px;">
           <div class="content has-text-justified" style="margin-top: 1rem;">
             <p>
@@ -521,6 +504,23 @@
               This evaluation tests Voxel4D's ability to predict fine-grained details—not just "there's a car somewhere," but exactly which tiny 3D voxels will be occupied. The results show significant improvements over previous methods, with Voxel4D achieving much higher accuracy in predicting these detailed spatial states. This level of detail is crucial for safe driving in busy urban environments where you need to know exactly where every object is, not just roughly where they are.
             </p>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Additional Results and Analysis -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Additional Experimental Results</h2>
+        <div class="content has-text-justified">
+          <p>
+            The following figures and tables provide additional insights into the system's performance, including detailed analyses of different components and their contributions to the overall framework.
+          </p>
         </div>
         
         <div style="margin-top: 2rem;">
