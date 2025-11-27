@@ -176,18 +176,224 @@
     <!-- Why Voxel4D is Better. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Why Voxel4D is Better</h2>
+        <h2 class="title is-3">Innovations and Contributions</h2>
         <div class="content has-text-justified">
+          <h3 class="title is-4" style="margin-top: 2rem; margin-bottom: 1rem;">Limitations of Current Autonomous Driving Systems</h3>
           <p>
-            Current self-driving systems typically process video frames and make decisions based on the present moment, reacting to what they see rather than predicting what will happen next. Voxel4D addresses this limitation by predicting multiple possible futures based on different driving actions, allowing it to choose the safest path before taking action.
+            Current self-driving systems, such as Tesla, typically process video frames sequentially and make decisions based solely on the present moment. These systems react to what they observe rather than predicting future events. Most existing approaches treat perception (identifying objects) and planning (choosing actions) as separate problems, which can lead to suboptimal performance. Additionally, these systems do not simulate multiple possible futures before selecting an action, limiting their ability to anticipate and prepare for upcoming scenarios.
           </p>
           <p>
-            The key innovation is the integration of world modeling with end-to-end planning. Unlike systems that separate perception from planning, Voxel4D combines them into a unified system where future predictions directly inform planning decisions. Additionally, Voxel4D uses only cameras (more affordable than lidar-based systems) and provides fine-grained 3D spatial understanding over time, enabling safer navigation in complex scenarios.
+            This reactive approach creates several problems: by the time a dangerous situation is detected, it may be too late to avoid it. The system cannot anticipate upcoming scenarios, leading to inefficient navigation. Systems trained on specific scenarios often struggle with new, unseen situations. Furthermore, it is difficult to understand why the system made a particular decision, reducing explainability.
+          </p>
+          
+          <h3 class="title is-4" style="margin-top: 2rem; margin-bottom: 1rem;">Voxel4D's Key Innovations</h3>
+          
+          <h4 class="title is-5" style="margin-top: 1.5rem; margin-bottom: 0.75rem;">Innovation #1: Semantic and Motion-Conditional Normalization</h4>
+          <p>
+            Traditional bird's-eye view features extracted from camera images have a fundamental limitation: features from the same 3D ray often appear similar, making it difficult to distinguish between different objects or understand their semantic meaning. Voxel4D introduces a novel normalization technique that emphasizes semantically important features corresponding to actual objects (vehicles, pedestrians, bicycles), preserves motion information about how objects are moving, and improves the system's ability to distinguish between different objects and their states. This innovation directly contributes to the 9.5% improvement in forecasting accuracy and represents a fundamental improvement in how the system processes visual information.
+          </p>
+          
+          <h4 class="title is-5" style="margin-top: 1.5rem; margin-bottom: 0.75rem;">Innovation #2: Action-Controllable Future Generation</h4>
+          <p>
+            Unlike prediction systems that can only forecast "what will happen," Voxel4D can generate different future predictions based on different ego-vehicle actions. The system can evaluate hypothetical scenarios such as "What if I speed up?" "What if I turn left?" or "What if I follow this specific path?" This capability enables true "what-if" scenario planning, allowing the system to evaluate multiple possible actions before choosing one. This distinguishes Voxel4D from reactive systems like Tesla, which process frame-by-frame and react to the present, making Voxel4D fundamentally more advanced through its proactive approach.
+          </p>
+          
+          <h4 class="title is-5" style="margin-top: 1.5rem; margin-bottom: 0.75rem;">Innovation #3: Occupancy-Based Planning Integration</h4>
+          <p>
+            Most planning systems use simplified representations such as bounding boxes that do not capture the full 3D structure of the environment. Voxel4D uses fine-grained 3D occupancy predictions for planning, enabling more accurate collision detection and safer trajectory selection. The system evaluates candidate trajectories based on predicted occupancy, calculating costs that consider agent safety (avoiding collisions with vehicles and pedestrians), background safety (avoiding static objects), and efficiency (preferring smooth paths). This is the first system to integrate 4D occupancy forecasting directly with end-to-end planning, creating a continuous forecasting and planning loop that adapts as the vehicle drives.
+          </p>
+          
+          <h3 class="title is-4" style="margin-top: 2rem; margin-bottom: 1rem;">Quantitative Performance Improvements</h3>
+          <p>
+            Voxel4D achieves state-of-the-art performance on major autonomous driving benchmarks. On the nuScenes dataset, Voxel4D achieves a 9.5 point improvement in mIoU_f (mean Intersection over Union for forecasting) and a 5.1 point improvement in VPQ_f (Video Panoptic Quality). On the Lyft-Level5 dataset, Voxel4D demonstrates a 6.1 point improvement in mIoU_f and a 5.2 point improvement in VPQ_f. On the nuScenes-Occupancy benchmark, Voxel4D achieves a 4.3% improvement in fine-grained occupancy forecasting. In computer vision research, improvements of 2-3% are considered significant, and improvements of 5-10% represent major breakthroughs. These results demonstrate that Voxel4D currently represents the best performance achieved on these benchmarks.
+          </p>
+          
+          <h3 class="title is-4" style="margin-top: 2rem; margin-bottom: 1rem;">Why These Improvements Matter</h3>
+          <p>
+            Higher prediction accuracy means more accurate forecasts of where objects will be located, directly reducing collision risk. Consistent improvements across multiple datasets demonstrate that the method works effectively in diverse conditions, not just specific test scenarios. Even small improvements in autonomous driving can prevent thousands of accidents, making these quantitative gains highly significant for real-world safety. The integration of world modeling with end-to-end planning enables Voxel4D to make more informed decisions because it understands not just where objects are now, but where they will be in the future and how different actions will affect those predictions.
           </p>
         </div>
       </div>
     </div>
     <!--/ Why Voxel4D is Better. -->
+    
+    <!-- 4D Spatial and Flow Forecasting -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-full-width">
+            <h2 class="title is-3 has-text-centered">4D Spatial and Flow Forecasting</h2>
+            <div class="content has-text-justified">
+              <h3 class="title is-5" style="margin-top: 1rem; margin-bottom: 0.5rem;">What is 4D Spatial Forecasting?</h3>
+              <p>
+                4D Spatial Forecasting is the process of predicting which parts of 3D space will be filled by objects in the future, where the "4D" means predicting in three dimensions (width, height, depth) plus time. In this project, Voxel4D uses 4D Spatial Forecasting to predict where cars, pedestrians, and other objects will be located in 3D space over the next few seconds, allowing the system to anticipate future collisions and plan safer driving paths.
+              </p>
+              <p>
+                Voxel4D predicts how the world will change over time by modeling both moving objects (like cars and pedestrians) and static parts of the environment (like roads and buildings). The "4D" refers to predicting in 3D space (width, height, depth) plus time, showing not just where things are, but where they will be in the future.
+              </p>
+            </div>
+
+            <!-- Scene 1 -->
+            <h3 class="title is-4 has-text-centered">Scene 1 (Lane Change)</h3>
+            <img src="./assets/figures/forecasting_1.png?v=6" alt="Lane Change" style="width: 100%; max-width: 1200px;">
+            <div class="gif-video-wrapper">
+              <img src="./assets/figures/forecasting_1.gif?v=6" alt="Lane Change GIF" class="gif-as-video">
+              <div class="video-controls-overlay">
+                <div class="video-controls">
+                  <button class="play-pause-btn">▶</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Scene 2 -->
+            <h3 class="title is-4 has-text-centered">Scene 2 (Pedestrian Crossing)</h3>
+            <img src="./assets/figures/forecasting_2.png?v=6" alt="Pedestrian Crossing" style="width: 100%; max-width: 1200px;">
+            <div class="gif-video-wrapper">
+              <img src="./assets/figures/forecasting_2.gif?v=6" alt="Pedestrian Crossing GIF" class="gif-as-video">
+              <div class="video-controls-overlay">
+                <div class="video-controls">
+                  <button class="play-pause-btn">▶</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Scene 3 -->
+            <h3 class="title is-4 has-text-centered">Scene 3 (Vehicle Following)</h3>
+            <img src="./assets/figures/forecasting_3.png?v=6" alt="Vehicle Following" style="width: 100%; max-width: 1200px;">
+            <div class="gif-video-wrapper">
+              <img src="./assets/figures/forecasting_3.gif?v=6" alt="Vehicle Following GIF" class="gif-as-video">
+              <div class="video-controls-overlay">
+                <div class="video-controls">
+                  <button class="play-pause-btn">▶</button>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Additional Forecasting Visualizations -->
+            <div style="margin-top: 3rem;">
+              <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163245.png" alt="4D Occupancy Forecasting Examples" style="width: 100%; max-width: 1200px;">
+              <div class="content has-text-justified" style="margin-top: 1rem;">
+                <p>
+                  These visualizations show Voxel4D making predictions in real driving scenarios. The top row shows what the cameras see at different moments in time, and the bottom row shows what Voxel4D predicts will happen in the next 2 seconds. The system accurately predicts complex situations: a car changing lanes, pedestrians crossing the road, and the car following another vehicle. Most impressively, the system works even at night (shown in the third example), which is much harder for cameras than daytime. These results prove that Voxel4D can handle real-world driving conditions, not just perfect laboratory settings.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--/ 4D Spatial and Flow Forecasting -->
+
+    <!-- Continuous Forecasting and Planning -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-full-width">
+            <h2 class="title is-3 has-text-centered">Continuous Forecasting and Planning</h2>
+            <div class="content has-text-justified">
+              <p>
+                Voxel4D doesn't just predict the future once. It continuously forecasts what will happen and uses those predictions to plan the car's path. For each possible action the car could take, it predicts what the world will look like, then chooses the path that is safest and most efficient based on avoiding collisions and following traffic rules.
+              </p>
+            </div>
+
+            <!-- Scene 1 -->
+            <h3 class="title is-4 has-text-centered">Scene 1 (Turn Left to Avoid Stopped Vehicle)</h3>
+            <img src="./assets/figures/planning_1.png?v=2" alt="Planning Scene 1" style="width: 100%; max-width: 1200px;">
+            <div class="gif-video-wrapper">
+              <img src="./assets/figures/planning_1.gif?v=2" alt="Planning Scene 1 GIF" class="gif-as-video">
+              <div class="video-controls-overlay">
+                <div class="video-controls">
+                  <button class="play-pause-btn">▶</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Scene 2 -->
+            <h3 class="title is-4 has-text-centered">Scene 2 (Slowing Down to Wait for Crossing Pedestrians)</h3>
+            <img src="./assets/figures/planning_2.png?v=2" alt="Planning Scene 2" style="width: 100%; max-width: 1200px;">
+            <div class="gif-video-wrapper">
+              <img src="./assets/figures/planning_2.gif?v=2" alt="Planning Scene 2 GIF" class="gif-as-video">
+              <div class="video-controls-overlay">
+                <div class="video-controls">
+                  <button class="play-pause-btn">▶</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Scene 3 -->
+            <h3 class="title is-4 has-text-centered">Scene 3 (Turn Right to Avoid Stopped Vehicle)</h3>
+            <img src="./assets/figures/planning_3.png?v=2" alt="Planning Scene 3" style="width: 100%; max-width: 1200px;">
+            <div class="gif-video-wrapper">
+              <img src="./assets/figures/planning_3.gif?v=2" alt="Planning Scene 3 GIF" class="gif-as-video">
+              <div class="video-controls-overlay">
+                <div class="video-controls">
+                  <button class="play-pause-btn">▶</button>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Action-Controllable Generation Visualization -->
+            <div style="margin-top: 3rem;">
+              <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163408.png" alt="Action-Controllable Generation" style="width: 100%; max-width: 1200px;">
+              <div class="content has-text-justified" style="margin-top: 1rem;">
+                <p>
+                  This demonstrates one of Voxel4D's most significant innovations: action-conditioned future prediction, which enables the system to generate different future scenarios based on different possible actions. The system can evaluate hypothetical scenarios such as "What if I turn left?" "What if I accelerate?" or "What if I decelerate?" The image illustrates two examples: steering angle variation and velocity variation. When predicting outcomes for high velocity scenarios, the system identifies that the vehicle would approach dangerously close to pedestrians. For low velocity scenarios, the system predicts that a safe distance would be maintained. This capability to simulate multiple future outcomes before executing actions distinguishes Voxel4D from reactive systems, as it enables safety evaluation of potential actions prior to execution.
+                </p>
+              </div>
+            </div>
+            
+            <!-- Continuous Forecasting and Planning Visualization -->
+            <div style="margin-top: 3rem;">
+              <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163416.png" alt="Continuous Forecasting and Planning" style="width: 100%; max-width: 1200px;">
+              <div class="content has-text-justified" style="margin-top: 1rem;">
+                <p>
+                  These visualizations demonstrate Voxel4D's planning and navigation capabilities in real-world scenarios. The top row displays camera inputs, while the bottom row shows Voxel4D's predicted future states and selected trajectories (indicated by red arrows). The results demonstrate successful performance: the system effectively avoids stopped vehicles through evasive maneuvers, maintains functionality in rainy conditions that challenge camera-based perception, and appropriately yields to pedestrians by decelerating. These examples validate that Voxel4D not only predicts future states but also utilizes those predictions to make intelligent, safe driving decisions in real-time.
+                </p>
+              </div>
+            </div>
+            
+            <!-- Additional Planning Scenarios -->
+            <div style="margin-top: 3rem;">
+              <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163427.png" alt="Planning Scenarios" style="width: 100%; max-width: 1200px;">
+              <div class="content has-text-justified" style="margin-top: 1rem;">
+                <p>
+                  Additional examples demonstrate Voxel4D's successful planning of safe trajectories across diverse situations. The system effectively handles complex scenarios including lane changes, intersection navigation, and pedestrian interactions, all of which present significant challenges for autonomous driving systems. The consistent performance across these varied scenarios validates that Voxel4D's approach of integrating future prediction with planning generalizes well to diverse real-world conditions beyond specific test cases.
+                </p>
+              </div>
+            </div>
+            
+            <!-- Additional Results Images (from upload 2 - moved here after upload 3) -->
+            <div style="margin-top: 3rem;">
+              <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163443.png" alt="Additional Results 1" style="width: 100%; max-width: 1200px;">
+              <div class="content has-text-justified" style="margin-top: 1rem;">
+                <p>
+                  This analysis shows Voxel4D's performance across many different driving scenarios. The numbers demonstrate that the system consistently achieves excellent results whether it's driving in cities, on highways, in good weather, or challenging conditions. The consistent high performance across diverse situations proves that Voxel4D is robust and reliable, not just good at one specific type of driving scenario.
+                </p>
+              </div>
+            </div>
+            
+            <div style="margin-top: 2rem;">
+              <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163455.png" alt="Additional Results 2" style="width: 100%; max-width: 1200px;">
+              <div class="content has-text-justified" style="margin-top: 1rem;">
+                <p>
+                  This table shows how well Voxel4D handles complex situations with many objects moving at once, like busy intersections with multiple cars, pedestrians, and cyclists. The results are impressive: even in these challenging scenarios, Voxel4D maintains high accuracy in predicting where all the objects will be. This proves that the system's innovations (semantic normalization and action-controllable generation) work well even when the situation is complicated, which is exactly what's needed for real-world self-driving cars.
+                </p>
+              </div>
+            </div>
+            
+            <div style="margin-top: 2rem;">
+              <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163504.png" alt="Additional Results 3" style="width: 100%; max-width: 1200px;">
+              <div class="content has-text-justified" style="margin-top: 1rem;">
+                <p>
+                  This evaluation tests Voxel4D's ability to predict fine-grained details, not just "there's a car somewhere," but exactly which tiny 3D voxels will be occupied. The results show significant improvements over previous methods, with Voxel4D achieving much higher accuracy in predicting these detailed spatial states. This level of detail is crucial for safe driving in busy urban environments where you need to know exactly where every object is, not just roughly where they are.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--/ Continuous Forecasting and Planning -->
 
     <!-- Results: Benchmark Comparison. -->
     <div class="columns is-centered has-text-centered">
@@ -335,180 +541,6 @@
 </section>
 
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3 has-text-centered">4D Spatial and Flow Forecasting</h2>
-        <div class="content has-text-justified">
-          <h3 class="title is-5" style="margin-top: 1rem; margin-bottom: 0.5rem;">What is 4D Spatial Forecasting?</h3>
-          <p>
-            4D Spatial Forecasting is the process of predicting which parts of 3D space will be filled by objects in the future, where the "4D" means predicting in three dimensions (width, height, depth) plus time. In this project, Voxel4D uses 4D Spatial Forecasting to predict where cars, pedestrians, and other objects will be located in 3D space over the next few seconds, allowing the system to anticipate future collisions and plan safer driving paths.
-          </p>
-          <p>
-            Voxel4D predicts how the world will change over time by modeling both moving objects (like cars and pedestrians) and static parts of the environment (like roads and buildings). The "4D" refers to predicting in 3D space (width, height, depth) plus time, showing not just where things are, but where they will be in the future.
-          </p>
-        </div>
-
-        <!-- Scene 1 -->
-        <h3 class="title is-4 has-text-centered">Scene 1 (Lane Change)</h3>
-        <img src="./assets/figures/forecasting_1.png?v=6" alt="Lane Change" style="width: 100%; max-width: 1200px;">
-        <div class="gif-video-wrapper">
-          <img src="./assets/figures/forecasting_1.gif?v=6" alt="Lane Change GIF" class="gif-as-video">
-          <div class="video-controls-overlay">
-            <div class="video-controls">
-              <button class="play-pause-btn">▶</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Scene 2 -->
-        <h3 class="title is-4 has-text-centered">Scene 2 (Pedestrian Crossing)</h3>
-        <img src="./assets/figures/forecasting_2.png?v=6" alt="Pedestrian Crossing" style="width: 100%; max-width: 1200px;">
-        <div class="gif-video-wrapper">
-          <img src="./assets/figures/forecasting_2.gif?v=6" alt="Pedestrian Crossing GIF" class="gif-as-video">
-          <div class="video-controls-overlay">
-            <div class="video-controls">
-              <button class="play-pause-btn">▶</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Scene 3 -->
-        <h3 class="title is-4 has-text-centered">Scene 3 (Vehicle Following)</h3>
-        <img src="./assets/figures/forecasting_3.png?v=6" alt="Vehicle Following" style="width: 100%; max-width: 1200px;">
-        <div class="gif-video-wrapper">
-          <img src="./assets/figures/forecasting_3.gif?v=6" alt="Vehicle Following GIF" class="gif-as-video">
-          <div class="video-controls-overlay">
-            <div class="video-controls">
-              <button class="play-pause-btn">▶</button>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Additional Forecasting Visualizations -->
-        <div style="margin-top: 3rem;">
-          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163245.png" alt="4D Occupancy Forecasting Examples" style="width: 100%; max-width: 1200px;">
-          <div class="content has-text-justified" style="margin-top: 1rem;">
-            <p>
-              These visualizations show Voxel4D making predictions in real driving scenarios. The top row shows what the cameras see at different moments in time, and the bottom row shows what Voxel4D predicts will happen in the next 2 seconds. The system accurately predicts complex situations: a car changing lanes, pedestrians crossing the road, and the car following another vehicle. Most impressively, the system works even at night (shown in the third example), which is much harder for cameras than daytime. These results prove that Voxel4D can handle real-world driving conditions, not just perfect laboratory settings.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3 has-text-centered">Continuous Forecasting and Planning</h2>
-        <div class="content has-text-justified">
-          <p>
-            Voxel4D doesn't just predict the future once. It continuously forecasts what will happen and uses those predictions to plan the car's path. For each possible action the car could take, it predicts what the world will look like, then chooses the path that is safest and most efficient based on avoiding collisions and following traffic rules.
-          </p>
-        </div>
-
-        <!-- Scene 1 -->
-        <h3 class="title is-4 has-text-centered">Scene 1 (Turn Left to Avoid Stopped Vehicle)</h3>
-        <img src="./assets/figures/planning_1.png?v=2" alt="Planning Scene 1" style="width: 100%; max-width: 1200px;">
-        <div class="gif-video-wrapper">
-          <img src="./assets/figures/planning_1.gif?v=2" alt="Planning Scene 1 GIF" class="gif-as-video">
-          <div class="video-controls-overlay">
-            <div class="video-controls">
-              <button class="play-pause-btn">▶</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Scene 2 -->
-        <h3 class="title is-4 has-text-centered">Scene 2 (Slowing Down to Wait for Crossing Pedestrians)</h3>
-        <img src="./assets/figures/planning_2.png?v=2" alt="Planning Scene 2" style="width: 100%; max-width: 1200px;">
-        <div class="gif-video-wrapper">
-          <img src="./assets/figures/planning_2.gif?v=2" alt="Planning Scene 2 GIF" class="gif-as-video">
-          <div class="video-controls-overlay">
-            <div class="video-controls">
-              <button class="play-pause-btn">▶</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Scene 3 -->
-        <h3 class="title is-4 has-text-centered">Scene 3 (Turn Right to Avoid Stopped Vehicle)</h3>
-        <img src="./assets/figures/planning_3.png?v=2" alt="Planning Scene 3" style="width: 100%; max-width: 1200px;">
-        <div class="gif-video-wrapper">
-          <img src="./assets/figures/planning_3.gif?v=2" alt="Planning Scene 3 GIF" class="gif-as-video">
-          <div class="video-controls-overlay">
-            <div class="video-controls">
-              <button class="play-pause-btn">▶</button>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Action-Controllable Generation Visualization -->
-        <div style="margin-top: 3rem;">
-          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163408.png" alt="Action-Controllable Generation" style="width: 100%; max-width: 1200px;">
-          <div class="content has-text-justified" style="margin-top: 1rem;">
-            <p>
-              This demonstrates one of Voxel4D's most significant innovations: action-conditioned future prediction, which enables the system to generate different future scenarios based on different possible actions. The system can evaluate hypothetical scenarios such as "What if I turn left?" "What if I accelerate?" or "What if I decelerate?" The image illustrates two examples: steering angle variation and velocity variation. When predicting outcomes for high velocity scenarios, the system identifies that the vehicle would approach dangerously close to pedestrians. For low velocity scenarios, the system predicts that a safe distance would be maintained. This capability to simulate multiple future outcomes before executing actions distinguishes Voxel4D from reactive systems, as it enables safety evaluation of potential actions prior to execution.
-            </p>
-          </div>
-        </div>
-        
-        <!-- Continuous Forecasting and Planning Visualization -->
-        <div style="margin-top: 3rem;">
-          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163416.png" alt="Continuous Forecasting and Planning" style="width: 100%; max-width: 1200px;">
-          <div class="content has-text-justified" style="margin-top: 1rem;">
-            <p>
-              These visualizations demonstrate Voxel4D's planning and navigation capabilities in real-world scenarios. The top row displays camera inputs, while the bottom row shows Voxel4D's predicted future states and selected trajectories (indicated by red arrows). The results demonstrate successful performance: the system effectively avoids stopped vehicles through evasive maneuvers, maintains functionality in rainy conditions that challenge camera-based perception, and appropriately yields to pedestrians by decelerating. These examples validate that Voxel4D not only predicts future states but also utilizes those predictions to make intelligent, safe driving decisions in real-time.
-            </p>
-          </div>
-        </div>
-        
-        <!-- Additional Planning Scenarios -->
-        <div style="margin-top: 3rem;">
-          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163427.png" alt="Planning Scenarios" style="width: 100%; max-width: 1200px;">
-          <div class="content has-text-justified" style="margin-top: 1rem;">
-            <p>
-              Additional examples demonstrate Voxel4D's successful planning of safe trajectories across diverse situations. The system effectively handles complex scenarios including lane changes, intersection navigation, and pedestrian interactions, all of which present significant challenges for autonomous driving systems. The consistent performance across these varied scenarios validates that Voxel4D's approach of integrating future prediction with planning generalizes well to diverse real-world conditions beyond specific test cases.
-            </p>
-          </div>
-        </div>
-        
-        <!-- Additional Results Images (from upload 2 - moved here after upload 3) -->
-        <div style="margin-top: 3rem;">
-          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163443.png" alt="Additional Results 1" style="width: 100%; max-width: 1200px;">
-          <div class="content has-text-justified" style="margin-top: 1rem;">
-            <p>
-              This analysis shows Voxel4D's performance across many different driving scenarios. The numbers demonstrate that the system consistently achieves excellent results whether it's driving in cities, on highways, in good weather, or challenging conditions. The consistent high performance across diverse situations proves that Voxel4D is robust and reliable, not just good at one specific type of driving scenario.
-            </p>
-          </div>
-        </div>
-        
-        <div style="margin-top: 2rem;">
-          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163455.png" alt="Additional Results 2" style="width: 100%; max-width: 1200px;">
-          <div class="content has-text-justified" style="margin-top: 1rem;">
-            <p>
-              This table evaluates Voxel4D's performance in complex multi-object scenarios, such as busy intersections with multiple vehicles, pedestrians, and cyclists. The results demonstrate that even in these challenging conditions, Voxel4D maintains high accuracy in predicting future object locations. This validates that the system's key innovations, including semantic normalization and action-controllable generation, function effectively in complex real-world situations, which is essential for practical autonomous driving applications.
-            </p>
-          </div>
-        </div>
-        
-        <div style="margin-top: 2rem;">
-          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163504.png" alt="Additional Results 3" style="width: 100%; max-width: 1200px;">
-          <div class="content has-text-justified" style="margin-top: 1rem;">
-            <p>
-              This evaluation assesses Voxel4D's capability to predict fine-grained spatial details, moving beyond coarse object detection to precise identification of which specific 3D voxels will be occupied. The results demonstrate significant improvements over previous methods, with Voxel4D achieving substantially higher accuracy in predicting these detailed spatial states. This level of precision is essential for safe navigation in dense urban environments where exact object locations are critical for collision avoidance.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 <!-- Additional Results and Analysis -->
