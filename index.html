@@ -192,9 +192,41 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Innovations and Contributions</h2>
         <div class="content has-text-justified">
-          <h3 class="title is-4" style="margin-top: 2rem; margin-bottom: 1rem;">Limitations of Current Autonomous Driving Systems</h3>
+          <h3 class="title is-4" style="margin-top: 2rem; margin-bottom: 1rem;">Why Voxel4D is Superior to Current Autonomous Driving Systems</h3>
           <p>
-            Current self-driving systems (Tesla, Waymo) process video frames sequentially, making decisions based solely on the present moment. They react to observations rather than predicting future events, treat perception and planning as separate problems, and do not simulate multiple possible futures before selecting actions. This reactive approach creates safety issues (dangerous situations may be detected too late), inefficiency (cannot anticipate scenarios), poor generalization (struggles with unseen situations), and limited explainability.
+            Current self-driving systems, including industry leaders like Tesla's Full Self-Driving (FSD) and Waymo's autonomous vehicles, operate on fundamentally reactive architectures that process video frames sequentially and make decisions based solely on the present moment. These systems represent the state-of-the-art in commercial autonomous driving, yet they suffer from critical limitations that Voxel4D addresses through revolutionary innovations.
+          </p>
+          
+          <p>
+            <b>The Reactive Problem:</b> Tesla's FSD system, for example, processes camera inputs frame-by-frame, identifying objects in real-time and reacting to immediate threats. While this approach has enabled millions of miles of autonomous driving, it fundamentally cannot anticipate future scenarios. When a pedestrian suddenly appears near a crosswalk, the system must detect them in the current frame before it can react, potentially leaving insufficient time to avoid a collision. Waymo's system, while more sophisticated in its sensor fusion, similarly operates reactively, processing LiDAR and camera data to understand the current scene but not predicting how that scene will evolve.
+          </p>
+          
+          <p>
+            <b>The Modular Disconnect:</b> Perhaps the most significant limitation of current systems is their modular architecture, where perception (identifying objects), prediction (forecasting motion), and planning (choosing actions) are treated as separate, sequential stages. Tesla's system first detects objects, then predicts their trajectories using simple physics models, and finally plans a path. This separation creates a fundamental disconnect: the planner cannot influence what the predictor focuses on, and the predictor cannot adapt to the planner's needs. This leads to suboptimal performance where the system might predict a pedestrian's path accurately but fail to plan appropriately because the prediction wasn't tailored to the planning task.
+          </p>
+          
+          <p>
+            <b>Single-Future Limitation:</b> Current systems cannot simulate multiple possible futures based on different actions the vehicle might take. When approaching an intersection, Tesla's system evaluates the current situation and selects a single action, but it cannot answer "what if I accelerate?" or "what if I turn left?" before making that decision. This means the system cannot proactively evaluate the consequences of different actions, leading to conservative or inefficient driving. In complex scenarios with multiple viable paths, the system cannot compare alternatives to select the optimal one.
+          </p>
+          
+          <p>
+            <b>Simplified Representations:</b> Most planning systems, including those used by commercial autonomous vehicles, rely on simplified geometric representations such as bounding boxes around objects. A car is represented as a rectangular box, a pedestrian as a smaller box. This simplification loses critical information about the 3D structure of objects and the environment. When planning a path through a narrow space or around complex obstacles, these simplified representations can lead to overly conservative planning or, worse, collisions that could have been avoided with more detailed spatial understanding.
+          </p>
+          
+          <p>
+            <b>Real-World Consequences:</b> These limitations manifest in real-world scenarios. A reactive system might brake too late when a pedestrian steps into the road because it only detected the threat in the current frame. A modular system might fail to anticipate that a car changing lanes will continue into the ego-vehicle's path because the prediction module doesn't consider the planning context. A system using bounding boxes might avoid a safe path because it overestimates collision risk due to simplified geometry. These failures, while rare, represent fundamental limitations that cannot be solved by simply improving individual components.
+          </p>
+          
+          <p>
+            <b>Voxel4D's Revolutionary Solution:</b> Voxel4D addresses every one of these limitations through its unified, end-to-end architecture. Unlike reactive systems, Voxel4D predicts future states 2-4 seconds ahead, enabling proactive decision-making. Unlike modular systems, Voxel4D trains perception, prediction, and planning together, allowing them to work synergistically. Unlike single-future systems, Voxel4D generates multiple possible futures based on different actions, enabling optimal path selection. Unlike simplified representations, Voxel4D uses fine-grained 3D occupancy predictions with millions of voxels, enabling precise collision detection. The result is not just an incremental improvement, but a fundamental paradigm shift that addresses the core limitations of current autonomous driving technology.
+          </p>
+          
+          <p>
+            <b>Quantitative Superiority:</b> The superiority of Voxel4D's approach is validated by state-of-the-art performance on major benchmarks. On the nuScenes dataset, Voxel4D achieves a 9.5 point improvement in forecasting accuracy (mIoU) over the previous best system. This improvement is nearly three times the threshold considered a major breakthrough in computer vision research. On the Lyft-Level5 dataset, Voxel4D demonstrates a 6.1 point improvement, and on nuScenes-Occupancy, a 4.3% improvement in fine-grained occupancy forecasting. These consistent improvements across multiple datasets, combined with real-time operation at 401ms latency, demonstrate that Voxel4D is not just theoretically superior but practically deployable.
+          </p>
+          
+          <p>
+            <b>The Innovation Gap:</b> The gap between Voxel4D and current systems is not just a matter of better algorithms or more data. It represents a fundamental difference in approach: reactive versus proactive, modular versus integrated, single-future versus multi-future, simplified versus detailed. This gap explains why Voxel4D achieves such substantial improvements. While current systems are constrained by their architectural limitations, Voxel4D's innovations enable it to leverage the full potential of world modeling for autonomous driving. This is why Voxel4D represents the future of autonomous driving technology, not just an incremental improvement over current systems.
           </p>
           
           <h3 class="title is-4" style="margin-top: 2rem; margin-bottom: 1rem;">Voxel4D's Key Innovations</h3>
