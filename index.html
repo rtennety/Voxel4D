@@ -147,7 +147,7 @@
             I introduce a unified vision-centric world model framework that addresses the fundamental challenge of action-conditioned future state prediction in autonomous driving. This approach forecasts 4D spatial states conditioned on ego-vehicle actions and demonstrates how integrating these forecasts into an end-to-end planning system enables safer and more efficient autonomous navigation.
           </p>
           <p>
-            In simpler terms: This system teaches a self-driving car to predict what the world around it will look like in the next few seconds (based only on cameras) and then uses those predictions to choose the safest path to drive.
+            In simpler terms: This system teaches a self-driving car to predict what the world around it will look like in the next few seconds (based only on cameras) and then uses those predictions to choose the safest path to drive. The fundamental challenge addressed is that current autonomous driving systems react to the present moment, whereas this system proactively predicts multiple possible futures based on different actions the vehicle could take, enabling safer and more intelligent decision-making through anticipation rather than reaction.
           </p>
         </div>
       </div>
@@ -254,7 +254,7 @@
           
           <h3 class="title is-4" style="margin-top: 2rem; margin-bottom: 1rem;">Why These Improvements Matter: Real-World Impact</h3>
           <p>
-            Higher prediction accuracy means more accurate forecasts of where objects will be located, directly reducing collision risk. The 9.5% improvement in mIoU means that for every 1000 voxels the previous best system might misclassify, Voxel4D correctly classifies 95 more, leading to significantly better understanding of the 3D environment. Consistent improvements across multiple datasets demonstrate that the method works effectively in diverse conditions—urban streets, highways, intersections, parking lots, daytime, nighttime, and various weather conditions—not just specific test scenarios.
+            Higher prediction accuracy means more accurate forecasts of where objects will be located, directly reducing collision risk. The 9.5% improvement in mIoU means that for every 1000 voxels the previous best system might misclassify, Voxel4D correctly classifies 95 more, leading to significantly better understanding of the 3D environment. Consistent improvements across multiple datasets demonstrate that the method works effectively in diverse conditions, including urban streets, highways, intersections, parking lots, daytime, nighttime, and various weather conditions, not just specific test scenarios.
           </p>
           <p>
             <b>The Safety Multiplier Effect:</b> Even small improvements in autonomous driving can prevent thousands of accidents when scaled to millions of vehicles. A 5% improvement in prediction accuracy might seem modest, but when applied to the complex, high-stakes environment of autonomous driving, it can mean the difference between safely avoiding a pedestrian and a collision. The integration of world modeling with end-to-end planning enables Voxel4D to make more informed decisions because it understands not just where objects are now, but where they will be in the future and how different actions will affect those predictions. This proactive approach is fundamentally safer than reactive systems that only respond to immediate threats.
@@ -276,10 +276,13 @@
             <div class="content has-text-justified">
               <h3 class="title is-5" style="margin-top: 1rem; margin-bottom: 0.5rem;">What is 4D Spatial Forecasting?</h3>
               <p>
-                4D Spatial Forecasting is the process of predicting which parts of 3D space will be filled by objects in the future, where the "4D" means predicting in three dimensions (width, height, depth) plus time. In this project, Voxel4D uses 4D Spatial Forecasting to predict where cars, pedestrians, and other objects will be located in 3D space over the next few seconds, allowing the system to anticipate future collisions and plan safer driving paths.
+                4D Spatial Forecasting is the process of predicting which parts of 3D space will be filled by objects in the future, where the "4D" means predicting in three dimensions (width, height, depth) plus time. In this project, Voxel4D uses 4D Spatial Forecasting to predict where cars, pedestrians, and other objects will be located in 3D space over the next few seconds, allowing the system to anticipate future collisions and plan safer driving paths. The system divides the space around the vehicle into millions of tiny 3D cubes called "voxels," and for each voxel, it predicts whether that space will be occupied by an object at future time steps.
               </p>
               <p>
-                Voxel4D predicts how the world will change over time by modeling both moving objects (like cars and pedestrians) and static parts of the environment (like roads and buildings). The "4D" refers to predicting in 3D space (width, height, depth) plus time, showing not just where things are, but where they will be in the future.
+                Voxel4D predicts how the world will change over time by modeling both moving objects (like cars and pedestrians) and static parts of the environment (like roads and buildings). The "4D" refers to predicting in 3D space (width, height, depth) plus time, showing not just where things are, but where they will be in the future. This is fundamentally different from object detection systems that only identify what exists in the present moment. Instead, Voxel4D creates a comprehensive spatiotemporal representation that captures both current states and predicted future states, enabling the system to understand not just the static scene but how it will evolve dynamically over time.
+              </p>
+              <p>
+                The mathematical foundation of 4D Spatial Forecasting involves predicting occupancy probabilities for each voxel at each future time step. For a voxel at spatial location (x, y, z) and future time t, the system predicts P(occupied | x, y, z, t), which represents the probability that this voxel will contain an object at time t. This fine-grained prediction enables precise collision detection and safe trajectory planning, as the system knows not just that "there's a car somewhere ahead" but exactly which 3D locations will be occupied at specific future moments.
               </p>
             </div>
 
@@ -326,6 +329,9 @@
                 <p>
                   These visualizations show Voxel4D making predictions in real driving scenarios. The top row shows what the cameras see at different moments in time, and the bottom row shows what Voxel4D predicts will happen in the next 2 seconds. The system accurately predicts complex situations: a car changing lanes, pedestrians crossing the road, and the car following another vehicle. Most impressively, the system works even at night (shown in the third example), which is much harder for cameras than daytime. These results prove that Voxel4D can handle real-world driving conditions, not just perfect laboratory settings.
                 </p>
+                <p>
+                  The mathematical precision of these predictions is remarkable. For each scenario, the system must predict occupancy probabilities for millions of voxels across multiple future time steps, requiring sophisticated neural network computations that process historical information, semantic understanding, and motion patterns. The accuracy demonstrated in these visualizations validates that Voxel4D's innovations, particularly semantic and motion-conditional normalization and action-controllable generation, enable the system to make highly accurate predictions even in challenging conditions like nighttime driving, where visual information is limited and object detection is more difficult.
+                </p>
               </div>
             </div>
           </div>
@@ -342,7 +348,13 @@
             <h2 class="title is-3 has-text-centered">Continuous Forecasting and Planning</h2>
             <div class="content has-text-justified">
               <p>
-                Voxel4D doesn't just predict the future once. It continuously forecasts what will happen and uses those predictions to plan the car's path. For each possible action the car could take, it predicts what the world will look like, then chooses the path that is safest and most efficient based on avoiding collisions and following traffic rules.
+                Voxel4D doesn't just predict the future once. It continuously forecasts what will happen and uses those predictions to plan the car's path. For each possible action the car could take, it predicts what the world will look like, then chooses the path that is safest and most efficient based on avoiding collisions and following traffic rules. This continuous operation creates a feedback loop where the system constantly updates its understanding of the world and adjusts its plans accordingly.
+              </p>
+              <p>
+                The planning process operates on a mathematical foundation where candidate trajectories are evaluated using occupancy-based cost functions. For each potential path, the system calculates costs associated with agent safety (collision risk with other vehicles and pedestrians), background safety (collision risk with static objects), and efficiency (smoothness and adherence to traffic rules). The trajectory with the minimum total cost is selected as the optimal path. This cost-based optimization ensures that the system makes decisions that balance safety, efficiency, and practicality, similar to how a human driver weighs different factors when choosing how to navigate through traffic.
+              </p>
+              <p>
+                The continuous nature of this system means that every 0.5 seconds, new camera images arrive, the system updates its predictions, re-evaluates candidate trajectories, and selects a new optimal path. This real-time adaptation allows Voxel4D to respond to changing conditions, unexpected obstacles, and dynamic traffic situations. The system's ability to continuously update its plans based on the latest information, combined with its capacity to predict multiple possible futures, creates a robust and safe autonomous driving system that can handle the complexity and unpredictability of real-world driving scenarios.
               </p>
             </div>
 
@@ -477,7 +489,10 @@
         <h2 class="title is-3">Comparison with Existing Methods</h2>
         <div class="content has-text-justified">
           <p>
-            The following comparison highlights how Voxel4D differs from and improves upon existing autonomous driving approaches, demonstrating the advantages of integrating world modeling with end-to-end planning.
+            The following comparison highlights how Voxel4D differs from and improves upon existing autonomous driving approaches, demonstrating the advantages of integrating world modeling with end-to-end planning. Understanding these differences is crucial for appreciating the magnitude of Voxel4D's innovation and its potential impact on autonomous driving technology.
+          </p>
+          <p>
+            Most existing autonomous driving systems can be categorized into several groups: (1) systems that use world models only for data generation, creating synthetic training data but not using the world model during actual driving, (2) systems that use world models for pretraining other components but don't integrate them with planning, (3) systems that plan using current perception but don't predict future states, and (4) systems that predict future occupancy but don't integrate those predictions with planning. Voxel4D is unique because it integrates all of these capabilities into a unified system that uses world modeling for real-time planning during actual driving operations.
           </p>
         </div>
         
@@ -486,6 +501,12 @@
           <div class="content has-text-justified" style="margin-top: 1rem;">
             <p>
               This comparison shows how Voxel4D is different from and better than other self-driving car systems. Most existing systems either just generate training data or only work during training, but don't actually help the car drive. Voxel4D is unique because it integrates world modeling (predicting the future) directly with planning (choosing the best path), and it does this in real-time while the car is driving. This unified approach makes Voxel4D safer, more explainable (we can understand why it makes decisions), and more effective at planning safe paths. The comparison demonstrates that Voxel4D's approach is fundamentally better than previous methods.
+          </p>
+          <p>
+              The key distinction lies in the integration of prediction and planning. Traditional systems treat these as separate problems: first they perceive the current scene, then they plan a path based on that perception. Voxel4D breaks this separation by using predicted future states to inform planning decisions. This means the system can evaluate the consequences of different actions before taking them, enabling proactive decision-making rather than reactive responses. The mathematical integration of these components, achieved through end-to-end training, ensures that the predictor and planner work together optimally, with each component learning to complement the others for maximum performance.
+          </p>
+          <p>
+              Furthermore, Voxel4D's real-time operation distinguishes it from systems that only use world models during training or for data generation. While those systems may improve training data quality, they don't provide the continuous, adaptive planning capabilities that Voxel4D offers during actual driving. This real-time integration of world modeling with planning represents a paradigm shift from systems that react to the present moment to systems that anticipate and prepare for future scenarios, fundamentally changing how autonomous vehicles make decisions.
             </p>
           </div>
         </div>
@@ -530,6 +551,9 @@
             <p>
               This image demonstrates one of Voxel4D's key innovations: semantic-conditional normalization. The left side shows the "before" version, where the system's view of the world appears blurry and objects are difficult to distinguish. The right side, after applying the normalization technique, shows clear identification of vehicles, pedestrians, and other objects, represented by distinct color coding. This enhancement is crucial because it enables more accurate predictions of future object locations. The improved feature clarity directly translates to better collision prediction and safer path planning capabilities.
             </p>
+            <p>
+              The mathematical transformation achieved by semantic-conditional normalization is significant. By applying the formula adjusted_feature = scale(semantic) × original_feature + bias(semantic), where scale and bias parameters are learned based on semantic predictions, the system can emphasize features that are important for identifying specific object types while de-emphasizing irrelevant information. This creates a more discriminative feature representation that enables the neural network to make more accurate predictions. The visual difference between the "before" and "after" images demonstrates the substantial improvement in feature quality, which directly contributes to Voxel4D's 9.5% improvement in forecasting accuracy compared to previous methods.
+            </p>
           </div>
         </div>
       </div>
@@ -542,7 +566,10 @@
         <h2 class="title is-3">Technical Analysis</h2>
         <div class="content has-text-justified">
           <p>
-            The following analyses demonstrate the contribution of each component and validate the design choices in Voxel4D. Ablation studies show how each innovation improves performance, while latency analysis confirms the system's real-time capability.
+            The following analyses demonstrate the contribution of each component and validate the design choices in Voxel4D. Ablation studies show how each innovation improves performance, while latency analysis confirms the system's real-time capability. These technical analyses are essential for understanding why Voxel4D achieves its superior performance and how each component contributes to the overall system.
+          </p>
+          <p>
+            Ablation studies are systematic experiments that test the system with and without specific components to quantify their individual contributions. By incrementally adding components and measuring performance changes, we can determine which innovations are most critical and how they interact with each other. This scientific approach validates that each component of Voxel4D is essential and contributes meaningfully to the system's state-of-the-art performance. The results demonstrate that the innovations are not just theoretical improvements but provide substantial practical benefits that directly translate to better autonomous driving capabilities.
           </p>
         </div>
         
@@ -610,7 +637,10 @@
         <h2 class="title is-3">Additional Experimental Results</h2>
         <div class="content has-text-justified">
           <p>
-            The following figures and tables provide additional insights into the system's performance, including detailed analyses of different components and their contributions to the overall framework.
+            The following figures and tables provide additional insights into the system's performance, including detailed analyses of different components and their contributions to the overall framework. These comprehensive experimental results validate Voxel4D's innovations across multiple dimensions, demonstrating both the technical soundness of the approach and its practical effectiveness in real-world scenarios.
+          </p>
+          <p>
+            The additional analyses cover several critical aspects: memory system effectiveness, action-conditioning capabilities, performance across different object categories, comparison with alternative planning approaches, generalization to different datasets, and overall system performance. Together, these results provide a complete picture of Voxel4D's capabilities and establish that the system represents a significant advancement in autonomous driving technology, with innovations that provide both theoretical contributions and practical improvements for real-world deployment.
           </p>
         </div>
         
