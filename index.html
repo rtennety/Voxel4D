@@ -190,71 +190,6 @@
     <!-- Why Voxel4D is Better. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Innovations</h2>
-        <div class="content has-text-justified">
-          <p>
-            Current systems (Tesla, Waymo) operate on <b>reactive architectures</b> that process frames sequentially, use <b>modular designs</b> with separate perception/prediction/planning stages, and rely on <b>simplified bounding boxes</b> that lose 3D structure. Voxel4D addresses these limitations through three innovations: the system is <b>proactive</b> (predicts 2-4s ahead), <b>end-to-end</b> (unified training), and uses <b>fine-grained 3D occupancy</b> (millions of voxels). Results: <b>+9.5% mIoU</b> on nuScenes, <b>+6.1%</b> on Lyft-Level5, <b>401ms</b> real-time latency—representing a fundamental paradigm shift in autonomous navigation.
-          </p>
-          <p>
-            The three innovations work synergistically: semantic and motion-conditional normalization enhances BEV feature discriminability, action-controllable generation enables "what-if" scenario planning, and occupancy-based planning integration provides precise voxel-level collision detection. Together, these innovations enable Voxel4D to anticipate and avoid dangerous situations before they occur, rather than reacting to immediate threats like current systems.
-          </p>
-          
-          <h3 class="title is-4" style="margin-top: 2rem; margin-bottom: 1rem;">Innovation #1: Semantic and Motion-Conditional Normalization</h3>
-          <p>
-            Traditional BEV features from camera images have limited discriminability: features from the same 3D ray appear similar, making object distinction difficult. Voxel4D introduces novel normalization:
-          </p>
-          <div style="text-align: center; margin: 1rem 0;">
-            $$\tilde{\mathbf{F}}^{bev} = \gamma^* \cdot \text{LayerNorm}(\mathbf{F}^{bev}) + \beta^*$$
-          </div>
-          <p>
-            where $\gamma^*$ and $\beta^*$ are conditioned on semantic predictions (object type: car, pedestrian, etc.) and ego-motion encodings. This emphasizes object features while compensating for ego-vehicle movement, separating apparent motion from actual dynamic motion. First method to address semantic discrimination in BEV features for occupancy forecasting, contributing to <b>9.5% mIoU improvement</b>.
-          </p>
-          
-          <h3 class="title is-4" style="margin-top: 2rem; margin-bottom: 1rem;">Innovation #2: Action-Controllable Future Generation</h3>
-          <p>
-            Unlike systems that predict a single future, Voxel4D generates different futures based on ego-vehicle actions (velocity, steering, trajectory). The world decoder takes action conditions as input:
-          </p>
-          <div style="text-align: center; margin: 1rem 0;">
-            $$\mathbf{O}_{t+1:t+T}, \mathbf{F}_{t+1:t+T} = \text{WorldDecoder}([\mathbf{H}_t, \mathbf{a}_t])$$
-          </div>
-          <p>
-            where $\mathbf{O}$ and $\mathbf{F}$ are future occupancy and flow, $\mathbf{H}_t$ represents historical features, and $\mathbf{a}_t$ is the action condition. The decoder produces different predictions for each action (e.g., "accelerate" vs. "decelerate"), enabling "what-if" planning. The planner compares multiple futures and selects the safest before executing. First system to integrate action conditioning into 4D occupancy forecasting world models.
-          </p>
-          
-          <h3 class="title is-4" style="margin-top: 2rem; margin-bottom: 1rem;">Innovation #3: Occupancy-Based Planning Integration</h3>
-          <p>
-            Most planning systems use simplified bounding boxes that lose 3D structure. Voxel4D uses fine-grained 3D occupancy (millions of voxels) for planning. Candidate trajectories are evaluated using:
-          </p>
-          <div style="text-align: center; margin: 1rem 0;">
-            $$C(\tau) = \sum_{t} [C_{\text{agent}}(\tau, t) + C_{\text{background}}(\tau, t) + C_{\text{efficiency}}(\tau, t)]$$
-          </div>
-          <p>
-            where $C_{\text{agent}}$ penalizes dynamic object collisions, $C_{\text{background}}$ penalizes static collisions, and $C_{\text{efficiency}}$ promotes smooth paths. The system selects $\tau^* = \arg\min_{\tau} C(\tau)$ and updates every 0.5 seconds. This enables precise voxel-level collision detection rather than bounding-box approximations. First system to integrate 4D occupancy forecasting with end-to-end planning, achieving collision rates of 0.035% (1s) and 0.16% (2s).
-          </p>
-          
-          <h3 class="title is-4" style="margin-top: 2rem; margin-bottom: 1rem;">Quantitative Performance and Training</h3>
-          <p>
-            Voxel4D achieves state-of-the-art performance across major autonomous driving benchmarks: <b>nuScenes</b> (36.3 mIoU_f, +9.5 points; 25.1 VPQ_f, +5.1), <b>Lyft-Level5</b> (39.7 mIoU_f, +6.1; 33.4 VPQ_f, +5.2), <b>nuScenes-Occupancy</b> (+4.3% fine-grained occupancy). The <b>mIoU</b> (mean Intersection over Union) metric measures forecasting accuracy:
-          </p>
-          <div style="text-align: center; margin: 1rem 0;">
-            $$\text{IoU} = \frac{|\text{Predicted} \cap \text{GroundTruth}|}{|\text{Predicted} \cup \text{GroundTruth}|}$$
-          </div>
-          <p>
-            averaged across object classes. <b>VPQ</b> (Video Panoptic Quality) measures segmentation and tracking accuracy across time. In computer vision research, improvements of 2-3% are considered significant, and 5-10% represent major breakthroughs. Voxel4D's <b>9.5% improvement is nearly three times the breakthrough threshold</b>, demonstrating substantial impact.
-          </p>
-          <p>
-            Voxel4D is trained end-to-end using multi-task learning:
-          </p>
-          <div style="text-align: center; margin: 1rem 0;">
-            $$L_{\text{total}} = w_1 L_{\text{occ}} + w_2 L_{\text{flow}} + w_3 L_{\text{sem}} + w_4 L_{\text{plan}}$$
-          </div>
-          <p>
-            where $L_{\text{occ}}$ (cross-entropy), $L_{\text{flow}}$ (L1), $L_{\text{sem}}$ (cross-entropy), and $L_{\text{plan}}$ (L2) measure occupancy, flow, semantic, and planning accuracy respectively. All components (history encoder, memory queue, world decoder, planner) are optimized together through backpropagation, allowing them to learn synergistically. This joint optimization ensures perception, prediction, and planning are seamlessly integrated rather than separate modules—a fundamental advantage over current modular systems.
-          </p>
-        </div>
-      </div>
-    </div>
-    <!--/ Why Voxel4D is Better. -->
     
     <!-- 4D Spatial and Flow Forecasting -->
     <section class="section">
@@ -281,7 +216,7 @@
             </div>
             <div class="content has-text-justified" style="margin-top: 1.5rem; margin-bottom: 2rem;">
               <p style="font-size: 1em;">
-                <b>GIF Description:</b> Demonstrates Voxel4D's ability to predict lane change scenarios: accurately forecasts how vehicles will move across lanes over time, enabling the system to anticipate and plan for lane changes before they occur.
+                Demonstrates Voxel4D's ability to predict lane change scenarios: accurately forecasts how vehicles will move across lanes over time, enabling the system to anticipate and plan for lane changes before they occur.
               </p>
             </div>
 
@@ -298,7 +233,7 @@
             </div>
             <div class="content has-text-justified" style="margin-top: 1.5rem; margin-bottom: 2rem;">
               <p style="font-size: 1em;">
-                <b>GIF Description:</b> Shows Voxel4D predicting pedestrian movement across a crosswalk: forecasts future pedestrian positions, enabling the system to anticipate crossing behavior and plan safe trajectories that yield appropriately.
+                Shows Voxel4D predicting pedestrian movement across a crosswalk: forecasts future pedestrian positions, enabling the system to anticipate crossing behavior and plan safe trajectories that yield appropriately.
               </p>
             </div>
 
@@ -315,7 +250,7 @@
             </div>
             <div class="content has-text-justified" style="margin-top: 1.5rem; margin-bottom: 2rem;">
               <p style="font-size: 1em;">
-                <b>GIF Description:</b> Illustrates vehicle following in challenging conditions (nighttime, rain): accurately predicts leading vehicle motion despite limited visibility, demonstrating robust performance in adverse weather and lighting conditions.
+                Illustrates vehicle following in challenging conditions (nighttime, rain): accurately predicts leading vehicle motion despite limited visibility, demonstrating robust performance in adverse weather and lighting conditions.
               </p>
             </div>
             
@@ -359,7 +294,7 @@
             </div>
             <div class="content has-text-justified" style="margin-top: 1.5rem; margin-bottom: 2rem;">
               <p style="font-size: 1em;">
-                <b>GIF Description:</b> Demonstrates proactive planning: Voxel4D predicts the stopped vehicle ahead, evaluates multiple trajectory options, and selects a left turn to safely navigate around the obstacle using occupancy-based collision detection.
+                Demonstrates proactive planning: Voxel4D predicts the stopped vehicle ahead, evaluates multiple trajectory options, and selects a left turn to safely navigate around the obstacle using occupancy-based collision detection.
               </p>
             </div>
 
@@ -376,7 +311,7 @@
             </div>
             <div class="content has-text-justified" style="margin-top: 1.5rem; margin-bottom: 2rem;">
               <p style="font-size: 1em;">
-                <b>GIF Description:</b> Shows intelligent pedestrian interaction: Voxel4D predicts pedestrian crossing paths, evaluates deceleration vs. acceleration scenarios, and chooses to slow down to maintain safe distance, demonstrating proactive safety decision-making.
+                Shows intelligent pedestrian interaction: Voxel4D predicts pedestrian crossing paths, evaluates deceleration vs. acceleration scenarios, and chooses to slow down to maintain safe distance, demonstrating proactive safety decision-making.
               </p>
             </div>
 
@@ -393,7 +328,7 @@
             </div>
             <div class="content has-text-justified" style="margin-top: 1.5rem; margin-bottom: 2rem;">
               <p style="font-size: 1em;">
-                <b>GIF Description:</b> Illustrates alternative path planning: when a left turn is blocked, Voxel4D predicts future occupancy, evaluates a right turn option, and selects the safest trajectory to navigate around the stopped vehicle.
+                Illustrates alternative path planning: when a left turn is blocked, Voxel4D predicts future occupancy, evaluates a right turn option, and selects the safest trajectory to navigate around the stopped vehicle.
               </p>
             </div>
             
