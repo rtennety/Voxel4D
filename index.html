@@ -190,13 +190,13 @@
     <!-- Why Voxel4D is Better. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Innovations and Contributions</h2>
+        <h2 class="title is-3">Innovations</h2>
         <div class="content has-text-justified">
           <p>
-            To understand Voxel4D's significance, we must first recognize the fundamental limitations of current autonomous driving systems. Industry leaders like Tesla's Full Self-Driving and Waymo's autonomous vehicles operate on <b>reactive architectures</b> that process video frames sequentially and make decisions based solely on the present moment. These systems use <b>modular designs</b> where perception (identifying objects), prediction (forecasting motion), and planning (choosing actions) are treated as separate, sequential stages. And they rely on <b>simplified geometric representations</b>—bounding boxes around objects—that lose critical information about 3D structure.
+            Current systems (Tesla, Waymo) operate on <b>reactive architectures</b> that process frames sequentially, use <b>modular designs</b> with separate perception/prediction/planning stages, and rely on <b>simplified bounding boxes</b> that lose 3D structure. Voxel4D addresses these limitations through three innovations: the system is <b>proactive</b> (predicts 2-4s ahead), <b>end-to-end</b> (unified training), and uses <b>fine-grained 3D occupancy</b> (millions of voxels). Results: <b>+9.5% mIoU</b> on nuScenes, <b>+6.1%</b> on Lyft-Level5, <b>401ms</b> real-time latency—representing a fundamental paradigm shift in autonomous navigation.
           </p>
           <p>
-            Voxel4D addresses every one of these limitations through three revolutionary innovations. The system is <b>proactive</b> (predicts 2-4 seconds ahead rather than reacting), <b>end-to-end</b> (trains perception, prediction, and planning together), and uses <b>fine-grained 3D occupancy</b> (millions of voxels rather than bounding boxes). The results speak to the magnitude of these innovations: <b>+9.5% mIoU</b> improvement on nuScenes, <b>+6.1%</b> on Lyft-Level5, with <b>401ms</b> real-time latency that meets deployment requirements. These improvements are not incremental—they represent a fundamental paradigm shift in how autonomous vehicles understand and navigate the world.
+            The three innovations work synergistically: semantic and motion-conditional normalization enhances BEV feature discriminability, action-controllable generation enables "what-if" scenario planning, and occupancy-based planning integration provides precise voxel-level collision detection. Together, these innovations enable Voxel4D to anticipate and avoid dangerous situations before they occur, rather than reacting to immediate threats like current systems.
           </p>
           
           <h3 class="title is-4" style="margin-top: 2rem; margin-bottom: 1rem;">Innovation #1: Semantic and Motion-Conditional Normalization</h3>
