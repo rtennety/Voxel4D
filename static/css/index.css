@@ -183,9 +183,9 @@ img {
 /* GIF as Video Player Styling */
 .gif-video-wrapper {
   position: relative;
-  display: inline-block;
+  display: block;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 1.5rem auto;
   cursor: pointer;
 }
