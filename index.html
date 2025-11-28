@@ -192,76 +192,33 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Innovations and Contributions</h2>
         <div class="content has-text-justified">
-          <h3 class="title is-4" style="margin-top: 2rem; margin-bottom: 1rem;">Why Voxel4D is Superior to Current Autonomous Driving Systems</h3>
-          <p>
-            Current self-driving systems, including industry leaders like Tesla's Full Self-Driving (FSD) and Waymo's autonomous vehicles, operate on fundamentally reactive architectures that process video frames sequentially and make decisions based solely on the present moment. These systems represent the state-of-the-art in commercial autonomous driving, yet they suffer from critical limitations that Voxel4D addresses through revolutionary innovations.
+          <p style="margin-bottom: 1.5rem;">
+            Current systems (Tesla, Waymo) operate on <b>reactive architectures</b> (process frames sequentially, react to present moment), use <b>modular designs</b> (separate perception/prediction/planning stages), and rely on <b>simplified bounding boxes</b> (lose 3D structure). Voxel4D addresses these through three innovations: <b>proactive prediction</b> (2-4 seconds ahead), <b>end-to-end integration</b> (perception, prediction, planning trained together), <b>multi-future generation</b> (different futures for different actions), and <b>fine-grained 3D occupancy</b> (millions of voxels for precise collision detection).
           </p>
           
-          <p>
-            <b>The Reactive Problem:</b> Tesla's FSD system, for example, processes camera inputs frame-by-frame, identifying objects in real-time and reacting to immediate threats. While this approach has enabled millions of miles of autonomous driving, it fundamentally cannot anticipate future scenarios. When a pedestrian suddenly appears near a crosswalk, the system must detect them in the current frame before it can react, potentially leaving insufficient time to avoid a collision. Waymo's system, while more sophisticated in its sensor fusion, similarly operates reactively, processing LiDAR and camera data to understand the current scene but not predicting how that scene will evolve.
-          </p>
-          
-          <p>
-            <b>The Modular Disconnect:</b> Perhaps the most significant limitation of current systems is their modular architecture, where perception (identifying objects), prediction (forecasting motion), and planning (choosing actions) are treated as separate, sequential stages. Tesla's system first detects objects, then predicts their trajectories using simple physics models, and finally plans a path. This separation creates a fundamental disconnect: the planner cannot influence what the predictor focuses on, and the predictor cannot adapt to the planner's needs. This leads to suboptimal performance where the system might predict a pedestrian's path accurately but fail to plan appropriately because the prediction wasn't tailored to the planning task.
-          </p>
-          
-          <p>
-            <b>Single-Future Limitation:</b> Current systems cannot simulate multiple possible futures based on different actions the vehicle might take. When approaching an intersection, Tesla's system evaluates the current situation and selects a single action, but it cannot answer "what if I accelerate?" or "what if I turn left?" before making that decision. This means the system cannot proactively evaluate the consequences of different actions, leading to conservative or inefficient driving. In complex scenarios with multiple viable paths, the system cannot compare alternatives to select the optimal one.
-          </p>
-          
-          <p>
-            <b>Simplified Representations:</b> Most planning systems, including those used by commercial autonomous vehicles, rely on simplified geometric representations such as bounding boxes around objects. A car is represented as a rectangular box, a pedestrian as a smaller box. This simplification loses critical information about the 3D structure of objects and the environment. When planning a path through a narrow space or around complex obstacles, these simplified representations can lead to overly conservative planning or, worse, collisions that could have been avoided with more detailed spatial understanding.
-          </p>
-          
-          <p>
-            <b>Real-World Consequences:</b> These limitations manifest in real-world scenarios. A reactive system might brake too late when a pedestrian steps into the road because it only detected the threat in the current frame. A modular system might fail to anticipate that a car changing lanes will continue into the ego-vehicle's path because the prediction module doesn't consider the planning context. A system using bounding boxes might avoid a safe path because it overestimates collision risk due to simplified geometry. These failures, while rare, represent fundamental limitations that cannot be solved by simply improving individual components.
-          </p>
-          
-          <p>
-            <b>Voxel4D's Revolutionary Solution:</b> Voxel4D addresses every one of these limitations through its unified, end-to-end architecture. Unlike reactive systems, Voxel4D predicts future states 2-4 seconds ahead, enabling proactive decision-making. Unlike modular systems, Voxel4D trains perception, prediction, and planning together, allowing them to work synergistically. Unlike single-future systems, Voxel4D generates multiple possible futures based on different actions, enabling optimal path selection. Unlike simplified representations, Voxel4D uses fine-grained 3D occupancy predictions with millions of voxels, enabling precise collision detection. The result is not just an incremental improvement, but a fundamental paradigm shift that addresses the core limitations of current autonomous driving technology.
-          </p>
-          
-          <p>
-            <b>Quantitative Superiority:</b> The superiority of Voxel4D's approach is validated by state-of-the-art performance on major benchmarks. On the nuScenes dataset, Voxel4D achieves a 9.5 point improvement in forecasting accuracy (mIoU) over the previous best system. This improvement is nearly three times the threshold considered a major breakthrough in computer vision research. On the Lyft-Level5 dataset, Voxel4D demonstrates a 6.1 point improvement, and on nuScenes-Occupancy, a 4.3% improvement in fine-grained occupancy forecasting. These consistent improvements across multiple datasets, combined with real-time operation at 401ms latency, demonstrate that Voxel4D is not just theoretically superior but practically deployable.
-          </p>
-          
-          <p>
-            <b>The Innovation Gap:</b> The gap between Voxel4D and current systems is not just a matter of better algorithms or more data. It represents a fundamental difference in approach: reactive versus proactive, modular versus integrated, single-future versus multi-future, simplified versus detailed. This gap explains why Voxel4D achieves such substantial improvements. While current systems are constrained by their architectural limitations, Voxel4D's innovations enable it to leverage the full potential of world modeling for autonomous driving. This is why Voxel4D represents the future of autonomous driving technology, not just an incremental improvement over current systems.
-          </p>
-          
-          <h3 class="title is-4" style="margin-top: 2rem; margin-bottom: 1rem;">Voxel4D's Key Innovations</h3>
+          <h3 class="title is-4" style="margin-top: 1.5rem; margin-bottom: 1rem;">Voxel4D's Key Innovations</h3>
           
           <h4 class="title is-5" style="margin-top: 1.5rem; margin-bottom: 0.75rem;">Innovation #1: Semantic and Motion-Conditional Normalization</h4>
           <p>
-            Traditional BEV features from camera images have limited discriminability: features from the same 3D ray appear similar, making object distinction difficult. Voxel4D introduces novel normalization: $\tilde{\mathbf{F}}^{bev} = \gamma^* \cdot \text{LayerNorm}(\mathbf{F}^{bev}) + \beta^*$, where $\gamma^*$ and $\beta^*$ are learned scale and bias parameters conditioned on semantic predictions (object type: car, pedestrian, etc.) and ego-motion encodings. This emphasizes features corresponding to actual objects while compensating for ego-vehicle movement, separating static object motion (apparent, due to car movement) from dynamic object motion (actual), directly contributing to the 9.5% mIoU improvement. This is the first method to address semantic discrimination in BEV features for occupancy forecasting.
+            Novel normalization: $\tilde{\mathbf{F}}^{bev} = \gamma^* \cdot \text{LayerNorm}(\mathbf{F}^{bev}) + \beta^*$ where $\gamma^*$ and $\beta^*$ are conditioned on semantic predictions (object type: car, pedestrian, etc.) and ego-motion. Enhances BEV feature discriminability, separates static vs. dynamic object motion, directly contributing to <b>9.5% mIoU improvement</b>. First method to address semantic discrimination in BEV features for occupancy forecasting.
           </p>
           
           <h4 class="title is-5" style="margin-top: 1.5rem; margin-bottom: 0.75rem;">Innovation #2: Action-Controllable Future Generation</h4>
           <p>
-            Unlike systems that predict a single future, Voxel4D generates different future predictions based on different ego-vehicle actions (velocity, steering angle, trajectory waypoints). Action conditions are encoded and injected into the world decoder: $\mathbf{O}_{t+1:t+T}, \mathbf{F}_{t+1:t+T} = \text{WorldDecoder}([\mathbf{H}_t, \mathbf{a}_t])$, where $\mathbf{O}$ and $\mathbf{F}$ are future occupancy and flow predictions, $\mathbf{H}_t$ represents historical features, and $\mathbf{a}_t$ is the action condition. The decoder modifies its computations based on action input, producing different occupancy and flow predictions for each action. This enables "what-if" scenario planning: the planner compares multiple futures and selects the safest option. For example, if accelerating predicts dangerous proximity to pedestrians while decelerating maintains safe distance, the system chooses the safer action. This is the first system to integrate flexible action conditioning into 4D occupancy forecasting world models, enabling proactive planning rather than reactive responses.
+            Generates different futures based on ego-vehicle actions: $\mathbf{O}_{t+1:t+T}, \mathbf{F}_{t+1:t+T} = \text{WorldDecoder}([\mathbf{H}_t, \mathbf{a}_t])$. Enables "what-if" scenario planning: planner compares multiple futures and selects safest before executing. Example: if accelerating predicts dangerous proximity to pedestrians while decelerating maintains safe distance, system chooses safer action. First system to integrate action conditioning into 4D occupancy forecasting world models.
           </p>
           
           <h4 class="title is-5" style="margin-top: 1.5rem; margin-bottom: 0.75rem;">Innovation #3: Occupancy-Based Planning Integration</h4>
           <p>
-            Most planning systems use simplified representations (bounding boxes) that don't capture full 3D structure. Voxel4D uses fine-grained 3D occupancy predictions: space is divided into millions of voxels, and the system predicts which voxels will be occupied. Candidate trajectories are evaluated using cost functions: $C(\tau) = \sum_{t} [C_{\text{agent}}(\tau, t) + C_{\text{background}}(\tau, t) + C_{\text{efficiency}}(\tau, t)]$, where $C_{\text{agent}}$ penalizes collisions with dynamic objects, $C_{\text{background}}$ penalizes static object collisions, and $C_{\text{efficiency}}$ promotes smooth, rule-compliant paths. The trajectory $\tau^* = \arg\min_{\tau} C(\tau)$ minimizing total cost is selected. The system operates continuously: every 0.5 seconds, it receives new images, updates predictions, re-evaluates trajectories, and selects optimal paths. This is the first system to integrate 4D occupancy forecasting directly with end-to-end planning, enabling precise voxel-level collision detection rather than bounding-box approximations.
+            Uses fine-grained 3D occupancy (millions of voxels) with cost function $C(\tau) = \sum_{t} [C_{\text{agent}}(\tau, t) + C_{\text{background}}(\tau, t) + C_{\text{efficiency}}(\tau, t)]$, selecting $\tau^* = \arg\min_{\tau} C(\tau)$ every 0.5 seconds. Enables precise voxel-level collision detection rather than bounding-box approximations. First system to integrate 4D occupancy forecasting with end-to-end planning.
           </p>
           
-          <h3 class="title is-4" style="margin-top: 2rem; margin-bottom: 1rem;">Quantitative Performance Improvements</h3>
+          <h3 class="title is-4" style="margin-top: 2rem; margin-bottom: 1rem;">Performance & Training</h3>
           <p>
-            Voxel4D achieves state-of-the-art performance: <b>nuScenes</b> (36.3 mIoU_f, +9.5 points; 25.1 VPQ_f, +5.1), <b>Lyft-Level5</b> (39.7 mIoU_f, +6.1; 33.4 VPQ_f, +5.2), <b>nuScenes-Occupancy</b> (+4.3% fine-grained occupancy). <b>mIoU</b> measures forecasting accuracy: $\text{IoU} = \frac{|\text{Predicted} \cap \text{GroundTruth}|}{|\text{Predicted} \cup \text{GroundTruth}|}$, averaged across object classes. <b>VPQ</b> measures segmentation and tracking accuracy across time. In computer vision research, improvements of 2-3% are significant, and 5-10% represent major breakthroughs. Voxel4D's 9.5% improvement is nearly three times the breakthrough threshold, demonstrating substantial impact. Consistent improvements across multiple datasets validate robustness across diverse driving conditions.
-          </p>
-          
-          <h3 class="title is-4" style="margin-top: 2rem; margin-bottom: 1rem;">The Mathematical Foundation: How Voxel4D Learns</h3>
-          <p>
-            Voxel4D is trained end-to-end using multi-task learning: $L_{\text{total}} = w_1 L_{\text{occ}} + w_2 L_{\text{flow}} + w_3 L_{\text{sem}} + w_4 L_{\text{plan}}$, where $L_{\text{occ}}$ (cross-entropy), $L_{\text{flow}}$ (L1), $L_{\text{sem}}$ (cross-entropy), and $L_{\text{plan}}$ (L2) measure occupancy, flow, semantic, and planning accuracy respectively. All components (history encoder, memory queue, world decoder, planner) are optimized together through backpropagation, allowing them to learn synergistically. This joint optimization ensures perception, prediction, and planning are seamlessly integrated rather than separate modules.
-          </p>
-          
-          <h3 class="title is-4" style="margin-top: 2rem; margin-bottom: 1rem;">Why These Improvements Matter: Real-World Impact</h3>
-          <p>
-            Higher prediction accuracy directly reduces collision risk. The 9.5% mIoU improvement means Voxel4D correctly classifies 95 more voxels per 1000 than previous systems, leading to significantly better 3D understanding. Consistent improvements across multiple datasets (nuScenes, Lyft-Level5, nuScenes-Occupancy) demonstrate robustness across diverse conditions: urban streets, highways, intersections, parking lots, daytime, nighttime, and various weather.
+            <b>Results:</b> <b>nuScenes</b> (36.3 mIoU_f, +9.5; 25.1 VPQ_f, +5.1), <b>Lyft-Level5</b> (39.7 mIoU_f, +6.1; 33.4 VPQ_f, +5.2), <b>nuScenes-Occupancy</b> (+4.3%), <b>401ms</b> real-time latency. <b>mIoU</b> metric: $\text{IoU} = \frac{|\text{Predicted} \cap \text{GroundTruth}|}{|\text{Predicted} \cup \text{GroundTruth}|}$. Voxel4D's <b>9.5% improvement is nearly three times the breakthrough threshold</b> in computer vision research.
           </p>
           <p>
-            <b>The Innovation's Magnitude:</b> Voxel4D represents a paradigm shift. It is the first system to integrate 4D occupancy forecasting with end-to-end planning, the first to enable action-controllable generation in occupancy world models, and introduces novel normalization techniques. The combination of mathematical rigor (multi-task loss functions, end-to-end optimization, occupancy-based cost calculations) with practical performance (9.5% mIoU gains, 401ms real-time latency) demonstrates this is not just theoretical but a practical system that could transform autonomous driving technology.
+            <b>Training:</b> End-to-end multi-task learning: $L_{\text{total}} = w_1 L_{\text{occ}} + w_2 L_{\text{flow}} + w_3 L_{\text{sem}} + w_4 L_{\text{plan}}$. All components (history encoder, memory queue, world decoder, planner) optimized together through backpropagation, ensuring seamless integration rather than separate modules.
           </p>
         </div>
       </div>
