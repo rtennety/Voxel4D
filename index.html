@@ -155,8 +155,8 @@
     <!-- Research Statement. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-three-quarters">
-        <h2 class="title is-3">Research Statement</h2>
-        <div class="content has-text-justified">
+        <h2 class="title is-3" style="margin-bottom: 1.5rem;">Research Statement</h2>
+        <div class="content has-text-justified" style="line-height: 1.8;">
           <p style="font-size: 1.1em; font-weight: 500; word-spacing: normal; letter-spacing: normal; text-align: left !important;">
             Current autonomous driving systems operate reactively, processing the present moment rather than anticipating how the environment will evolve. This creates safety gaps: when a pedestrian steps into the road, the system must detect the threat before it can react, potentially leaving insufficient time for safe avoidance.
           </p>
@@ -171,15 +171,15 @@
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-three-quarters">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
+        <h2 class="title is-3" style="margin-bottom: 1.5rem;">Abstract</h2>
+        <div class="content has-text-justified" style="line-height: 1.8;">
+          <p style="margin-bottom: 1.25rem;">
             Current autonomous systems (Tesla, Waymo) operate reactively, processing frames sequentially and reacting to immediate threats. This limits safety: when a pedestrian appears, the system must detect them before reacting, potentially leaving insufficient time to avoid collisions. Voxel4D transforms this paradigm by predicting future 4D spatial states (3D space + time) conditioned on different ego-vehicle actions, enabling proactive decision-making.
           </p>
-          <p>
+          <p style="margin-bottom: 1.25rem;">
             Voxel4D operates through three stages: (1) <b>History Encoder</b> converts multi-view camera images into bird's-eye view using transformer networks, (2) <b>Memory Queue</b> accumulates temporal information with semantic and motion-conditional normalization, and (3) <b>World Decoder</b> generates action-conditioned 4D occupancy predictions. The system uses these predictions for occupancy-based trajectory planning, generating multiple futures ("what-if" scenarios) and selecting the safest path.
           </p>
-          <p>
+          <p style="margin-bottom: 0;">
             Results: <b>+9.5% mIoU</b> on nuScenes, <b>+6.1%</b> on Lyft-Level5, <b>401ms</b> real-time latency. Collision rates: <b>0.035%</b> (1s), <b>0.16%</b> (2s), <b>0.493%</b> (3s). While 9.5% may seem modest, this represents correctly classifying 9.5% of millions of voxels: Voxel4D processes space divided into millions of 3D voxels (512×512×40 = 10.5 million voxels per frame), meaning the system correctly predicts the occupancy of approximately 1 million voxels per frame. Given that most voxels are empty space, correctly identifying which of millions of voxels will be occupied by objects in the future is extremely challenging. This level of precision enables the fine-grained collision detection and safe navigation demonstrated by the exceptional collision rates. First system to integrate 4D occupancy forecasting with end-to-end planning for autonomous driving.
           </p>
         </div>
@@ -196,15 +196,15 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column is-full-width">
-            <h2 class="title is-3 has-text-centered">4D Spatial and Flow Forecasting</h2>
-            <div class="content has-text-justified">
+            <h2 class="title is-3 has-text-centered" style="margin-bottom: 1.5rem;">4D Spatial and Flow Forecasting</h2>
+            <div class="content has-text-justified" style="line-height: 1.8;">
               <p>
                 <b>4D Spatial Forecasting</b> predicts which 3D voxels will be occupied in the future (3D space + time). Voxel4D predicts occupancy probabilities $P(\text{occupied} \mid x, y, z, t)$ for millions of voxels, enabling precise collision detection. Models both moving objects (cars, pedestrians) and static parts (roads, buildings), capturing how scenes evolve dynamically.
               </p>
             </div>
 
             <!-- Scene 1 -->
-            <h3 class="title is-4 has-text-centered">Scene 1 (Lane Change)</h3>
+            <h3 class="title is-4 has-text-centered" style="margin-top: 2.5rem; margin-bottom: 1rem;">Scene 1 (Lane Change)</h3>
             <img src="./assets/figures/forecasting_1.png?v=6" alt="Lane Change" style="width: 100%; max-width: 1200px;">
             <div class="gif-video-wrapper">
               <img src="./assets/figures/forecasting_1.gif?v=6" alt="Lane Change GIF" class="gif-as-video">
@@ -221,7 +221,7 @@
             </div>
 
             <!-- Scene 2 -->
-            <h3 class="title is-4 has-text-centered">Scene 2 (Pedestrian Crossing)</h3>
+            <h3 class="title is-4 has-text-centered" style="margin-top: 2.5rem; margin-bottom: 1rem;">Scene 2 (Pedestrian Crossing)</h3>
             <img src="./assets/figures/forecasting_2.png?v=6" alt="Pedestrian Crossing" style="width: 100%; max-width: 1200px;">
             <div class="gif-video-wrapper">
               <img src="./assets/figures/forecasting_2.gif?v=6" alt="Pedestrian Crossing GIF" class="gif-as-video">
@@ -238,7 +238,7 @@
             </div>
 
             <!-- Scene 3 -->
-            <h3 class="title is-4 has-text-centered">Scene 3 (Vehicle Following)</h3>
+            <h3 class="title is-4 has-text-centered" style="margin-top: 2.5rem; margin-bottom: 1rem;">Scene 3 (Vehicle Following)</h3>
             <img src="./assets/figures/forecasting_3.png?v=6" alt="Vehicle Following" style="width: 100%; max-width: 1200px;">
             <div class="gif-video-wrapper">
               <img src="./assets/figures/forecasting_3.gif?v=6" alt="Vehicle Following GIF" class="gif-as-video">
@@ -274,15 +274,15 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column is-full-width">
-            <h2 class="title is-3 has-text-centered">Continuous Forecasting and Planning</h2>
-            <div class="content has-text-justified">
+            <h2 class="title is-3 has-text-centered" style="margin-bottom: 1.5rem;">Continuous Forecasting and Planning</h2>
+            <div class="content has-text-justified" style="line-height: 1.8;">
               <p>
                 Voxel4D continuously forecasts future states and uses predictions for planning. For each action, predicts future states, then selects safest path using: $C(\tau) = \sum_{t} [C_{\text{agent}}(\tau, t) + C_{\text{background}}(\tau, t) + C_{\text{efficiency}}(\tau, t)]$, selecting $\tau^* = \arg\min_{\tau} C(\tau)$. Updates every 0.5 seconds with new images.
               </p>
             </div>
 
             <!-- Scene 1 -->
-            <h3 class="title is-4 has-text-centered">Scene 1 (Turn Left to Avoid Stopped Vehicle)</h3>
+            <h3 class="title is-4 has-text-centered" style="margin-top: 2.5rem; margin-bottom: 1rem;">Scene 1 (Turn Left to Avoid Stopped Vehicle)</h3>
             <img src="./assets/figures/planning_1.png?v=2" alt="Planning Scene 1" style="width: 100%; max-width: 1200px;">
             <div class="gif-video-wrapper">
               <img src="./assets/figures/planning_1.gif?v=2" alt="Planning Scene 1 GIF" class="gif-as-video">
@@ -299,7 +299,7 @@
             </div>
 
             <!-- Scene 2 -->
-            <h3 class="title is-4 has-text-centered">Scene 2 (Slowing Down to Wait for Crossing Pedestrians)</h3>
+            <h3 class="title is-4 has-text-centered" style="margin-top: 2.5rem; margin-bottom: 1rem;">Scene 2 (Slowing Down to Wait for Crossing Pedestrians)</h3>
             <img src="./assets/figures/planning_2.png?v=2" alt="Planning Scene 2" style="width: 100%; max-width: 1200px;">
             <div class="gif-video-wrapper">
               <img src="./assets/figures/planning_2.gif?v=2" alt="Planning Scene 2 GIF" class="gif-as-video">
@@ -316,7 +316,7 @@
             </div>
 
             <!-- Scene 3 -->
-            <h3 class="title is-4 has-text-centered">Scene 3 (Turn Right to Avoid Stopped Vehicle)</h3>
+            <h3 class="title is-4 has-text-centered" style="margin-top: 2.5rem; margin-bottom: 1rem;">Scene 3 (Turn Right to Avoid Stopped Vehicle)</h3>
             <img src="./assets/figures/planning_3.png?v=2" alt="Planning Scene 3" style="width: 100%; max-width: 1200px;">
             <div class="gif-video-wrapper">
               <img src="./assets/figures/planning_3.gif?v=2" alt="Planning Scene 3 GIF" class="gif-as-video">
@@ -446,8 +446,8 @@
     <!-- Results: Benchmark Comparison. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-three-quarters">
-        <h2 class="title is-3">State-of-the-Art Performance</h2>
-          <div class="content has-text-justified">
+        <h2 class="title is-3" style="margin-bottom: 1.5rem;">State-of-the-Art Performance</h2>
+          <div class="content has-text-justified" style="line-height: 1.8;">
             <p>
               Voxel4D achieves state-of-the-art performance across major autonomous driving benchmarks. The system is evaluated on nuScenes, Lyft-Level5, and nuScenes-Occupancy datasets using standard metrics that measure forecasting accuracy, tracking performance, and fine-grained spatial understanding. These benchmarks represent the gold standard for autonomous driving research, with thousands of real-world driving scenarios across diverse conditions.
             </p>
@@ -469,8 +469,8 @@
     <!-- Comparison with Other Methods -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-three-quarters">
-        <h2 class="title is-3">Comparison with Existing Methods</h2>
-          <div class="content has-text-justified">
+        <h2 class="title is-3" style="margin-bottom: 1.5rem;">Comparison with Existing Methods</h2>
+          <div class="content has-text-justified" style="line-height: 1.8;">
             <p>
               Existing autonomous driving systems fall into distinct categories: (1) world models used only for data generation during training, (2) world models for pretraining but not integrated into planning, (3) planning systems that use current perception without future prediction, or (4) occupancy prediction systems without planning integration. Voxel4D uniquely integrates world modeling (predicting future states) with real-time end-to-end planning, enabling the system to use predicted futures to inform planning decisions during actual driving. This integration represents a fundamental departure from systems that treat prediction and planning as separate problems.
             </p>
@@ -491,7 +491,7 @@
     <!-- Method Overview. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-three-quarters">
-        <h2 class="title is-3">Method Overview</h2>
+        <h2 class="title is-3" style="margin-bottom: 1.5rem;">Method Overview</h2>
         <img src="./assets/figures/pipeline.png?v=2" alt="Voxel4D Pipeline" style="width: 100%; max-width: 1200px;">
         <div class="content has-text-justified">
           <p>
@@ -582,8 +582,8 @@
     <!-- Technical Details: Ablation Studies and Analysis -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-three-quarters">
-        <h2 class="title is-3">Technical Analysis</h2>
-        <div class="content has-text-justified">
+        <h2 class="title is-3" style="margin-bottom: 1.5rem;">Technical Analysis</h2>
+        <div class="content has-text-justified" style="line-height: 1.8;">
           <p>
             Ablation studies test components individually to quantify contributions. Results validate each component is essential for state-of-the-art performance.
           </p>
@@ -650,8 +650,8 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-three-quarters">
-        <h2 class="title is-3">Additional Experimental Results</h2>
-        <div class="content has-text-justified">
+        <h2 class="title is-3" style="margin-bottom: 1.5rem;">Additional Experimental Results</h2>
+        <div class="content has-text-justified" style="line-height: 1.8;">
           <p>
             Additional results validate Voxel4D's innovations: memory effectiveness, action-conditioning, multi-object performance, planning comparisons, and dataset generalization.
           </p>
