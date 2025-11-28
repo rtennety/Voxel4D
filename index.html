@@ -158,13 +158,10 @@
         <h2 class="title is-3">Research Statement</h2>
         <div class="content has-text-justified">
           <p style="font-size: 1.1em; font-weight: 500; word-spacing: normal; letter-spacing: normal; text-align: left !important;">
-            Autonomous driving represents one of the most transformative technologies of our era, promising to revolutionize transportation, reduce accidents, and improve mobility. However, current autonomous driving systems face a fundamental limitation: they operate reactively, processing the present moment and responding to immediate threats, rather than anticipating how the environment will evolve. This reactive paradigm creates critical safety gaps—when a pedestrian steps into the road or a vehicle suddenly changes lanes, the system must detect the threat in the current frame before it can react, potentially leaving insufficient time for safe avoidance.
+            Current autonomous driving systems operate reactively, processing the present moment rather than anticipating how the environment will evolve. This creates safety gaps—when a pedestrian steps into the road, the system must detect the threat before it can react, potentially leaving insufficient time for safe avoidance.
           </p>
           <p>
-            I introduce <b>Voxel4D</b>, a unified vision-centric world model framework that fundamentally transforms autonomous driving from reactive response to proactive anticipation. This system addresses the core challenge of action-conditioned future state prediction: given the current scene observed through cameras, how will the 3D world evolve over the next few seconds if the vehicle takes different actions? Voxel4D forecasts 4D spatial states (3D space + time) conditioned on ego-vehicle actions, then integrates these forecasts into an end-to-end planning system that selects optimal trajectories based on predicted future occupancy. This paradigm shift—from reacting to the present to anticipating multiple possible futures—enables safer and more efficient autonomous navigation.
-          </p>
-          <p>
-            The significance of this work extends beyond incremental improvements. Voxel4D represents the first system to successfully integrate 4D occupancy forecasting with end-to-end planning for autonomous driving, introducing three key innovations that address fundamental limitations of current systems. By predicting fine-grained 3D spatial occupancy millions of voxels into the future, Voxel4D enables precise collision detection that goes far beyond the simplified bounding-box representations used in commercial systems. By generating different future predictions for different actions, Voxel4D enables "what-if" scenario planning that allows the system to evaluate consequences before executing actions. And by training perception, prediction, and planning together in an end-to-end framework, Voxel4D ensures these components work synergistically rather than as disconnected modules.
+            I introduce <b>Voxel4D</b>, a vision-centric world model that transforms autonomous driving from reactive response to proactive anticipation. Voxel4D forecasts 4D spatial states (3D space + time) conditioned on ego-vehicle actions, then integrates these predictions into an end-to-end planning system. This enables the vehicle to evaluate "what-if" scenarios before executing actions, selecting optimal trajectories based on predicted future occupancy. Voxel4D represents the first system to successfully integrate 4D occupancy forecasting with end-to-end planning for autonomous driving.
           </p>
         </div>
       </div>
@@ -177,16 +174,13 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            The transition to fully autonomous vehicles requires systems that can not only perceive the current environment but anticipate how it will evolve. Current commercial systems, exemplified by Tesla's Full Self-Driving and Waymo's autonomous vehicles, operate on fundamentally reactive architectures: they process video frames sequentially, identify objects in real-time, and react to immediate threats. While this approach has enabled millions of miles of autonomous driving, it suffers from critical limitations. When a pedestrian suddenly appears near a crosswalk, the system must detect them in the current frame before it can react—potentially leaving insufficient time to avoid a collision. When approaching an intersection, the system cannot answer "what if I accelerate?" or "what if I turn left?" before making that decision, preventing proactive evaluation of action consequences.
+            Current autonomous systems (Tesla, Waymo) operate reactively, processing frames sequentially and reacting to immediate threats. This limits safety—when a pedestrian appears, the system must detect them before reacting, potentially leaving insufficient time to avoid collisions. Voxel4D transforms this paradigm by predicting future 4D spatial states (3D space + time) conditioned on different ego-vehicle actions, enabling proactive decision-making.
           </p>
           <p>
-            I developed <b>Voxel4D</b>, a vision-centric world model that transforms autonomous driving from reactive response to proactive anticipation. The system operates through three integrated stages: (1) The <b>History Encoder</b> processes images from six multi-view cameras using transformer networks with cross-attention, converting 2D camera views into a unified bird's-eye view (BEV) representation that captures the current 3D scene. (2) The <b>Memory Queue</b> accumulates temporal information about object movements across multiple frames, applying novel semantic and motion-conditional normalization that enhances feature discriminability and compensates for ego-vehicle movement. (3) The <b>World Decoder</b> takes these enhanced historical features along with action conditions (velocity, steering angle, trajectory waypoints) and generates fine-grained 4D occupancy predictions—predicting which 3D voxels will be occupied at future time steps for different possible actions.
+            Voxel4D operates through three stages: (1) <b>History Encoder</b> converts multi-view camera images into bird's-eye view using transformer networks, (2) <b>Memory Queue</b> accumulates temporal information with semantic and motion-conditional normalization, and (3) <b>World Decoder</b> generates action-conditioned 4D occupancy predictions. The system uses these predictions for occupancy-based trajectory planning, generating multiple futures ("what-if" scenarios) and selecting the safest path.
           </p>
           <p>
-            The key innovation is that Voxel4D uses these occupancy predictions for trajectory planning, enabling proactive decision-making. Rather than reacting to the present moment, Voxel4D generates multiple possible futures based on different actions, evaluates each using occupancy-based cost functions, and selects the safest and most efficient trajectory. This "what-if" scenario planning capability fundamentally distinguishes Voxel4D from reactive systems, allowing the vehicle to anticipate and avoid dangerous situations before they occur.
-          </p>
-          <p>
-            Voxel4D achieves state-of-the-art performance across major autonomous driving benchmarks. On the nuScenes dataset, Voxel4D achieves a <b>9.5 point improvement</b> in forecasting accuracy (mIoU_f) over the previous best system—nearly three times the threshold considered a major breakthrough in computer vision research. On Lyft-Level5, Voxel4D demonstrates a <b>6.1 point improvement</b>, and on nuScenes-Occupancy, a <b>4.3% improvement</b> in fine-grained occupancy forecasting. Critically, Voxel4D operates in real-time at <b>401ms latency</b>, meeting the stringent requirements for safe autonomous driving. In planning evaluation, Voxel4D demonstrates exceptional safety with averaged collision rates of <b>0.035%</b> at 1 second, <b>0.16%</b> at 2 seconds, and <b>0.493%</b> at 3 seconds prediction horizons—significantly outperforming previous methods. This represents the first system to successfully integrate 4D occupancy forecasting with end-to-end planning for autonomous driving, establishing a new paradigm for proactive autonomous navigation.
+            Results: <b>+9.5% mIoU</b> on nuScenes, <b>+6.1%</b> on Lyft-Level5, <b>401ms</b> real-time latency. Collision rates: <b>0.035%</b> (1s), <b>0.16%</b> (2s), <b>0.493%</b> (3s). First system to integrate 4D occupancy forecasting with end-to-end planning for autonomous driving.
           </p>
         </div>
       </div>
@@ -207,53 +201,35 @@
           
           <h3 class="title is-4" style="margin-top: 2rem; margin-bottom: 1rem;">Innovation #1: Semantic and Motion-Conditional Normalization</h3>
           <p>
-            <b>The Problem:</b> When processing camera images into bird's-eye view (BEV) representations, traditional systems face a fundamental challenge: features from the same 3D ray appear similar, making it difficult to distinguish between different objects. A car and a pedestrian at the same distance might produce nearly identical BEV features, leading to confusion in downstream prediction tasks. Additionally, as the ego vehicle moves, static objects (buildings, trees) appear to move in the camera view, creating apparent motion that must be separated from actual dynamic object motion.
-          </p>
-          <p>
-            <b>The Innovation:</b> Voxel4D introduces novel semantic and motion-conditional normalization that addresses both challenges simultaneously. The mathematical formulation is:
+            Traditional BEV features from camera images have limited discriminability: features from the same 3D ray appear similar, making object distinction difficult. Voxel4D introduces novel normalization:
           </p>
           <div style="text-align: center; margin: 1rem 0;">
             $$\tilde{\mathbf{F}}^{bev} = \gamma^* \cdot \text{LayerNorm}(\mathbf{F}^{bev}) + \beta^*$$
           </div>
           <p>
-            where $\gamma^*$ and $\beta^*$ are learned scale and bias parameters that are <b>conditioned on semantic predictions</b> (object type: car, pedestrian, cyclist, etc.) and <b>ego-motion encodings</b> (how the vehicle is moving). This conditioning is crucial: the normalization adapts differently for different object types, emphasizing features that correspond to actual objects while suppressing background noise. Simultaneously, ego-motion conditioning compensates for the vehicle's movement, separating static object motion (apparent, due to camera movement) from dynamic object motion (actual object movement).
-          </p>
-          <p>
-            <b>Why This Matters:</b> This innovation directly addresses a fundamental limitation in vision-based autonomous driving: the inability to reliably distinguish between objects in BEV space. By conditioning normalization on semantic information, Voxel4D creates a more discriminative representation where cars, pedestrians, and other objects have distinct feature signatures. This is the <b>first method to address semantic discrimination in BEV features for occupancy forecasting</b>, and it contributes directly to Voxel4D's <b>9.5% mIoU improvement</b>—nearly three times the threshold for a major breakthrough in computer vision research. Without this innovation, the system would struggle to accurately predict which voxels will be occupied by which objects, leading to poor planning decisions.
+            where $\gamma^*$ and $\beta^*$ are conditioned on semantic predictions (object type: car, pedestrian, etc.) and ego-motion encodings. This emphasizes object features while compensating for ego-vehicle movement, separating apparent motion from actual dynamic motion. First method to address semantic discrimination in BEV features for occupancy forecasting, contributing to <b>9.5% mIoU improvement</b>.
           </p>
           
           <h3 class="title is-4" style="margin-top: 2rem; margin-bottom: 1rem;">Innovation #2: Action-Controllable Future Generation</h3>
           <p>
-            <b>The Problem:</b> Current autonomous driving systems predict a single future based on the current scene, but they cannot answer critical questions: "What will happen if I accelerate?" "What if I turn left instead of going straight?" "What if I brake suddenly?" This limitation prevents proactive decision-making—the system cannot evaluate the consequences of different actions before executing them. When approaching an intersection, the system must choose a single action without knowing what would happen with alternatives, leading to conservative or suboptimal driving.
-          </p>
-          <p>
-            <b>The Innovation:</b> Voxel4D generates different future predictions based on different ego-vehicle actions. The world decoder takes action conditions (velocity, steering angle, trajectory waypoints) as input and produces corresponding future occupancy and flow predictions:
+            Unlike systems that predict a single future, Voxel4D generates different futures based on ego-vehicle actions (velocity, steering, trajectory). The world decoder takes action conditions as input:
           </p>
           <div style="text-align: center; margin: 1rem 0;">
             $$\mathbf{O}_{t+1:t+T}, \mathbf{F}_{t+1:t+T} = \text{WorldDecoder}([\mathbf{H}_t, \mathbf{a}_t])$$
           </div>
           <p>
-            where $\mathbf{O}$ and $\mathbf{F}$ are future occupancy and flow predictions, $\mathbf{H}_t$ represents historical features from the memory queue, and $\mathbf{a}_t$ is the action condition. The decoder's internal computations are modified based on the action input, producing fundamentally different occupancy and flow predictions for each action. For example, if the action is "accelerate," the decoder predicts how the scene will evolve given that the ego vehicle is moving faster, potentially bringing it closer to other objects. If the action is "decelerate," it predicts a different future where the vehicle maintains safer distances.
-          </p>
-          <p>
-            <b>Why This Matters:</b> This "what-if" scenario planning capability is revolutionary. The planner can now generate multiple possible futures—one for accelerating, one for decelerating, one for turning left, etc.—and compare them to select the safest option. For instance, if accelerating predicts dangerous proximity to pedestrians while decelerating maintains safe distance, the system chooses the safer action <b>before</b> executing it. This is the <b>first system to integrate flexible action conditioning into 4D occupancy forecasting world models</b>, enabling proactive planning rather than reactive responses. Without this innovation, Voxel4D would be limited to single-future prediction like current systems, unable to evaluate action consequences proactively.
+            where $\mathbf{O}$ and $\mathbf{F}$ are future occupancy and flow, $\mathbf{H}_t$ represents historical features, and $\mathbf{a}_t$ is the action condition. The decoder produces different predictions for each action (e.g., "accelerate" vs. "decelerate"), enabling "what-if" planning. The planner compares multiple futures and selects the safest before executing. First system to integrate action conditioning into 4D occupancy forecasting world models.
           </p>
           
           <h3 class="title is-4" style="margin-top: 2rem; margin-bottom: 1rem;">Innovation #3: Occupancy-Based Planning Integration</h3>
           <p>
-            <b>The Problem:</b> Most planning systems, including those used by commercial autonomous vehicles, rely on simplified geometric representations such as bounding boxes. A car is represented as a rectangular box, a pedestrian as a smaller box. This simplification loses critical information about the 3D structure of objects and the environment. When planning a path through a narrow space or around complex obstacles, these simplified representations can lead to overly conservative planning (avoiding safe paths) or, worse, collisions that could have been avoided with more detailed spatial understanding.
-          </p>
-          <p>
-            <b>The Innovation:</b> Voxel4D uses fine-grained 3D occupancy predictions for planning. Space is divided into millions of voxels (3D pixels), and the system predicts which voxels will be occupied at future time steps. Candidate trajectories are evaluated using occupancy-based cost functions:
+            Most planning systems use simplified bounding boxes that lose 3D structure. Voxel4D uses fine-grained 3D occupancy (millions of voxels) for planning. Candidate trajectories are evaluated using:
           </p>
           <div style="text-align: center; margin: 1rem 0;">
             $$C(\tau) = \sum_{t} [C_{\text{agent}}(\tau, t) + C_{\text{background}}(\tau, t) + C_{\text{efficiency}}(\tau, t)]$$
           </div>
           <p>
-            where $C_{\text{agent}}$ penalizes collisions with dynamic objects (cars, pedestrians), $C_{\text{background}}$ penalizes static object collisions (buildings, barriers), and $C_{\text{efficiency}}$ promotes smooth, rule-compliant paths. The trajectory $\tau^* = \arg\min_{\tau} C(\tau)$ that minimizes total cost is selected. The system operates continuously: every 0.5 seconds, it receives new camera images, updates predictions, re-evaluates trajectories, and selects optimal paths.
-          </p>
-          <p>
-            <b>Why This Matters:</b> Fine-grained occupancy enables precise voxel-level collision detection that goes far beyond bounding-box approximations. The system knows not just that "there's a car somewhere ahead," but exactly which 3D locations will be occupied at specific future moments. This precision is crucial for safe navigation in complex scenarios: when passing through a narrow gap between vehicles, the system can determine if the gap is actually safe based on detailed 3D occupancy rather than simplified geometry. This is the <b>first system to integrate 4D occupancy forecasting directly with end-to-end planning</b>, enabling a level of spatial precision that was previously impossible. The collision rates achieved—0.035% at 1 second, 0.16% at 2 seconds—demonstrate the safety benefits of this fine-grained approach.
+            where $C_{\text{agent}}$ penalizes dynamic object collisions, $C_{\text{background}}$ penalizes static collisions, and $C_{\text{efficiency}}$ promotes smooth paths. The system selects $\tau^* = \arg\min_{\tau} C(\tau)$ and updates every 0.5 seconds. This enables precise voxel-level collision detection rather than bounding-box approximations. First system to integrate 4D occupancy forecasting with end-to-end planning, achieving collision rates of 0.035% (1s) and 0.16% (2s).
           </p>
           
           <h3 class="title is-4" style="margin-top: 2rem; margin-bottom: 1rem;">Quantitative Performance and Training</h3>
@@ -444,7 +420,7 @@
               <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163504.png" alt="Additional Results 3" style="width: 100%; max-width: 1200px;">
               <div class="content has-text-justified" style="margin-top: 1rem;">
                 <p>
-                  This evaluation tests Voxel4D's ability to predict fine-grained details (exactly which 3D voxels will be occupied, not just "there's a car somewhere"). Results show significant improvements over previous methods, with Voxel4D achieving much higher accuracy in predicting detailed spatial states. This level of detail is crucial for safe driving in busy urban environments.
+                  This evaluation tests Voxel4D's fine-grained prediction capability: predicting exactly which 3D voxels will be occupied, not just "there's a car somewhere." Results demonstrate significant improvements over previous methods, with Voxel4D achieving much higher accuracy in predicting detailed spatial states. This precision enables safe navigation in complex urban environments where narrow gaps and precise positioning are critical. The fine-grained occupancy representation allows the system to distinguish between safe and unsafe paths that would appear identical with simplified bounding-box representations.
                 </p>
               </div>
             </div>
@@ -460,7 +436,7 @@
         <h2 class="title is-3">State-of-the-Art Performance</h2>
           <div class="content has-text-justified">
             <p>
-              State-of-the-art performance on nuScenes, Lyft-Level5, and nuScenes-Occupancy datasets.
+              Voxel4D achieves state-of-the-art performance across major autonomous driving benchmarks. The system is evaluated on nuScenes, Lyft-Level5, and nuScenes-Occupancy datasets using standard metrics that measure forecasting accuracy, tracking performance, and fine-grained spatial understanding. These benchmarks represent the gold standard for autonomous driving research, with thousands of real-world driving scenarios across diverse conditions.
             </p>
           </div>
         
@@ -483,7 +459,7 @@
         <h2 class="title is-3">Comparison with Existing Methods</h2>
           <div class="content has-text-justified">
             <p>
-              Most systems: world models for data generation only, pretraining without planning, or planning without future prediction. Voxel4D uniquely integrates world modeling with real-time end-to-end planning.
+              Existing autonomous driving systems fall into distinct categories: (1) world models used only for data generation during training, (2) world models for pretraining but not integrated into planning, (3) planning systems that use current perception without future prediction, or (4) occupancy prediction systems without planning integration. Voxel4D uniquely integrates world modeling (predicting future states) with real-time end-to-end planning, enabling the system to use predicted futures to inform planning decisions during actual driving. This integration represents a fundamental departure from systems that treat prediction and planning as separate problems.
             </p>
           </div>
         
@@ -765,4 +741,5 @@
 
 </body>
 </html>
+
 
