@@ -174,7 +174,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Current autonomous systems (Tesla, Waymo) operate reactively, processing frames sequentially and reacting to immediate threats. This limits safety—when a pedestrian appears, the system must detect them before reacting, potentially leaving insufficient time to avoid collisions. Voxel4D transforms this paradigm by predicting future 4D spatial states (3D space + time) conditioned on different ego-vehicle actions, enabling proactive decision-making.
+            Current autonomous systems (Tesla, Waymo) operate reactively, processing frames sequentially and reacting to immediate threats. This limits safety: when a pedestrian appears, the system must detect them before reacting, potentially leaving insufficient time to avoid collisions. Voxel4D transforms this paradigm by predicting future 4D spatial states (3D space + time) conditioned on different ego-vehicle actions, enabling proactive decision-making.
           </p>
           <p>
             Voxel4D operates through three stages: (1) <b>History Encoder</b> converts multi-view camera images into bird's-eye view using transformer networks, (2) <b>Memory Queue</b> accumulates temporal information with semantic and motion-conditional normalization, and (3) <b>World Decoder</b> generates action-conditioned 4D occupancy predictions. The system uses these predictions for occupancy-based trajectory planning, generating multiple futures ("what-if" scenarios) and selecting the safest path.
