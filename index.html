@@ -551,6 +551,26 @@
           </p>
         </div>
         
+        <!-- Latency and Performance Table -->
+        <div style="margin-top: 2rem;">
+          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163340.png" alt="Latency and Performance Table" style="width: 100%; max-width: 1200px;">
+          <div class="content has-text-justified" style="margin-top: 1rem;">
+            <p>
+              This table demonstrates Voxel4D achieves both high accuracy and real-time performance. Latency (time to process and generate predictions) must be under 500ms for safe autonomous driving. Voxel4D's optimal configuration (2 history frames, memory length 3) processes in ~400ms while maintaining 15.1 mIoU accuracy, validating real-time operation on actual vehicles.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Semantic Loss Analysis -->
+        <div style="margin-top: 2rem;">
+          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163301.png" alt="Semantic Loss Analysis Table" style="width: 100%; max-width: 1200px;">
+          <div class="content has-text-justified" style="margin-top: 1rem;">
+            <p>
+              This table compares different loss function formulations during training. Results demonstrate incorporating semantic information (identifying object type per voxel: "car", "pedestrian", etc.) significantly improves accuracy. Voxel4D's semantic supervision approach provides optimal training performance, improving predictions of both object locations (occupancy) and motion patterns (flow), validating that semantic normalization is essential for excellent benchmark results.
+            </p>
+          </div>
+        </div>
+        
         <!-- Ablation Study Tables -->
         <div style="margin-top: 2rem;">
           <img src="./assets/figures/ResearchPaperImages/Abalation/Screenshot 2025-11-26 165847.png" alt="Ablation Study Table 1" style="width: 100%; max-width: 1200px;">
@@ -575,26 +595,6 @@
           <div class="content has-text-justified" style="margin-top: 1rem;">
             <p>
               This table evaluates optimal historical information requirements. Results show incorporating more historical frames improves accuracy, with a trade-off between accuracy and computational efficiency. Optimal configuration: 2-3 frames of history, achieving 15.1 mIoU while maintaining real-time performance, demonstrating both high accuracy and practical deployability.
-            </p>
-          </div>
-        </div>
-        
-        <!-- Latency and Performance Table -->
-        <div style="margin-top: 2rem;">
-          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163340.png" alt="Latency and Performance Table" style="width: 100%; max-width: 1200px;">
-          <div class="content has-text-justified" style="margin-top: 1rem;">
-            <p>
-              This table demonstrates Voxel4D achieves both high accuracy and real-time performance. Latency (time to process and generate predictions) must be under 500ms for safe autonomous driving. Voxel4D's optimal configuration (2 history frames, memory length 3) processes in ~400ms while maintaining 15.1 mIoU accuracy, validating real-time operation on actual vehicles.
-            </p>
-          </div>
-        </div>
-        
-        <!-- Semantic Loss Analysis -->
-        <div style="margin-top: 2rem;">
-          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163301.png" alt="Semantic Loss Analysis Table" style="width: 100%; max-width: 1200px;">
-          <div class="content has-text-justified" style="margin-top: 1rem;">
-            <p>
-              This table compares different loss function formulations during training. Results demonstrate incorporating semantic information (identifying object type per voxel: "car", "pedestrian", etc.) significantly improves accuracy. Voxel4D's semantic supervision approach provides optimal training performance, improving predictions of both object locations (occupancy) and motion patterns (flow), validating that semantic normalization is essential for excellent benchmark results.
             </p>
           </div>
         </div>
