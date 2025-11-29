@@ -379,6 +379,16 @@
           </p>
         </div>
         
+        <!-- Visual Demonstration: Inputs and Outputs -->
+        <div style="margin-top: 2rem;">
+          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163358.png" alt="Visual Inputs and Occupancy Outputs Demonstration" style="width: 100%; max-width: 1400px;">
+          <div class="content has-text-justified" style="margin-top: 1rem;">
+            <p>
+              This visualization demonstrates Voxel4D's end-to-end forecasting and planning pipeline. The top row shows visual inputs from cameras at -1s, -0.5s, and 0s (current moment), capturing the driving environment. The bottom row displays occupancy outputs: bird's-eye view predictions at 0.5s, 1s, 1.5s, and 2s into the future, showing predicted occupied space (vehicles, obstacles) and the ego vehicle's planned trajectory. The "Lane Change" annotation illustrates how Voxel4D uses future occupancy predictions to plan complex maneuvers proactively, demonstrating the system's ability to integrate perception, prediction, and planning into a unified real-time system.
+            </p>
+          </div>
+        </div>
+        
         <!-- Main Benchmark Table -->
         <div style="margin-top: 2rem;">
           <img src="./assets/figures/ResearchPaperImages/Other Methods.png" alt="Comparison with Other Methods" style="width: 100%; max-width: 1400px;">
@@ -398,20 +408,8 @@
         <h2 class="title is-3">Comparison with Existing Methods</h2>
         <div class="content has-text-justified">
           <p>
-            The following comparison highlights how Voxel4D differs from and improves upon existing autonomous driving approaches, demonstrating the advantages of integrating world modeling with end-to-end planning. Understanding these differences is crucial for appreciating the magnitude of Voxel4D's innovation and its potential impact on autonomous driving technology.
+            Most existing autonomous driving systems fall into four categories: (1) world models used only for data generation during training, (2) world models for pretraining but not integrated into planning, (3) planning systems that use current perception without future prediction, or (4) occupancy prediction systems without planning integration. Voxel4D uniquely integrates all these capabilities into a unified system, using world modeling (predicting future states) for real-time planning during actual driving. Unlike traditional systems that treat prediction and planning as separate problems, Voxel4D uses predicted future states to inform planning decisions, enabling proactive decision-making rather than reactive responses. This real-time integration represents a paradigm shift from systems that react to the present moment to systems that anticipate future scenarios, demonstrating the advantages of integrating world modeling with end-to-end planning.
           </p>
-          <p>
-            Most systems fall into categories: (1) world models for data generation only, (2) world models for pretraining but not planning, (3) planning using current perception without future prediction, or (4) occupancy prediction without planning integration. Voxel4D uniquely integrates all capabilities into a unified system using world modeling for real-time planning during actual driving.
-          </p>
-        </div>
-        
-        <div style="margin-top: 2rem;">
-          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163358.png" alt="Benchmark Comparison Table" style="width: 100%; max-width: 1200px;">
-          <div class="content has-text-justified" style="margin-top: 1rem;">
-            <p>
-              This detailed benchmark comparison table shows Voxel4D's performance compared to other systems across multiple evaluation protocols. Key metric: <b>mIoU</b> (mean Intersection over Union), measuring how accurately the system predicts which 3D voxels will be occupied by objects in the future. The system divides space into millions of voxels; mIoU measures how many are correctly predicted. Results: Voxel4D achieves <b>36.3 mIoU</b> on nuScenes (<b>+9.5 points</b> vs. previous best 26.8) and <b>39.7 mIoU</b> on Lyft-Level5 (<b>+6.1 points</b> vs. 33.6). VPQ (Video Panoptic Quality, tracking objects over time): 25.1 on nuScenes, 33.4 on Lyft, both significantly higher than previous methods. This table demonstrates Voxel4D represents state-of-the-art for predicting future 3D space occupancy across both inflated and fine-grained evaluation protocols.
-            </p>
-          </div>
         </div>
       </div>
     </div>
