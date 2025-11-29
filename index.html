@@ -384,35 +384,22 @@
         <h2 class="title is-3">State-of-the-Art Performance</h2>
         <div class="content has-text-justified">
           <p>
-            Voxel4D achieves state-of-the-art performance on major autonomous driving benchmarks, demonstrating significant improvements over previous methods. The following tables show quantitative results on the nuScenes, Lyft-Level5, and nuScenes-Occupancy datasets, highlighting the system's superior forecasting accuracy and planning capabilities.
+            Voxel4D achieves state-of-the-art performance on major autonomous driving benchmarks, demonstrating significant improvements over previous methods. The following table shows quantitative results comparing Voxel4D with existing methods across multiple evaluation protocols (Inflated GMO and Fine-Grained GMO) on the nuScenes, Lyft-Level5, and nuScenes-Occupancy datasets, highlighting the system's superior forecasting accuracy and planning capabilities.
           </p>
         </div>
         
         <!-- Main Benchmark Table -->
         <div style="margin-top: 2rem;">
-          <img src="./assets/figures/ResearchPaperImages/Other Methods.png" alt="Comparison with Other Methods" style="width: 100%; max-width: 1400px;">
+          <img src="./assets/figures/ResearchPaperImages/Other Methods.png" alt="Benchmark Comparison Table" style="width: 100%; max-width: 1400px;">
           <div class="content has-text-justified" style="margin-top: 1rem;">
             <p>
-              This comparison shows how Voxel4D differs from other systems. Most existing systems either generate training data or work only during training, but don't help during actual driving. Voxel4D uniquely integrates world modeling (predicting the future) directly with planning (choosing the best path) in real-time. The key distinction: traditional systems treat prediction and planning as separate problems, while Voxel4D uses predicted future states to inform planning decisions, enabling proactive decision-making rather than reactive responses. This real-time integration represents a paradigm shift from systems that react to the present moment to systems that anticipate future scenarios.
+              This comprehensive benchmark comparison table provides detailed numerical results comparing Voxel4D with existing methods across multiple evaluation protocols. Key metrics include <b>mIoU</b> (mean Intersection over Union) for forecasting accuracy, <b>VPQ</b> (Video Panoptic Quality) for tracking objects over time, and <b>IoU</b> for current state accuracy. The table shows Voxel4D consistently outperforms all previous methods across all datasets and metrics. On nuScenes, Voxel4D achieves <b>36.3 mIoU_f</b> compared to the previous best of 26.8, representing a <b>+9.5 point improvement</b>. On Lyft-Level5, Voxel4D achieves <b>39.7 mIoU_f</b> compared to 33.6, representing a <b>+6.1 point improvement</b>. Overall, Voxel4D shows an average of a <b>9.5% increase in mIoU</b> compared to other methods, demonstrating state-of-the-art performance for predicting future 3D space occupancy across both inflated and fine-grained evaluation protocols.
             </p>
           </div>
         </div>
       </div>
     </div>
     <!--/ Results: Benchmark Comparison. -->
-    
-    <!-- Comparison with Other Methods -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Comparison with Existing Methods</h2>
-        <div class="content has-text-justified">
-          <p>
-            Most existing autonomous driving systems fall into four categories: (1) world models used only for data generation during training, (2) world models for pretraining but not integrated into planning, (3) planning systems that use current perception without future prediction, or (4) occupancy prediction systems without planning integration. Voxel4D uniquely integrates all these capabilities into a unified system, using world modeling (predicting future states) for real-time planning during actual driving. Unlike traditional systems that treat prediction and planning as separate problems, Voxel4D uses predicted future states to inform planning decisions, enabling proactive decision-making rather than reactive responses. This real-time integration represents a paradigm shift from systems that react to the present moment to systems that anticipate future scenarios, demonstrating the advantages of integrating world modeling with end-to-end planning.
-          </p>
-        </div>
-      </div>
-    </div>
-    <!--/ Comparison with Other Methods -->
     
     <!-- Why Voxel4D is Better. -->
     <div class="columns is-centered has-text-centered">
