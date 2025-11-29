@@ -484,15 +484,15 @@
           </p>
         </div>
         
-        <!-- World Decoder Architecture Diagram -->
-        <div style="margin-top: 2rem;">
-          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163340.png" alt="World Decoder Architecture Diagram" style="width: 100%; max-width: 1200px;">
-          <div class="content has-text-justified" style="margin-top: 1rem;">
-            <p>
-              This diagram illustrates the detailed architecture of Voxel4D's World Decoder, which generates future Bird's-Eye View (BEV) occupancy predictions under various action conditions. The left side shows the system workflow: the Memory Queue stores historical semantic motion-aware BEV features (F_t-1^bev, F_t-2^bev, etc.), Future BEV Queries (Q_t+1^bev, Q_t+2^bev, etc.) specify prediction time horizons, and Action Conditions (trajectory, speed, steering angle) enable action-controllable generation. Each World Decoder instance processes these inputs to generate future BEV states. The right side details the World Decoder's internal architecture: it uses Deformable Self-Attention to process queries, Temporal Cross-Attention to attend to historical features from the memory queue, and Conditional Cross-Attention to incorporate action conditions, followed by a FeedForward Network. This architecture enables the system to generate different future predictions based on different ego-vehicle actions, supporting the "what-if" scenario planning capability that distinguishes Voxel4D from reactive systems.
-            </p>
-          </div>
-        </div>
+         <!-- World Decoder Architecture Diagram -->
+         <div style="margin-top: 2rem;">
+           <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163340.png" alt="World Decoder Architecture Diagram" style="width: 100%; max-width: 1200px;">
+           <div class="content has-text-justified" style="margin-top: 1rem;">
+             <p>
+               This diagram illustrates the detailed architecture of Voxel4D's World Decoder, which generates future Bird's-Eye View (BEV) occupancy predictions under various action conditions. The left side shows the system workflow: the Memory Queue stores historical semantic motion-aware BEV features (F_t-1^bev, F_t-2^bev, etc.), Future BEV Queries (Q_t+1^bev, Q_t+2^bev, etc.) specify prediction time horizons, and Action Conditions (trajectory, speed, steering angle) enable action-controllable generation. Each World Decoder instance processes these inputs to generate future BEV states. The right side details the World Decoder's internal architecture: it uses Deformable Self-Attention to process queries, Temporal Cross-Attention to attend to historical features from the memory queue, and Conditional Cross-Attention to incorporate action conditions, followed by a FeedForward Network. This architecture enables the system to generate different future predictions based on different ego-vehicle actions, supporting the "what-if" scenario planning capability that distinguishes Voxel4D from reactive systems.
+             </p>
+           </div>
+         </div>
         
         <!-- Semantic Loss Analysis -->
         <div style="margin-top: 2rem;">
