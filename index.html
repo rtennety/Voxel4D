@@ -183,6 +183,10 @@
             Voxel4D processes space divided into millions of 3D voxels (512×512×40 = 10.5 million voxels per frame), meaning the system correctly predicts the occupancy of approximately 1 million voxels per frame. Given that most voxels are empty space, correctly identifying which of millions of voxels will be occupied by objects in the future is extremely challenging. This level of precision enables the fine-grained collision detection and safe navigation demonstrated by the exceptional collision rates. Voxel4D achieves state-of-the-art performance: 9.5% improvement in mIoU_f on nuScenes, 6.1% on Lyft-Level5, with real-time operation at 401ms latency. In planning evaluation, Voxel4D demonstrates exceptional safety with collision rates of 0.035% at 1 second, 0.16% at 2 seconds, and 0.493% at 3 seconds prediction horizons. This represents the first system to successfully integrate 4D occupancy forecasting with end-to-end planning for autonomous driving.
           </p>
         </div>
+        
+        <div style="margin-top: 2rem;">
+          <img src="./assets/figures/pipeline.png" alt="Voxel4D Pipeline" style="width: 100%; max-width: 1200px; display: block; margin: 1.5rem auto;">
+        </div>
       </div>
     </div>
     <!--/ Abstract. -->
