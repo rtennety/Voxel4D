@@ -496,10 +496,10 @@
         
         <!-- Semantic Loss Analysis -->
         <div style="margin-top: 2rem;">
-          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163301.png" alt="Semantic Loss Analysis Table" style="width: 100%; max-width: 1200px;">
+          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 163301.png" alt="Semantic Loss Analysis" style="width: 100%; max-width: 1200px;">
           <div class="content has-text-justified" style="margin-top: 1rem;">
             <p>
-              This table compares different loss function formulations during training. Results demonstrate incorporating semantic information (identifying object type per voxel: "car", "pedestrian", etc.) significantly improves accuracy. Voxel4D's semantic supervision approach provides optimal training performance, improving predictions of both object locations (occupancy) and motion patterns (flow), validating that semantic normalization is essential for excellent benchmark results.
+              This analysis compares different loss function formulations for semantic occupancy forecasting: cross-entropy loss, binary occupancy loss, and Lovász loss. Results demonstrate that cross-entropy loss alone achieves satisfactory performance, while adding semantic supervision (identifying object type per voxel: "car", "pedestrian", etc.) further improves accuracy. Notably, semantic losses also enhance flow forecasting performance (VPQ_f), showing that accurate object localization is crucial for instance association and tracking. This validates that semantic normalization and multi-task learning (training on both occupancy and semantics) improve both tasks simultaneously, demonstrating the effectiveness of Voxel4D's semantic supervision approach.
             </p>
           </div>
         </div>
