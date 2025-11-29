@@ -566,28 +566,28 @@
         </div>
         
         <div style="margin-top: 2rem;">
-          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 164722.png" alt="Additional Analysis 1" style="width: 100%; max-width: 1200px;">
+          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 164722.png" alt="Benchmark Comparison: Inflated GMO and Fine-Grained GMO" style="width: 100%; max-width: 1200px;">
           <div class="content has-text-justified" style="margin-top: 1rem;">
             <p>
-              This analysis evaluates Voxel4D's memory system effectiveness and optimal historical information requirements. Results indicate the memory queue (storing temporal information about object movements) significantly improves prediction accuracy. Retaining 2-3 frames of history provides optimal performance, validating the memory system as a critical component.
+              This comprehensive benchmark comparison table compares Voxel4D (Drive-OccWorld) with existing methods across multiple evaluation protocols: Inflated GMO (nuScenes, Lyft-Level5) and Fine-Grained GMO (nuScenes-Occupancy). The table shows performance metrics including mIoU_c (current frame), mIoU_f (future forecasting), VPQ (Video Panoptic Quality), and IoU_c across different methods: SPC, OpenOccupancy-C, PowerBEV-3D, Cam4DOcc, and Voxel4D variants. Results demonstrate Voxel4D's state-of-the-art performance: on nuScenes, achieving 36.3 mIoU_f (2s) and 37.3 mIoU_f average; on Lyft-Level5, achieving 40.0 mIoU_f (0.8s); and on nuScenes-Occupancy, achieving 11.9 mIoU_f (2s) and 12.3 mIoU_f average. This validates Voxel4D's superior forecasting accuracy across both inflated and fine-grained evaluation protocols.
             </p>
           </div>
         </div>
         
         <div style="margin-top: 2rem;">
-          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 164941.png" alt="Additional Analysis 2" style="width: 100%; max-width: 1200px;">
+          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 164941.png" alt="Action-Conditioning Evaluation" style="width: 100%; max-width: 1200px;">
           <div class="content has-text-justified" style="margin-top: 1rem;">
             <p>
-              This table evaluates Voxel4D's action-conditioning capability (predicting different future states for different actions). Results demonstrate this significantly enhances planning quality: simulating alternative scenarios (e.g., "turn left" vs. "proceed straight") substantially improves safe trajectory selection, validating this key innovation.
+              This table evaluates Voxel4D's action-conditioning capability (predicting different future states for different actions). Results demonstrate this significantly enhances planning quality: simulating alternative scenarios (e.g., "turn left" vs. "proceed straight") substantially improves safe trajectory selection, validating this key innovation. The ability to generate action-conditioned predictions enables the planner to evaluate multiple possible futures before executing any action, supporting proactive decision-making rather than reactive responses.
             </p>
           </div>
         </div>
         
         <div style="margin-top: 2rem;">
-          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 165409.png" alt="Additional Analysis 3" style="width: 100%; max-width: 1200px;">
+          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 165409.png" alt="History Frames and Memory Length Analysis" style="width: 100%; max-width: 1200px;">
           <div class="content has-text-justified" style="margin-top: 1rem;">
             <p>
-              This analysis breaks down Voxel4D's performance across object categories: vehicles, pedestrians, cyclists, and static objects (buildings). Results demonstrate excellent performance across all categories, accurately predicting future locations of all object types. This comprehensive performance validates Voxel4D is suitable for real-world deployment, where simultaneous handling of multiple object types is essential.
+              This table analyzes the impact of history frames and memory queue length on Voxel4D's performance and latency. Results show that incorporating historical information significantly improves accuracy: with 0 history frames, the system achieves 12.3 mIoU_f; with 1 history frame, mIoU_f increases to 13.6↑1.3; with 2 history frames and memory length 2, mIoU_f reaches 14.1↑1.8; and with 2 history frames and memory length 3 (optimal configuration), mIoU_f achieves 14.3↑2.0. The table also shows latency breakdown across components (W_E: History Encoder, W_M: Memory Queue, W_D: World Decoder), with total latency of 401ms for the optimal configuration, validating that the system maintains real-time performance while achieving high accuracy. This demonstrates the trade-off between accuracy and computational efficiency, with 2-3 frames of history providing optimal performance.
             </p>
           </div>
         </div>
