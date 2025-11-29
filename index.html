@@ -392,6 +392,31 @@
     </div>
     <!--/ Results: Benchmark Comparison. -->
     
+    <!-- Comparison with Other Methods -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Comparison with Existing Methods</h2>
+        <div class="content has-text-justified">
+          <p>
+            The following comparison highlights how Voxel4D differs from and improves upon existing autonomous driving approaches, demonstrating the advantages of integrating world modeling with end-to-end planning. Understanding these differences is crucial for appreciating the magnitude of Voxel4D's innovation and its potential impact on autonomous driving technology.
+          </p>
+          <p>
+            Most systems fall into categories: (1) world models for data generation only, (2) world models for pretraining but not planning, (3) planning using current perception without future prediction, or (4) occupancy prediction without planning integration. Voxel4D uniquely integrates all capabilities into a unified system using world modeling for real-time planning during actual driving.
+          </p>
+        </div>
+        
+        <div style="margin-top: 2rem;">
+          <img src="./assets/figures/ResearchPaperImages/Other Methods.png" alt="Comparison with Other Methods" style="width: 100%; max-width: 1200px;">
+          <div class="content has-text-justified" style="margin-top: 1rem;">
+            <p>
+              This comparison shows how Voxel4D differs from other systems. Most existing systems either generate training data or work only during training, but don't help during actual driving. Voxel4D uniquely integrates world modeling (predicting the future) directly with planning (choosing the best path) in real-time. The key distinction: traditional systems treat prediction and planning as separate problems, while Voxel4D uses predicted future states to inform planning decisions, enabling proactive decision-making rather than reactive responses. This real-time integration represents a paradigm shift from systems that react to the present moment to systems that anticipate future scenarios.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Comparison with Other Methods -->
+    
     <!-- Why Voxel4D is Better. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
@@ -442,31 +467,6 @@
     </div>
     <!--/ Why Voxel4D is Better. -->
     
-    <!-- Comparison with Other Methods -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Comparison with Existing Methods</h2>
-        <div class="content has-text-justified">
-          <p>
-            The following comparison highlights how Voxel4D differs from and improves upon existing autonomous driving approaches, demonstrating the advantages of integrating world modeling with end-to-end planning. Understanding these differences is crucial for appreciating the magnitude of Voxel4D's innovation and its potential impact on autonomous driving technology.
-          </p>
-          <p>
-            Most systems fall into categories: (1) world models for data generation only, (2) world models for pretraining but not planning, (3) planning using current perception without future prediction, or (4) occupancy prediction without planning integration. Voxel4D uniquely integrates all capabilities into a unified system using world modeling for real-time planning during actual driving.
-          </p>
-        </div>
-        
-        <div style="margin-top: 2rem;">
-          <img src="./assets/figures/ResearchPaperImages/Other Methods.png" alt="Comparison with Other Methods" style="width: 100%; max-width: 1200px;">
-          <div class="content has-text-justified" style="margin-top: 1rem;">
-            <p>
-              This comparison shows how Voxel4D differs from other systems. Most existing systems either generate training data or work only during training, but don't help during actual driving. Voxel4D uniquely integrates world modeling (predicting the future) directly with planning (choosing the best path) in real-time. The key distinction: traditional systems treat prediction and planning as separate problems, while Voxel4D uses predicted future states to inform planning decisions, enabling proactive decision-making rather than reactive responses. This real-time integration represents a paradigm shift from systems that react to the present moment to systems that anticipate future scenarios.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--/ Comparison with Other Methods -->
-
     <!-- Method Overview. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
