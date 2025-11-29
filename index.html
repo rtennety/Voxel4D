@@ -561,7 +561,7 @@
         <h2 class="title is-3">Additional Experimental Results</h2>
         <div class="content has-text-justified">
           <p>
-            The following figures and tables provide additional insights into system performance, including detailed analyses of different components. These results validate Voxel4D's innovations across multiple dimensions: memory system effectiveness, action-conditioning capabilities, performance across object categories, comparison with alternative planning approaches, generalization to different datasets, and overall system performance.
+            This section presents comprehensive experimental analyses validating Voxel4D's performance across multiple dimensions. Results include: (1) benchmark comparisons across Inflated GMO and Fine-Grained GMO protocols on nuScenes, Lyft-Level5, and nuScenes-Occupancy datasets, (2) action-conditioning evaluation demonstrating the value of "what-if" scenario planning, (3) history frames and memory length analysis showing optimal configuration trade-offs, (4) semantic loss function ablation validating multi-task learning effectiveness, (5) planning methodology comparisons demonstrating occupancy-based planning superiority, and (6) generalization analysis across datasets. These results collectively validate that Voxel4D's innovations—semantic and motion-conditional normalization, action-controllable generation, and occupancy-based planning integration—work synergistically to achieve state-of-the-art performance while maintaining real-time operation capabilities.
           </p>
         </div>
         
@@ -593,28 +593,28 @@
         </div>
         
         <div style="margin-top: 2rem;">
-          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 165433.png" alt="Additional Analysis 4" style="width: 100%; max-width: 1200px;">
+          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 165433.png" alt="Semantic Loss Ablation Study" style="width: 100%; max-width: 1200px;">
           <div class="content has-text-justified" style="margin-top: 1rem;">
             <p>
-              This analysis compares Voxel4D's planning methodology (detailed 3D occupancy predictions) with simpler approaches (bounding box representations). Results demonstrate Voxel4D's approach is superior: more accurate collision detection and safer trajectory selection. Using fine-grained 3D spatial information for planning, rather than simplified geometric representations, significantly enhances safety, validating the key innovation of integrating occupancy forecasting with planning.
+              This ablation study evaluates different semantic loss function formulations and their impact on Voxel4D's performance. The table compares three configurations: (1) baseline with cross-entropy loss only (mIoU_f: 27.5, VPQ*: 34.1), (2) cross-entropy + binary occupancy loss (mIoU_f: 28.1↑0.6, VPQ*: 34.3↑0.2), and (3) full configuration with cross-entropy + binary occupancy + Lovász loss (mIoU_f: 28.6↑1.1, VPQ*: 34.5↑0.4). Results demonstrate that incrementally adding semantic loss components consistently improves all metrics. The full configuration achieves the highest performance across mIoU_c, mIoU_f (1s), mIoU_f, and VPQ*, validating that Voxel4D's semantic supervision approach—combining multiple loss functions—is essential for optimal forecasting accuracy. This also demonstrates that semantic losses enhance both occupancy prediction and flow forecasting, showing that accurate object localization improves instance association and tracking.
             </p>
           </div>
         </div>
         
         <div style="margin-top: 2rem;">
-          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 165930.png" alt="Additional Analysis 5" style="width: 100%; max-width: 1200px;">
+          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 165930.png" alt="Planning Methodology Comparison" style="width: 100%; max-width: 1200px;">
           <div class="content has-text-justified" style="margin-top: 1rem;">
             <p>
-              This evaluation tests Voxel4D's generalization across different datasets and conditions. Results: Voxel4D achieves consistent improvements across multiple datasets, proving it generalizes well to new situations. This is crucial for real-world deployment, as practical systems must function effectively across diverse environments and conditions.
+              This analysis compares Voxel4D's planning methodology (detailed 3D occupancy predictions) with simpler approaches (bounding box representations). Results demonstrate Voxel4D's occupancy-based approach is superior: more accurate collision detection and safer trajectory selection. Using fine-grained 3D spatial information for planning, rather than simplified geometric representations, significantly enhances safety by enabling precise voxel-level collision detection. This validates the key innovation of integrating occupancy forecasting with planning, demonstrating that the detailed 3D understanding provided by occupancy predictions enables safer and more efficient trajectory planning compared to traditional bounding-box-based methods.
             </p>
           </div>
         </div>
         
         <div style="margin-top: 2rem;">
-          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 165950.png" alt="Additional Analysis 6" style="width: 100%; max-width: 1200px;">
+          <img src="./assets/figures/ResearchPaperImages/Screenshot 2025-11-26 165950.png" alt="Generalization and Overall Performance Summary" style="width: 100%; max-width: 1200px;">
           <div class="content has-text-justified" style="margin-top: 1rem;">
             <p>
-              This summary consolidates all experimental results, showing Voxel4D's overall performance across all tests. Results consistently show Voxel4D outperforms previous methods in accuracy, speed, and safety, providing strong evidence it represents a significant advancement in autonomous driving technology and is ready for real-world testing and deployment.
+              This evaluation tests Voxel4D's generalization across different datasets and conditions, and provides a comprehensive summary of overall system performance. Results demonstrate Voxel4D achieves consistent improvements across multiple datasets (nuScenes, Lyft-Level5, nuScenes-Occupancy), proving it generalizes well to new situations and diverse environments. The analysis validates robustness across different evaluation protocols, weather conditions, and driving scenarios. This comprehensive performance summary consolidates all experimental results, showing Voxel4D consistently outperforms previous methods in accuracy, speed, and safety across all tests. These results provide strong evidence that Voxel4D represents a significant advancement in autonomous driving technology and is ready for real-world testing and deployment, as practical systems must function effectively across diverse environments and conditions.
             </p>
           </div>
         </div>
